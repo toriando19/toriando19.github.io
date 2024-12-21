@@ -135,8 +135,7 @@ window.addEventListener('load', async function () {
 
         // Function to add user interest by making a request
         async function addUserInterest(userId, interestId) {
-            const response = await fetch(`https://toriando19.github.io/database/postgres/api-postgres.mjs?user_interest_user=${userId}&user_interest_interest=${interestId}`, {
-            // const response = await fetch(`http://localhost:3000/add-userinterest?user_interest_user=${userId}&user_interest_interest=${interestId}`, {
+            const response = await fetch(`${interestUrl}?user_interest_user=${userId}&user_interest_interest=${interestId}`, {
                 method: 'GET'
             });
             if (!response.ok) {
