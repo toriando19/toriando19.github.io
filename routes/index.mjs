@@ -3,6 +3,7 @@ import express from 'express';
 import { fetchAllUsers, fetchAllInterests, fetchAllUserInterest, fetchAllMatches, addUserInterest, removeUserInterest } from '../database/postgres/api-postgres.mjs';
 import { addUserInterestJSON, removeUserInterestJSON } from '../database/postgres/json-api-postgres.mjs';
 import { fetchChats, createChat, fetchNotifications, fetchMessages, createMessage } from '../database/mongo/api-mongo.mjs';
+import { createChatJSON } from '../database/mongo/json-api-mongo.mjs';
 
 const router = express.Router();
 
@@ -11,7 +12,7 @@ router.use(express.static(path.join(path.resolve(), 'views'))); // Adjust 'publi
 
 // Serve the index.html as the root
 router.get('/', (req, res) => {
-  res.sendFile(path.resolve('index.html')); // Serve from the public folder
+  res.sendFile(path.resolve('views/index.html')); // Serve from the public folder
 });
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -95,27 +96,28 @@ router.get('/chats', async (req, res) => {
 
 // MongoDB Route to handle creating a new chat
 router.get('/new-chat', async (req, res) => {
-  // Log the query parameters to ensure we're receiving them
   console.log('Received request to create a new chat:', req.query);
 
   const { chat_user_1, chat_user_2 } = req.query;
 
-  // Validate the query parameters
   if (!chat_user_1 || !chat_user_2) {
     return res.status(400).json({ error: 'Both chat_user_1 and chat_user_2 are required' });
   }
 
   try {
-    // Call the createChat function and pass the user IDs
+    // Call the createChat function for MongoDB
     const data = await createChat(chat_user_1, chat_user_2);
-    
-    // Return the result as a JSON response
-    res.json(data);
+
+    // Also add the new chat to the JSON file
+    const jsonResult = await createChatJSON(chat_user_1, chat_user_2);
+
+    res.json({ success: true, data, jsonResult });
   } catch (error) {
     console.error('Error in creating new chat:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 });
+
 
 
 

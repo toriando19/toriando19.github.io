@@ -10,7 +10,7 @@ async function fetchNotifications() {
             throw new Error(`HTTP error! Status: ${notificationResponse.status}`);
         }
 
-        const data = await response.json(); // Parse JSON response
+        const data = await notificationResponse.json(); // Parse JSON response
 
         const logNotificationsDiv = document.getElementById('logNotifications');
 

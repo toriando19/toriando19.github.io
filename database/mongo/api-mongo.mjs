@@ -1,119 +1,90 @@
-import { connectToMongoDB } from './connect-mongo.mjs'; // Import the connectToMongoDB function
-import fs from 'fs';
+// import { connectToMongoDB } from './connect-mongo.mjs';
+import fs from 'fs/promises';
 import path from 'path';
 
-// Utility function to read JSON files
-const readJSONFile = (fileName) => {
-  const filePath = path.join('database', 'json-data', fileName);
-  return new Promise((resolve, reject) => {
-    fs.readFile(filePath, 'utf8', (err, data) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(JSON.parse(data));
-      }
-    });
-  });
+// Reads JSON data
+const readJSONFile = async (fileName) => {
+  try {
+    const filePath = path.join('database', 'json-data', fileName);
+    const data = await fs.readFile(filePath, 'utf8');
+    return JSON.parse(data);
+  } catch (error) {
+    console.error(`Error reading file ${fileName}:`, error);
+    throw error;
+  }
 };
+
+// Writes JSON data
+const writeJSONFile = async (fileName, data) => {
+  try {
+    const filePath = path.join('database', 'json-data', fileName);
+    await fs.writeFile(filePath, JSON.stringify(data, null, 2));
+  } catch (error) {
+    console.error(`Error writing file ${fileName}:`, error);
+    throw error;
+  }
+};
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Fetch all  /////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// Function to fetch documents from the 'chats' collection or JSON file
-export async function fetchChats() {
+// Fetches data from MongoDB or falls back to JSON
+const fetchData = async (collectionName, jsonFileName) => {
   try {
-    const { chatCollection, client } = await connectToMongoDB('chats');
-    const documents = await chatCollection.find({}).toArray();
+    const { [collectionName + 'Collection']: collection, client } = await connectToMongoDB(collectionName);
+    const documents = await collection.find({}).toArray();
     await client.close();
     return documents;
   } catch (error) {
-    console.error('Error fetching chats from MongoDB, falling back to JSON:', error);
-    // Fallback to JSON file if MongoDB fetch fails
-    return await readJSONFile('chats.json');
+    console.error(`Error fetching from MongoDB, falling back to JSON (${collectionName}):`, error);
+    return await readJSONFile(jsonFileName);
   }
-}
+};
 
-// Function to fetch documents from the 'notifications' collection or JSON file
-export async function fetchNotifications() {
-  try {
-    const { logsCollection, client } = await connectToMongoDB('logs');
-    const documents = await logsCollection.find({}).toArray();
-    await client.close();
-    return documents;
-  } catch (error) {
-    console.error('Error fetching notifications from MongoDB, falling back to JSON:', error);
-    // Fallback to JSON file if MongoDB fetch fails
-    return await readJSONFile('notifications.json');
-  }
-}
+export const fetchChats = async () => await fetchData('chats', 'chats.json');
+export const fetchNotifications = async () => await fetchData('logs', 'notifications.json');
+export const fetchMessages = async () => await fetchData('messages', 'messages.json');
 
-// Function to fetch documents from the 'messages' collection or JSON file
-export async function fetchMessages() {
-  try {
-    const { messagesCollection, client } = await connectToMongoDB('messages');
-    const documents = await messagesCollection.find({}).toArray();
-    await client.close();
-    return documents;
-  } catch (error) {
-    console.error('Error fetching messages from MongoDB, falling back to JSON:', error);
-    // Fallback to JSON file if MongoDB fetch fails
-    return await readJSONFile('messages.json');
-  }
-}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Create Chat  ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// Function to create a chat and log the activity
-export async function createChat(chat_user_1, chat_user_2) {
+// Creates a chat document and logs activity
+export const createChat = async (chat_user_1, chat_user_2) => {
+  const chatId = `chat-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
+  const newChat = { id: chatId, chat_user_1, chat_user_2, created_at: new Date() };
+
+  const logEntry = {
+    id: `log-${Date.now()}-${Math.floor(Math.random() * 1000)}`,
+    event_type: 'chats',
+    user_id: chat_user_1,
+    related_user: chat_user_2,
+    message1: 'Du har startet en chat med',
+    message2: 'har startet en chat med dig',
+    created_at: new Date(),
+  };
+
   try {
     const { chatCollection, logsCollection, client } = await connectToMongoDB('chats');
-
-    // Generate a unique id for the chat
-    const chatId = `chat-${new Date().getTime()}-${Math.floor(Math.random() * 1000)}`;
-
-    // Create the new chat document
-    const newChat = {
-      id: chatId,
-      chat_user_1: chat_user_1,
-      chat_user_2: chat_user_2,
-      created_at: new Date(),
-    };
-
-    console.log('New chat data:', newChat);
-
-    // Insert the new chat document into the collection
-    const chatResult = await chatCollection.insertOne(newChat);
-    console.log('Chat Insert Result:', chatResult);
-
-    // Log the creation as a notification (You might want to dynamically set user IDs here)
-    const newChatNotification = {
-      id: `log-${new Date().getTime()}-${Math.floor(Math.random() * 1000)}`,
-      event_type: `chats`,
-      user_id: chat_user_1,  // Assuming user_id of the first user creates the log
-      related_user: chat_user_2,  // Assuming the second user is related
-      message1: "Du har startet en chat med",
-      message2: "har startet en chat med dig",
-      created_at: new Date(),
-    };
-
-    console.log('New notification data:', newChatNotification);
-
-    // Insert the notification into the logs collection
-    const logResult = await logsCollection.insertOne(newChatNotification);
-    console.log('Log Insert Result:', logResult);
-
-    // Close the client connection after operations
+    await chatCollection.insertOne(newChat);
+    await logsCollection.insertOne(logEntry);
     await client.close();
-
-    return { chatResult, logResult };
+    return { newChat, logEntry };
   } catch (error) {
-    console.error('Error creating chat:', error);
-    throw error;  // Ensure the error is thrown for handling in the route
+    console.error('Error creating chat in MongoDB, falling back to JSON:', error);
+    const chats = await readJSONFile('chats.json');
+    const logs = await readJSONFile('notifications.json');
+    chats.push(newChat);
+    logs.push(logEntry);
+    await writeJSONFile('chats.json', chats);
+    await writeJSONFile('notifications.json', logs);
+    return { newChat, logEntry };
   }
-}
+};
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Create Message  ///////////////////////////////////////////////////////////////////////////////////////////////////

@@ -1,72 +1,72 @@
 [
-    {
-      "user_interest_id": 3,
-      "user_interest_user": "7",
-      "user_interest_interest": "1"
-    },
-    {
-      "user_interest_id": 4,
-      "user_interest_user": "6",
-      "user_interest_interest": "6"
-    },
-    {
-      "user_interest_id": 5,
-      "user_interest_user": "6",
-      "user_interest_interest": "1"
-    },
-    {
-      "user_interest_id": 10,
-      "user_interest_user": "3",
-      "user_interest_interest": "4"
-    },
-    {
-      "user_interest_id": 11,
-      "user_interest_user": "3",
-      "user_interest_interest": "6"
-    },
-    {
-      "user_interest_id": 12,
-      "user_interest_user": "3",
-      "user_interest_interest": "1"
-    },
-    {
-      "user_interest_id": 13,
-      "user_interest_user": "3",
-      "user_interest_interest": "3"
-    },
-    {
-      "user_interest_id": 14,
-      "user_interest_user": "8",
-      "user_interest_interest": "4"
-    },
-    {
-      "user_interest_id": 15,
-      "user_interest_user": "8",
-      "user_interest_interest": "6"
-    },
-    {
-      "user_interest_id": 16,
-      "user_interest_user": "8",
-      "user_interest_interest": "1"
-    },
-    {
-      "user_interest_id": 17,
-      "user_interest_user": "8",
-      "user_interest_interest": "3"
-    },
-    {
-      "user_interest_id": 23,
-      "user_interest_user": "4",
-      "user_interest_interest": "3"
-    },
-    {
-      "user_interest_id": 29,
-      "user_interest_user": "4",
-      "user_interest_interest": "6"
-    },
-    {
-      "user_interest_id": 30,
-      "user_interest_user": "4",
-      "user_interest_interest": "1"
-    }
-  ]
+  {
+    "user_interest_id": 3,
+    "user_interest_user": "7",
+    "user_interest_interest": "1"
+  },
+  {
+    "user_interest_id": 4,
+    "user_interest_user": "6",
+    "user_interest_interest": "6"
+  },
+  {
+    "user_interest_id": 5,
+    "user_interest_user": "6",
+    "user_interest_interest": "1"
+  },
+  {
+    "user_interest_id": 10,
+    "user_interest_user": "3",
+    "user_interest_interest": "4"
+  },
+  {
+    "user_interest_id": 11,
+    "user_interest_user": "3",
+    "user_interest_interest": "6"
+  },
+  {
+    "user_interest_id": 12,
+    "user_interest_user": "3",
+    "user_interest_interest": "1"
+  },
+  {
+    "user_interest_id": 13,
+    "user_interest_user": "3",
+    "user_interest_interest": "3"
+  },
+  {
+    "user_interest_id": 14,
+    "user_interest_user": "8",
+    "user_interest_interest": "4"
+  },
+  {
+    "user_interest_id": 15,
+    "user_interest_user": "8",
+    "user_interest_interest": "6"
+  },
+  {
+    "user_interest_id": 16,
+    "user_interest_user": "8",
+    "user_interest_interest": "1"
+  },
+  {
+    "user_interest_id": 17,
+    "user_interest_user": "8",
+    "user_interest_interest": "3"
+  },
+  {
+    "user_interest_id": 23,
+    "user_interest_user": "4",
+    "user_interest_interest": "3"
+  },
+  {
+    "user_interest_id": 29,
+    "user_interest_user": "4",
+    "user_interest_interest": "6"
+  },
+  {
+    "user_interest_id": 30,
+    "user_interest_user": "4",
+    "user_interest_interest": "1"
+  }
+]

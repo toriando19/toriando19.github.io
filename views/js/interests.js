@@ -155,7 +155,7 @@ window.addEventListener('load', async function () {
 
         // New function to update JSON data after adding/removing user interests
         async function updateUserInterestJSON(userId, interestId, action) {
-            const userInterestFilePath = '../database/json-data/user_interest.json';
+            const userInterestFilePath = '../database/json-data/userinterest.json';
 
             try {
                 // Read the existing data from the JSON file

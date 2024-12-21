@@ -96,7 +96,8 @@ async function fetchChatDocuments() {
     const user_id = sessionData.user_id;
     console.log("Fetching chats for User ID:", user_id);
 
-    const chatResponse = await fetch('http://localhost:3000/chats');
+    const chatUrl = 'https://toriando19.github.io/database/json-data/chats.json' || 'http://localhost:3000/chats';
+    const chatResponse = await fetch(chatUrl);
     if (!chatResponse.ok) throw new Error('Failed to fetch chats');
 
     const chats = await chatResponse.json();

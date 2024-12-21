@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { queryDatabase } from './connect-postgres.mjs';
+// import { queryDatabase } from './connect-postgres.mjs';
 
 // Utility function to read JSON files
 const readJSONFile = (fileName) => {
@@ -45,7 +45,7 @@ export const fetchAllUserInterest = async () => {
     return userInterests;
   } catch (err) {
     console.error('Error fetching user interests from PostgreSQL, falling back to JSON:', err);
-    return await readJSONFile('user_interest.json');
+    return await readJSONFile('userinterest.json');
   }
 };
 
