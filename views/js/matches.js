@@ -105,7 +105,8 @@ window.onload = displayMatchingUsers;
 async function createChat(chat_user_1_id, chat_user_2_id) {
     try {
         // Send GET request to the endpoint with query parameters
-        const response = await fetch(`http://localhost:3000/new-chat?chat_user_1=${chat_user_1_id}&chat_user_2=${chat_user_2_id}`);
+        const createChatUrl = 'https://toriando19.github.io/database/mongo/api-mongo.mjs' || 'http://localhost:3000/new-chat';
+        const response = await fetch(`${createChatUrl}?chat_user_1=${chat_user_1_id}&chat_user_2=${chat_user_2_id}`);
 
         const result = await response.json();
         console.log('Response from createChat API:', result);

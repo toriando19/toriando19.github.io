@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <title> MeDR: Sammen om det vigtige </title>
+</head>
+<body style="font-family: Open Sans;">
+
+
+    <section class="desktop-error">
+        <img src="/img/medr-logo.png" alt="logo">
+        <h1> Dette website er <strong> KUN </strong> tilgængeligt på smartphone </h1>
+    </section>
+
+
+    <!-- LOGIN-FORM -->
+
+    <section id="loginForm" class="login">
+        
+        <div class="login-container"> 
+            <img src="/img/medr-logo.png" alt="logo">
+            <h1> MeDR </h1>
+            <p> Sammen om det vigtige </p>
+            
+            <form class="login-form">
+                <label for="email">E-mail</label> <br>
+                <input id="email" name="email" type="text" placeholder="Skriv din e-mail" required>
+                
+                <br><br>
+                
+                <label for="password">Kodeord</label> <br>
+                <input id="password" name="password" type="password" placeholder="Skriv dit kodeord" required>
+                
+                <br> 
+                
+                <button type="submit" id="loginSubmit"> LOG IND </button>
+            </form>
+        </div>
+    </section>
+
+    
+    <!-- APPLICATION STARTS HERE -->
+    
+    <section class="application">
+        
+        <!-- HEADER -->
+        <section class="header">
+            <img src="/img/medr-logo.png" alt="logo">
+            
+            <div>
+                <div class="dr-nav">
+                    <a> DR.DK </a>
+                    <a> DRTV </a>
+                    <a> DR LYD </a>
+                    <a> <strong> MEDR </strong> </a>
+                </div>
+                
+                <button id="hamburgerMenu"> ☰ </button>
+                <button id="chats"> 💬 </button>
+                <!-- <button id="hamburgerMenu"> X </button> -->
+            </div>
+
+            <!-- HAMBURGERMENU -->
+            <div class="burger-menu">
+                <h1 id="welcomeUser">Welcome </h1> 
+                <button id="logoutBtn"> Logout </button>
+                
+                <div class="menu-nav">
+                    <a> FORSIDE </a>
+                    <a> MIN PROFIL </a>
+                    <a> MINE CHATS </a>
+                    <a> MINE MATCHES </a>
+                </div>
+
+                <div class="burger-menu-overlay"></div>
+            </div>
+
+        </section>
+
+        <br><br><br><br><br>
+
+
+        <!-- <div class="overlay">
+            <div class="overlay-header">
+                <button class="overlay-close"> < </button> 
+                <h1 class="overlay-h1"> Header </h1>
+            </div>
+        </div> -->
+
+
+
+
+
+
+
+        <div id="profileOverlay" class="overlay">
+            <section id="userProfileSection" class="user-profile">
+                <!-- PROFILE INFO -->
+                <div class="overlay-header">
+                    <button id="profileClose" class="overlay-close"> < </button> <!-- replace with icon-image  -->
+                    <h1 class="overlay-h1"> Profil </h1>
+                </div>
+
+                <div class="user-profile-info">
+                    <h1> Min Profil </h1>
+                    
+                    <span for="userProfileUserName"> Brugernavn: </span> <span id="userProfileUserName"> </span> <br>
+                    <span for="userProfileName"> Navn: </span> <span id="userProfileName"> </span> <br>
+                    <span for="userProfileEmail"> Email: </span> <span id="userProfileEmail"> </span> <br>
+                    <span for="userProfilePassword"> Password: </span> <span id="userProfilePassword"> </span>
+                </div>
+            
+                <!-- MY INTERESTS -->
+                <div class="user-profile-interest">
+                    <h1> Mine Interesser </h1>
+                    
+                    <form id="interestForm">
+                        <input id="checkTVA" type="checkbox" data-interest-id="4">
+                        <label for="checkTVA"> TVA </label>
+                        <br>
+            
+                        <input id="checkSport" type="checkbox" data-interest-id="6">
+                        <label for="checkSport"> Sara og Monopolet </label>
+                        <br>
+            
+                        <input id="checkBagedyst" type="checkbox" data-interest-id="1">
+                        <label for="checkBagedyst"> Den Store Bagedyst </label>
+                        <br>
+            
+                        <input id="checkKenderTypen" type="checkbox" data-interest-id="3">
+                        <label for="checkKenderTypen"> Kender du typen </label>
+                        <br>
+                    </form>
+                </div>
+            </section>        
+        </div>
+        
+        <!-- Notifications  -->
+        <section class="log-notifications">
+
+            <div class="section-header">
+                <h1> Seneste opdateringer </h1>
+                <h1> > </h1> <!-- replace with icon-image  -->
+            </div>
+
+            <div id="logNotifications"></div>
+
+        </section>
+
+        <br>
+
+        <!-- Matching Users -->
+        <section class="explore-matches">
+
+            <div class="section-header">
+                <h1> Udforsk matches </h1>
+                <h1> > </h1> <!-- replace with icon-image  -->
+            </div>
+
+            <p id="exploreMatches"> </p>
+            <div id="userInfoSection"></div>
+
+        </section>
+
+        <br>
+
+
+        <!-- INTERESTS OVERVIEW -->
+        <section class="interests-overview">
+
+            <div class="interests-overview-header">
+                <div class="section-header">
+                    <h1> Dine matches er baseret på </h1>
+                    <!-- <h1> > </h1> replace with icon-image  -->
+                </div>
+                <button id="changeInterest"> ✎ Ændre </button>
+            </div>
+
+            <div id="matchingInterestsContainer"></div>
+
+        </section>
+
+
+
+
+        <!-- My Matches/Chats  -->
+        <section class="matching-users">
+
+            <h1> Mine Chats </h1>
+            <div id="chat-result"></div>
+            <div id="message-timeline"></div>
+            <div id="message-input"></div>
+
+        </section>
+
+        <br><br>
+
+        <!-- Icebreaker  -->
+        <section class="icebreaker">
+
+            <h1> Icebreaker </h1>
+            <div id="icebreaker"></div>
+            <button id="shuffleIcebreaker"> Shuffle </button>
+
+        </section>
+
+        <br><br>
+        
+
+
+
+    </section>
+
+
+
+</body>
+
+<!-- SCRIPTS FOR THE APPLICATION -->
+    <script src="/js/session.js" type="module" async></script>
+    <script src="/js/interests.js" type="module" async></script>
+    <script src="/js/matches.js" type="module" async></script>
+    <script src="/js/profile.js" type="module" async></script>
+    <script src="/js/chats.js" type="module" async></script>
+    <script src="/js/notifications.js" type="module" async></script>
+
+</html>

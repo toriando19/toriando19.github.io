@@ -145,7 +145,7 @@ window.addEventListener('load', async function () {
 
         // Function to remove user interest by making a request
         async function removeUserInterest(userId, interestId) {
-            const response = await fetch(`http://localhost:3000/remove-userinterest?user_interest_user=${userId}&user_interest_interest=${interestId}`, {
+            const response = await fetch(`${interestUrl}?user_interest_user=${userId}&user_interest_interest=${interestId}`, {
                 method: 'GET'
             });
             if (!response.ok) {
