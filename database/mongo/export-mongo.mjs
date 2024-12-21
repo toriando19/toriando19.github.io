@@ -6,7 +6,7 @@ async function exportMongoData() {
     const { chatCollection, logsCollection, messagesCollection, client } = await connectToMongoDB();
 
     // Fetch data from each collection
-    const chats = await chatCollection.find({}).toArray();
+    const chats = await chatCollection.find({}).toArray(); 
     const logs = await logsCollection.find({}).toArray();
     const messages = await messagesCollection.find({}).toArray();
 
