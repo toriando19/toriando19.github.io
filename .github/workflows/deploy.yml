@@ -23,8 +23,5 @@ jobs:
           npm install # Install all dependencies from package.json
           npm install mongodb # Explicitly install mongodb in case it's not listed in package.json
 
-      - name: Export MongoDB Data
-        run: node database/mongo/export-mongo.mjs
-
-      - name: Export Postgres Data
-        run: node database/postgres/export-postgres.mjs
+      - name: Export DB Data
+        run: node database/export-api.mjs
