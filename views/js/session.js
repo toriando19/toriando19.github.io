@@ -23,17 +23,20 @@ document.querySelector('#loginForm').addEventListener('submit', async function (
             const response = await fetch('http://localhost:3000/users');
             if (!response.ok) throw new Error('Failed to fetch user data from localhost');
             users = await response.json();
+            console.log("Users fetched from localhost:", users); // Log users fetched from localhost
             user = users.find(u => u.user_email === email && u.user_password === password);
         } catch (error) {
-            console.error(error);
+            console.error('Error fetching from localhost:', error);
             // Fallback to reading from GitHub if localhost request fails
             const githubResponse = await fetch('https://toriando19.github.io/database/json-data/users.json');
             if (!githubResponse.ok) throw new Error('Failed to fetch user data from GitHub');
             users = await githubResponse.json();
+            console.log("Users fetched from GitHub:", users); // Log users fetched from GitHub
             user = users.find(u => u.user_email === email && u.user_password === password);
         }
 
         if (!user) {
+            console.error('User not found:', email);  // Log if no user was found
             alert('Invalid credentials. Please try again.');
             return;
         }
@@ -72,11 +75,9 @@ document.querySelector('#loginForm').addEventListener('submit', async function (
                 }
             } catch (error) {
                 console.error('Error while inserting user into localhost:', error);
-                // Fallback to inserting into GitHub or notify the user
                 alert('An error occurred while inserting user data. GitHub fallback is not implemented.');
             }
         }
-
 
         // Fetch user interests data
         let userInterests = [];
@@ -85,8 +86,7 @@ document.querySelector('#loginForm').addEventListener('submit', async function (
             if (!interestResponse.ok) throw new Error('Failed to fetch user interests from localhost');
             userInterests = await interestResponse.json();
         } catch (error) {
-            console.error(error);
-            // Fallback to GitHub if localhost request fails
+            console.error('Error fetching interests:', error);
             const githubInterestResponse = await fetch('https://toriando19.github.io/database/json-data/userinterest.json');
             if (!githubInterestResponse.ok) throw new Error('Failed to fetch user interests from GitHub');
             userInterests = await githubInterestResponse.json();
@@ -118,28 +118,6 @@ document.querySelector('#loginForm').addEventListener('submit', async function (
     }
 });
 
-// Function to update the application UI after login
-function updateApplicationUI(user, userInterest) {
-    if (window.innerWidth <= 390) {
-        document.querySelector('.application').style.display = 'block';
-        document.querySelector('.login').style.display = 'none';
-        document.querySelector('#welcomeUser').innerHTML = `Welcome, ${user.user_name}!`;
-
-        updateUserInterests(userInterest);
-    } else {
-        document.querySelector('.application').style.display = 'none';
-        document.querySelector('.login').style.display = 'block';
-    }
-}
-
-// Function to update user interests dynamically
-function updateUserInterests(userInterest) {
-    const checkboxes = document.querySelectorAll('.user-profile input[type="checkbox"]');
-    checkboxes.forEach(checkbox => {
-        const interestId = checkbox.getAttribute('data-interest-id');
-        checkbox.checked = userInterest.some(ui => ui.user_interest_interest == interestId);
-    });
-}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Logout Function  ///////////////////////////////////////////////////////////////////////////////////////////////
