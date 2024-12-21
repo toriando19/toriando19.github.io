@@ -16,7 +16,8 @@ async function displayMatchingUsers() {
     const totalUserInterests = currentUserInterests.length;  // Total number of interests from session data
 
     try {
-        const userInterestResponse = await fetch('http://localhost:3000/userinterest');
+        const userInterestUrl = 'https://toriando19.github.io/database/json-data/userinterest.json' || 'http://localhost:3000/userinterest';
+        const userInterestResponse = await fetch(userInterestUrl);
         const userInterests = await userInterestResponse.json();
 
         const matchingUserInterests = [];
@@ -28,7 +29,8 @@ async function displayMatchingUsers() {
             matchingUserInterests.push(...matchedInterests);
         });
 
-        const usersResponse = await fetch('http://localhost:3000/users');
+        const userUrl = 'https://toriando19.github.io/database/json-data/users.json' || 'http://localhost:3000/users';
+        const usersResponse = await fetch(userUrl);
         const users = await usersResponse.json();
 
         let matchingUsers = [];
