@@ -3,7 +3,7 @@ import { connectToMongoDB } from './mongo/connect-mongo.mjs';
 import { connectToPGDatabase, queryDatabase, closeDatabaseConnection } from './postgres/connect-postgres.mjs';
 
 async function exportData() {
-  try {
+  try { 
     // Fetch data from MongoDB
     const { chatCollection, logsCollection, messagesCollection, client: mongoClient } = await connectToMongoDB();
     const chats = await chatCollection.find().toArray();
