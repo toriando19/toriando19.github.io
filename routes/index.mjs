@@ -7,7 +7,7 @@ import { fetchChats, createChat, fetchNotifications, fetchMessages, createMessag
 const router = express.Router();
 
 // Serve static files from the "public" folder (or your assets folder)
-router.use(express.static(path.join(path.resolve(), 'public'))); // Adjust 'public' to your static assets folder
+router.use(express.static(path.join(path.resolve(), 'views'))); // Adjust 'public' to your static assets folder
 
 // Serve the index.html as the root
 router.get('/', (req, res) => {
