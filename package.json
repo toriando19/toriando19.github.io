@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "package.json": "^2.0.1",
     "pg": "^8.13.1"
   },
   "devDependencies": {
