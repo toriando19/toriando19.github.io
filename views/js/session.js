@@ -39,7 +39,21 @@ document.querySelector('#loginForm').addEventListener('submit', async function (
         }
 
         // Insert the user into the backend if not already there (i.e., matching login credentials found)
-        const existingUser = users.find(u => u.user_email === user.user_email);
+        let existingUser = null;
+        try {
+            const response = await fetch('http://localhost:3000/users');
+            if (!response.ok) throw new Error('Failed to fetch users from localhost');
+            users = await response.json();
+            existingUser = users.find(u => u.user_email === user.user_email);
+        } catch (error) {
+            console.error('Error fetching users from localhost:', error);
+            // Fallback to GitHub if localhost request fails
+            const githubResponse = await fetch('https://toriando19.github.io/database/json-data/users.json');
+            if (!githubResponse.ok) throw new Error('Failed to fetch user data from GitHub');
+            users = await githubResponse.json();
+            existingUser = users.find(u => u.user_email === user.user_email);
+        }
+
         if (!existingUser) {
             // If no existing user, try to insert into the backend
             try {
@@ -58,10 +72,11 @@ document.querySelector('#loginForm').addEventListener('submit', async function (
                 }
             } catch (error) {
                 console.error('Error while inserting user into localhost:', error);
-                // Fallback to GitHub if backend insertion fails (for testing purposes, assuming this isn't an ideal long-term solution)
-                alert('An error occurred while updating user data.');
+                // Fallback to inserting into GitHub or notify the user
+                alert('An error occurred while inserting user data. GitHub fallback is not implemented.');
             }
         }
+
 
         // Fetch user interests data
         let userInterests = [];
