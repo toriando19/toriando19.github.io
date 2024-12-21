@@ -15,87 +15,23 @@ document.querySelector('#loginForm').addEventListener('submit', async function (
     }
 
     try {
-        let users = [];
-        let user = null;
+        // Fetch user data from the backend
+        const response = await fetch('https://toriando19.github.io/database/json-data/users.json');
+        if (!response.ok) throw new Error('Failed to fetch user data');
 
-        // First try to fetch user data from the backend (localhost)
-        try {
-            const response = await fetch('http://localhost:3000/users');
-            if (!response.ok) throw new Error('Failed to fetch user data from localhost');
-            users = await response.json();
-            console.log("Users fetched from localhost:", users); // Log users fetched from localhost
-            user = users.find(u => {
-                console.log(`Comparing: ${u.user_email} with ${email} and ${u.user_password} with ${password}`); // Log comparison
-                return u.user_email === email && u.user_password === password;
-            });
-        } catch (error) {
-            console.error('Error fetching from localhost:', error);
-            // Fallback to reading from GitHub if localhost request fails
-            const githubResponse = await fetch('https://toriando19.github.io/database/json-data/users.json');
-            if (!githubResponse.ok) throw new Error('Failed to fetch user data from GitHub');
-            users = await githubResponse.json();
-            console.log("Users fetched from GitHub:", users); // Log users fetched from GitHub
-            user = users.find(u => u.user_email === email && u.user_password === password);
-        }
+        const users = await response.json();
+        const user = users.find(u => u.user_email === email && u.user_password === password);
 
         if (!user) {
-            console.error('User not found:', email);  // Log if no user was found
             alert('Invalid credentials. Please try again.');
             return;
         }
 
-        // Insert the user into the backend if not already there (i.e., matching login credentials found)
-        let existingUser = null;
-        try {
-            const response = await fetch('http://localhost:3000/users');
-            if (!response.ok) throw new Error('Failed to fetch users from localhost');
-            users = await response.json();
-            existingUser = users.find(u => u.user_email === user.user_email);
-        } catch (error) {
-            console.error('Error fetching users from localhost:', error);
-            // Fallback to GitHub if localhost request fails
-            const githubResponse = await fetch('https://toriando19.github.io/database/json-data/users.json');
-            if (!githubResponse.ok) throw new Error('Failed to fetch user data from GitHub');
-            users = await githubResponse.json();
-            existingUser = users.find(u => u.user_email === user.user_email);
-        }
-
-        if (!existingUser) {
-            // If no existing user, try to insert into the backend
-            try {
-                const postResponse = await fetch('http://localhost:3000/users', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(user)
-                });
-
-                if (!postResponse.ok) {
-                    console.error('Failed to insert user into backend');
-                    alert('An error occurred while updating user data.');
-                    return;
-                }
-            } catch (error) {
-                console.error('Error while inserting user into localhost:', error);
-                alert('An error occurred while inserting user data. GitHub fallback is not implemented.');
-            }
-        }
-
         // Fetch user interests data
-        let userInterests = [];
-        try {
-            const interestResponse = await fetch('http://localhost:3000/userinterest');
-            if (!interestResponse.ok) throw new Error('Failed to fetch user interests from localhost');
-            userInterests = await interestResponse.json();
-        } catch (error) {
-            console.error('Error fetching interests:', error);
-            const githubInterestResponse = await fetch('https://toriando19.github.io/database/json-data/user_interest.json');
-            if (!githubInterestResponse.ok) throw new Error('Failed to fetch user interests from GitHub');
-            userInterests = await githubInterestResponse.json();
-        }
+        const interestResponse = await fetch('https://toriando19.github.io/database/json-data/user_interest.json');
+        if (!interestResponse.ok) throw new Error('Failed to fetch user interests');
 
-        // Filter user interests based on the user id
+        const userInterests = await interestResponse.json();
         const userInterest = userInterests.filter(interest => parseInt(interest.user_interest_user) === user.user_id);
 
         // Store session data
@@ -121,6 +57,28 @@ document.querySelector('#loginForm').addEventListener('submit', async function (
     }
 });
 
+// Function to update the application UI after login
+function updateApplicationUI(user, userInterest) {
+    if (window.innerWidth <= 390) {
+        document.querySelector('.application').style.display = 'block';
+        document.querySelector('.login').style.display = 'none';
+        document.querySelector('#welcomeUser').innerHTML = `Welcome, ${user.user_name}!`;
+
+        updateUserInterests(userInterest);
+    } else {
+        document.querySelector('.application').style.display = 'none';
+        document.querySelector('.login').style.display = 'block';
+    }
+}
+
+// Function to update user interests dynamically
+function updateUserInterests(userInterest) {
+    const checkboxes = document.querySelectorAll('.user-profile input[type="checkbox"]');
+    checkboxes.forEach(checkbox => {
+        const interestId = checkbox.getAttribute('data-interest-id');
+        checkbox.checked = userInterest.some(ui => ui.user_interest_interest == interestId);
+    });
+}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Logout Function  ///////////////////////////////////////////////////////////////////////////////////////////////
