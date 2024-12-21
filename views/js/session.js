@@ -15,11 +15,22 @@ document.querySelector('#loginForm').addEventListener('submit', async function (
     }
 
     try {
-        // Fetch user data from the backend
-        const response = await fetch('http://localhost:3000/users');
-        if (!response.ok) throw new Error('Failed to fetch user data');
+        let users = [];
+        
+        // First try to fetch user data from the backend
+        try {
+            const response = await fetch('http://localhost:3000/users');
+            if (!response.ok) throw new Error('Failed to fetch user data from localhost');
+            users = await response.json();
+        } catch (error) {
+            console.error(error);
+            // Fallback to reading from local JSON file if localhost request fails
+            const fallbackResponse = await fetch('../database/json-data/users.json');
+            if (!fallbackResponse.ok) throw new Error('Failed to fetch user data from JSON file');
+            users = await fallbackResponse.json();
+        }
 
-        const users = await response.json();
+        // Find the user based on the provided credentials
         const user = users.find(u => u.user_email === email && u.user_password === password);
 
         if (!user) {
