@@ -21,7 +21,7 @@ document.querySelector('#loginForm').addEventListener('submit', async function (
         // First try to fetch user data from the backend (localhost)
         try {
             const response = await fetch('http://localhost:3000/users');
-            if (!response.ok) throw new Error('Failed to fetch user data from localhost');
+            if (!response.ok) throw new Error('https://toriando19.github.io/database/json-data/users.json');
             users = await response.json();
             user = users.find(u => u.user_email === email && u.user_password === password);
         } catch (error) {
@@ -58,7 +58,7 @@ document.querySelector('#loginForm').addEventListener('submit', async function (
 
         // Fetch user interests data
         const interestResponse = await fetch('http://localhost:3000/userinterest');
-        if (!interestResponse.ok) throw new Error('Failed to fetch user interests');
+        if (!interestResponse.ok) await fetch('http://localhost:3000/userinterest');
 
         const userInterests = await interestResponse.json();
         const userInterest = userInterests.filter(interest => parseInt(interest.user_interest_user) === user.user_id);
