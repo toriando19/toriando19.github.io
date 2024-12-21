@@ -125,7 +125,8 @@ async function createChat(chat_user_1_id, chat_user_2_id) {
 
 async function viewUserInfo(username, matchPercentage) {
     try {
-        const usersResponse = await fetch('http://localhost:3000/users');
+        const userUrl = 'https://toriando19.github.io/database/json-data/users.json' || 'http://localhost:3000/users';
+        const usersResponse = await fetch(userUrl);
         const users = await usersResponse.json();
 
         const user = users.find(user => user.user_username === username);
@@ -137,12 +138,14 @@ async function viewUserInfo(username, matchPercentage) {
 
         const userId = user.user_id; // Get the user_id of the matched user
 
-        const userInterestResponse = await fetch('http://localhost:3000/userinterest');
+        const userInterestUrl = 'https://toriando19.github.io/database/json-data/userinterest.json' || 'http://localhost:3000/userinterest';
+        const userInterestResponse = await fetch(userInterestUrl);
         const userInterests = await userInterestResponse.json();
 
         const matchedInterests = userInterests.filter(interest => interest.user_interest_user === userId);
 
-        const interestsResponse = await fetch('http://localhost:3000/interests');
+        const interestUrl = 'https://toriando19.github.io/database/json-data/interests.json' || 'http://localhost:3000/interests';
+        const interestsResponse = await fetch(interestUrl);
         const interests = await interestsResponse.json();
 
         const interestDescriptions = matchedInterests.map(matchedInterest => {

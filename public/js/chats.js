@@ -10,7 +10,9 @@ async function showMessageInput(chat_id, recipient_id, recipient_name) {
 
   try {
     // Fetch existing messages for the selected chat
-    const messagesResponse = await fetch(`http://localhost:3000/messages`);
+
+    const messageUrl = 'https://toriando19.github.io/database/json-data/messages.json' || 'http://localhost:3000/messages';
+    const messagesResponse = await fetch(messageUrl);
     if (!messagesResponse.ok) throw new Error('Failed to fetch messages');
     
     const messages = await messagesResponse.json();
@@ -100,7 +102,8 @@ async function fetchChatDocuments() {
     const chats = await chatResponse.json();
     const filteredChats = chats.filter(chat => chat.chat_user_1 === user_id || chat.chat_user_2 === user_id);
 
-    const userResponse = await fetch('http://localhost:3000/users');
+    const userUrl = 'https://toriando19.github.io/database/json-data/users.json' || 'http://localhost:3000/users';
+    const userResponse = await fetch(userUrl);
     if (!userResponse.ok) throw new Error('Failed to fetch users');
 
     const users = await userResponse.json();

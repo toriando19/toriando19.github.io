@@ -4,9 +4,10 @@ const sessionData = JSON.parse(sessionStorage.getItem("sessionData"));
 // Function to fetch and display notifications
 async function fetchNotifications() {
     try {
-        const response = await fetch('http://localhost:3000/notifications');
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
+        const notificationUrl = 'https://toriando19.github.io/database/json-data/notifications.json' || 'http://localhost:3000/notifications';
+        const notificationResponse = await fetch(notificationUrl);
+        if (!notificationResponse.ok) {
+            throw new Error(`HTTP error! Status: ${notificationResponse.status}`);
         }
 
         const data = await response.json(); // Parse JSON response

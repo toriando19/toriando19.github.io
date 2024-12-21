@@ -17,19 +17,20 @@ document.querySelector('#loginForm').addEventListener('submit', async function (
     try {
         // Fetch user data from the backend
         const userUrl = 'https://toriando19.github.io/database/json-data/users.json' || 'http://localhost:3000/users';
-        const response = await fetch(userUrl);
-        if (!response.ok) throw new Error('Failed to fetch user data');
+        const userResponse = await fetch(userUrl);
+        if (!userResponse.ok) throw new Error('Failed to fetch user data');
 
-        const users = await response.json();
+        const users = await userResponse.json();
         const user = users.find(u => u.user_email === email && u.user_password === password);
-
+        
         if (!user) {
             alert('Invalid credentials. Please try again.');
             return;
         }
-
+        
         // Fetch user interests data
-        const interestResponse = await fetch('https://toriando19.github.io/database/json-data/user_interest.json');
+        const userInterestUrl = 'https://toriando19.github.io/database/json-data/userinterest.json' || 'http://localhost:3000/userinterest';
+        const interestResponse = await fetch(userInterestUrl);
         if (!interestResponse.ok) throw new Error('Failed to fetch user interests');
 
         const userInterests = await interestResponse.json();

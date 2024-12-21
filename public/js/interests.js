@@ -1,7 +1,9 @@
 window.addEventListener('load', async function () {
     try {
         // Fetch the available interests from the server
-        const interestResponse = await fetch('http://localhost:3000/interests');
+
+        const interestUrl = 'https://toriando19.github.io/database/json-data/interests.json' || 'http://localhost:3000/interests';
+        const interestResponse = await fetch(interestUrl);
         if (!interestResponse.ok) {
             throw new Error('Failed to fetch interests');
         }
