@@ -21,15 +21,15 @@ document.querySelector('#loginForm').addEventListener('submit', async function (
         // First try to fetch user data from the backend (localhost)
         try {
             const response = await fetch('http://localhost:3000/users');
-            if (!response.ok) await fetch('https://toriando19.github.io/database/json-data/users.json');
+            if (!response.ok) throw new Error('Failed to fetch user data from localhost');
             users = await response.json();
             user = users.find(u => u.user_email === email && u.user_password === password);
         } catch (error) {
             console.error(error);
-            // Fallback to reading from local JSON file if localhost request fails
-            const fallbackResponse = await fetch('../database/json-data/users.json');
-            if (!fallbackResponse.ok) throw new Error('Failed to fetch user data from JSON file');
-            users = await fallbackResponse.json();
+            // Fallback to reading from GitHub if localhost request fails
+            const githubResponse = await fetch('https://toriando19.github.io/database/json-data/users.json');
+            if (!githubResponse.ok) throw new Error('Failed to fetch user data from GitHub');
+            users = await githubResponse.json();
             user = users.find(u => u.user_email === email && u.user_password === password);
         }
 
@@ -57,10 +57,20 @@ document.querySelector('#loginForm').addEventListener('submit', async function (
         }
 
         // Fetch user interests data
-        const interestResponse = await fetch('http://localhost:3000/userinterest');
-        if (!interestResponse.ok) await fetch('http://localhost:3000/userinterest');
+        let userInterests = [];
+        try {
+            const interestResponse = await fetch('http://localhost:3000/userinterest');
+            if (!interestResponse.ok) throw new Error('Failed to fetch user interests from localhost');
+            userInterests = await interestResponse.json();
+        } catch (error) {
+            console.error(error);
+            // Fallback to GitHub if localhost request fails
+            const githubInterestResponse = await fetch('https://toriando19.github.io/database/json-data/userinterest.json');
+            if (!githubInterestResponse.ok) throw new Error('Failed to fetch user interests from GitHub');
+            userInterests = await githubInterestResponse.json();
+        }
 
-        const userInterests = await interestResponse.json();
+        // Filter user interests based on the user id
         const userInterest = userInterests.filter(interest => parseInt(interest.user_interest_user) === user.user_id);
 
         // Store session data
