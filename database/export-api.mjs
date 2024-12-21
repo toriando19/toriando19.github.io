@@ -1,6 +1,6 @@
 import fs from 'fs';
-import { connectToMongoDB } from './connect-mongo.mjs';
-import { connectToPGDatabase, queryDatabase, closeDatabaseConnection } from './connect-postgres.mjs';
+import { connectToMongoDB } from './mongo/connect-mongo.mjs';
+import { connectToPGDatabase, queryDatabase, closeDatabaseConnection } from './postgres/connect-postgres.mjs';
 
 async function exportData() {
   try {
