@@ -104,18 +104,28 @@ window.onload = displayMatchingUsers;
 
 async function createChat(chat_user_1_id, chat_user_2_id) {
     try {
-        // Send GET request to the endpoint with query parameters
         const createChatUrl = 'https://toriando19.github.io/database/json-data/chats.json' || 'http://localhost:3000/new-chat';
-        const response = await fetch((`${createChatUrl}?chat_user_1=${chat_user_1_id}&chat_user_2=${chat_user_2_id}`), {
-            method: 'GET'
+
+        // Prepare the chat data to be sent
+        const chatData = {
+            chat_user_1: chat_user_1_id,
+            chat_user_2: chat_user_2_id,
+            messages: []  // Start with an empty array of messages
+        };
+
+        // Send a POST request to create the chat
+        const response = await fetch(createChatUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(chatData)
         });
 
-        const result = await response.json();
-        console.log('Response from createChat API:', result);
-        
         if (response.ok) {
+            const result = await response.json();
+            console.log('Chat created successfully:', result);
             alert('Chat created successfully!');
         } else {
+            const result = await response.json();
             alert(`Error creating chat: ${result.message || 'Unknown error'}`);
         }
     } catch (error) {
@@ -123,6 +133,7 @@ async function createChat(chat_user_1_id, chat_user_2_id) {
         alert('Error creating chat');
     }
 }
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // View User Info //////////////////////////////////////////////////////////////////////////////////////////////////
