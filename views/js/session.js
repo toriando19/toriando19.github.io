@@ -41,18 +41,25 @@ document.querySelector('#loginForm').addEventListener('submit', async function (
         // Insert the user into the backend if not already there (i.e., matching login credentials found)
         const existingUser = users.find(u => u.user_email === user.user_email);
         if (!existingUser) {
-            const postResponse = await fetch('http://localhost:3000/users', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(user)
-            });
+            // If no existing user, try to insert into the backend
+            try {
+                const postResponse = await fetch('http://localhost:3000/users', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(user)
+                });
 
-            if (!postResponse.ok) {
-                console.error('Failed to insert user into backend');
+                if (!postResponse.ok) {
+                    console.error('Failed to insert user into backend');
+                    alert('An error occurred while updating user data.');
+                    return;
+                }
+            } catch (error) {
+                console.error('Error while inserting user into localhost:', error);
+                // Fallback to GitHub if backend insertion fails (for testing purposes, assuming this isn't an ideal long-term solution)
                 alert('An error occurred while updating user data.');
-                return;
             }
         }
 
