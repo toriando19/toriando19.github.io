@@ -1,4 +1,4 @@
-name: Export Database Data
+name: Deploy Application
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  export-data:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -18,8 +18,10 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install Dependencies
-        run: npm install
+      - name: Install npm Dependencies
+        run: |
+          npm install # Install all dependencies from package.json
+          npm install mongodb # Explicitly install mongodb in case it's not listed in package.json
 
       - name: Export MongoDB Data
         run: node database/mongo/export-mongo.mjs
