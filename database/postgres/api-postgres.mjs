@@ -1,4 +1,20 @@
+import fs from 'fs';
+import path from 'path';
 import { queryDatabase } from './connect-postgres.mjs';
+
+// Utility function to read JSON files
+const readJSONFile = (fileName) => {
+  const filePath = path.join('database', 'json-data', fileName);
+  return new Promise((resolve, reject) => {
+    fs.readFile(filePath, 'utf8', (err, data) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(JSON.parse(data));
+      }
+    });
+  });
+};
 
 // Fetch all users
 export const fetchAllUsers = async () => {
@@ -6,7 +22,8 @@ export const fetchAllUsers = async () => {
     const users = await queryDatabase('SELECT * FROM users');
     return users;
   } catch (err) {
-    throw new Error("Error fetching users: " + err.message);
+    console.error('Error fetching users from PostgreSQL, falling back to JSON:', err);
+    return await readJSONFile('users.json');
   }
 };
 
@@ -16,17 +33,19 @@ export const fetchAllInterests = async () => {
     const interests = await queryDatabase('SELECT * FROM interests');
     return interests;
   } catch (err) {
-    throw new Error("Error fetching interests: " + err.message);
+    console.error('Error fetching interests from PostgreSQL, falling back to JSON:', err);
+    return await readJSONFile('interests.json');
   }
 };
 
-// Fetch all user-interest
+// Fetch all user-interest records
 export const fetchAllUserInterest = async () => {
   try {
     const userInterests = await queryDatabase('SELECT * FROM user_interest');
     return userInterests;
   } catch (err) {
-    throw new Error("Error fetching user interests: " + err.message);
+    console.error('Error fetching user interests from PostgreSQL, falling back to JSON:', err);
+    return await readJSONFile('user_interest.json');
   }
 };
 
@@ -36,7 +55,8 @@ export const fetchAllMatches = async () => {
     const matches = await queryDatabase('SELECT * FROM matches');
     return matches;
   } catch (err) {
-    throw new Error("Error fetching matches: " + err.message);
+    console.error('Error fetching matches from PostgreSQL:', err);
+    throw new Error("Error fetching matches from Postgres");
   }
 };
 
@@ -55,10 +75,9 @@ export const addUserInterest = async (user_interest_user, user_interest_interest
       console.log('No interest added');
     }
   } catch (error) {
-    console.error('Error adding interest:', error);
+    console.error('Error adding interest to PostgreSQL:', error);
   }
 };
-
 
 // Function to remove user interest
 export const removeUserInterest = async (user_interest_user, user_interest_interest) => {
@@ -75,7 +94,6 @@ export const removeUserInterest = async (user_interest_user, user_interest_inter
       console.log('No interest removed');
     }
   } catch (error) {
-    console.error('Error removing interest:', error);
+    console.error('Error removing interest from PostgreSQL:', error);
   }
 };
-

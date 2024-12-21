@@ -1,0 +1,162 @@
+[
+    {
+      "user_id": 3,
+      "user_username": "brugerV6f1",
+      "user_nickname": null,
+      "user_name": "Michael Thomas",
+      "user_email": "michael.t87@example.com",
+      "user_password": "pQ1l7Gf8TkRz",
+      "user_created_at": "2024-12-09T20:44:43.766Z",
+      "user_last_active": null
+    },
+    {
+      "user_id": 4,
+      "user_username": "brugerH4p5",
+      "user_nickname": null,
+      "user_name": "Laura Baker",
+      "user_email": "laura.baker@example.com",
+      "user_password": "4Hn9Bc2TgF1",
+      "user_created_at": "2024-12-09T20:45:32.314Z",
+      "user_last_active": null
+    },
+    {
+      "user_id": 5,
+      "user_username": "brugerQ8s9",
+      "user_nickname": null,
+      "user_name": "Adam Williams",
+      "user_email": "adam.williams@example.com",
+      "user_password": "XxYyZz123!@#",
+      "user_created_at": "2024-12-09T20:46:09.990Z",
+      "user_last_active": null
+    },
+    {
+      "user_id": 7,
+      "user_username": "brugerT2k4",
+      "user_nickname": null,
+      "user_name": "Daniel King",
+      "user_email": "daniel.king@example.com",
+      "user_password": "pS3kD2dH4Fq",
+      "user_created_at": "2024-12-09T20:47:36.285Z",
+      "user_last_active": null
+    },
+    {
+      "user_id": 8,
+      "user_username": "brugerL9j6",
+      "user_nickname": null,
+      "user_name": "Carla Brown",
+      "user_email": "carla77@example.com",
+      "user_password": "d7JxLqV2mA1p",
+      "user_created_at": "2024-12-09T20:48:42.931Z",
+      "user_last_active": null
+    },
+    {
+      "user_id": 9,
+      "user_username": "brugerR7k3",
+      "user_nickname": null,
+      "user_name": "Anna Jensen",
+      "user_email": "anna.jensen@example.com",
+      "user_password": "Wz9pZ2qT7",
+      "user_created_at": "2024-12-09T20:52:56.541Z",
+      "user_last_active": null
+    },
+    {
+      "user_id": 10,
+      "user_username": "brugerV5m9",
+      "user_nickname": null,
+      "user_name": "Peter Hansen",
+      "user_email": "peter.hansen@example.com",
+      "user_password": "Xy4D2qLm1",
+      "user_created_at": "2024-12-09T20:53:31.198Z",
+      "user_last_active": null
+    },
+    {
+      "user_id": 11,
+      "user_username": "brugerC2s8",
+      "user_nickname": null,
+      "user_name": "Maria Sørensen",
+      "user_email": "maria.sorensen@example.com",
+      "user_password": "O7pL6jF3X",
+      "user_created_at": "2024-12-09T20:54:22.829Z",
+      "user_last_active": null
+    },
+    {
+      "user_id": 12,
+      "user_username": "brugerK1a7",
+      "user_nickname": null,
+      "user_name": "Erik Nielsen",
+      "user_email": "erik.nielsen@example.com",
+      "user_password": "U8kZ9wGj2",
+      "user_created_at": "2024-12-09T20:55:00.422Z",
+      "user_last_active": null
+    },
+    {
+      "user_id": 13,
+      "user_username": "brugerN4b2",
+      "user_nickname": null,
+      "user_name": "Sofie Petersen",
+      "user_email": "sofie.petersen@example.com",
+      "user_password": "J1gQ5rL8X",
+      "user_created_at": "2024-12-09T20:55:54.948Z",
+      "user_last_active": null
+    },
+    {
+      "user_id": 14,
+      "user_username": "brugerT6h9",
+      "user_nickname": null,
+      "user_name": "Jakob Mortensen",
+      "user_email": "jakob.mortensen@example.com",
+      "user_password": "P3vY9uH7F",
+      "user_created_at": "2024-12-09T20:56:29.681Z",
+      "user_last_active": null
+    },
+    {
+      "user_id": 15,
+      "user_username": "brugerZ3p1",
+      "user_nickname": null,
+      "user_name": "Louise Madsen",
+      "user_email": "louise.madsen@example.com",
+      "user_password": "F6wQ0nP2B",
+      "user_created_at": "2024-12-09T20:57:09.497Z",
+      "user_last_active": null
+    },
+    {
+      "user_id": 1,
+      "user_username": "brugerX9t2",
+      "user_nickname": null,
+      "user_name": "John Doe",
+      "user_email": "johndoe123@example.com",
+      "user_password": "A1b2C3d4E5f6",
+      "user_created_at": "2024-12-09T20:43:19.146Z",
+      "user_last_active": null
+    },
+    {
+      "user_id": 2,
+      "user_username": "brugerA7m3",
+      "user_nickname": null,
+      "user_name": "Sarah Lee",
+      "user_email": "sarah92@example.com",
+      "user_password": "XyZ8w7Qp2V1s",
+      "user_created_at": "2024-12-09T20:44:02.299Z",
+      "user_last_active": null
+    },
+    {
+      "user_id": 17,
+      "user_username": "testUser",
+      "user_nickname": null,
+      "user_name": "Test User",
+      "user_email": "a@a.com",
+      "user_password": "password",
+      "user_created_at": "2024-12-10T11:23:21.439Z",
+      "user_last_active": null
+    },
+    {
+      "user_id": 6,
+      "user_username": "brugerW3l7",
+      "user_nickname": "Bagedyst-eksperten",
+      "user_name": "Emily Rose",
+      "user_email": "emilyrose29@example.com",
+      "user_password": "qR2sT7Bv1pJx",
+      "user_created_at": "2024-12-09T20:47:01.526Z",
+      "user_last_active": null
+    }
+  ]

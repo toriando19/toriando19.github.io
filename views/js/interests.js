@@ -88,14 +88,16 @@ window.addEventListener('load', async function () {
                 }
             });
 
-            // Execute additions
+            // Execute additions (database and JSON update)
             for (const addition of additions) {
                 await addUserInterest(addition.userId, addition.interestId);
+                await updateUserInterestJSON(addition.userId, addition.interestId, 'add');
             }
 
-            // Execute removals
+            // Execute removals (database and JSON update)
             for (const removal of removals) {
                 await removeUserInterest(removal.userId, removal.interestId);
+                await updateUserInterestJSON(removal.userId, removal.interestId, 'remove');
             }
 
             // Update sessionData and sessionStorage
@@ -146,6 +148,42 @@ window.addEventListener('load', async function () {
             });
             if (!response.ok) {
                 throw new Error(`Failed to remove interest for user ${userId} and interest ${interestId}`);
+            }
+        }
+
+        // New function to update JSON data after adding/removing user interests
+        async function updateUserInterestJSON(userId, interestId, action) {
+            const userInterestFilePath = '../database/json-data/user_interest.json';
+
+            try {
+                // Read the existing data from the JSON file
+                const userInterestData = await fetch(userInterestFilePath);
+                const userInterestJSON = await userInterestData.json();
+
+                // Modify the data
+                if (action === 'add') {
+                    userInterestJSON.push({
+                        user_interest_user: userId,
+                        user_interest_interest: interestId
+                    });
+                } else if (action === 'remove') {
+                    const indexToRemove = userInterestJSON.findIndex(
+                        item => item.user_interest_user === userId && item.user_interest_interest === interestId
+                    );
+                    if (indexToRemove !== -1) {
+                        userInterestJSON.splice(indexToRemove, 1);
+                    }
+                }
+
+                // Write the updated data back to the JSON file
+                await fetch(userInterestFilePath, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(userInterestJSON)
+                });
+
+            } catch (error) {
+                console.error('Error updating user interest JSON:', error);
             }
         }
 

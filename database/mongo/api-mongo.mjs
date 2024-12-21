@@ -1,10 +1,26 @@
 import { connectToMongoDB } from './connect-mongo.mjs'; // Import the connectToMongoDB function
+import fs from 'fs';
+import path from 'path';
+
+// Utility function to read JSON files
+const readJSONFile = (fileName) => {
+  const filePath = path.join('database', 'json-data', fileName);
+  return new Promise((resolve, reject) => {
+    fs.readFile(filePath, 'utf8', (err, data) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(JSON.parse(data));
+      }
+    });
+  });
+};
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Fetch all  /////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// Function to fetch documents from the 'chats' collection
+// Function to fetch documents from the 'chats' collection or JSON file
 export async function fetchChats() {
   try {
     const { chatCollection, client } = await connectToMongoDB('chats');
@@ -12,11 +28,13 @@ export async function fetchChats() {
     await client.close();
     return documents;
   } catch (error) {
-    console.error('Error fetching documents:', error);
+    console.error('Error fetching chats from MongoDB, falling back to JSON:', error);
+    // Fallback to JSON file if MongoDB fetch fails
+    return await readJSONFile('chats.json');
   }
 }
 
-// Function to fetch documents from the 'notifications' collection
+// Function to fetch documents from the 'notifications' collection or JSON file
 export async function fetchNotifications() {
   try {
     const { logsCollection, client } = await connectToMongoDB('logs');
@@ -24,11 +42,13 @@ export async function fetchNotifications() {
     await client.close();
     return documents;
   } catch (error) {
-    console.error('Error fetching notifications:', error);
+    console.error('Error fetching notifications from MongoDB, falling back to JSON:', error);
+    // Fallback to JSON file if MongoDB fetch fails
+    return await readJSONFile('notifications.json');
   }
 }
 
-// Function to fetch documents from the 'messages' collection
+// Function to fetch documents from the 'messages' collection or JSON file
 export async function fetchMessages() {
   try {
     const { messagesCollection, client } = await connectToMongoDB('messages');
@@ -36,7 +56,9 @@ export async function fetchMessages() {
     await client.close();
     return documents;
   } catch (error) {
-    console.error('Error fetching notifications:', error);
+    console.error('Error fetching messages from MongoDB, falling back to JSON:', error);
+    // Fallback to JSON file if MongoDB fetch fails
+    return await readJSONFile('messages.json');
   }
 }
 
@@ -72,12 +94,10 @@ export async function createChat(chat_user_1, chat_user_2) {
       event_type: `chats`,
       user_id: chat_user_1,  // Assuming user_id of the first user creates the log
       related_user: chat_user_2,  // Assuming the second user is related
-      // message: chat_user_1 === chat_user_1 ? `Du har startet en chat med` : "har startet en chat med dig",
       message1: "Du har startet en chat med",
       message2: "har startet en chat med dig",
       created_at: new Date(),
     };
-
 
     console.log('New notification data:', newChatNotification);
 
@@ -94,7 +114,6 @@ export async function createChat(chat_user_1, chat_user_2) {
     throw error;  // Ensure the error is thrown for handling in the route
   }
 }
-
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Create Message  ///////////////////////////////////////////////////////////////////////////////////////////////////
