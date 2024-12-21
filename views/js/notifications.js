@@ -159,7 +159,7 @@ fetchNotifications();
 async function createChat(chat_user_1_id, chat_user_2_id) {
     try {
         // Send GET request to the endpoint with query parameters
-        const createChatUrl = 'https://toriando19.github.io/database/mongo/api-mongo.mjs' || 'http://localhost:3000/new-chat';
+        const createChatUrl = 'https://toriando19.github.io/database/json-data/chats.json' || 'http://localhost:3000/new-chat';
         const response = await fetch((`${createChatUrl}?chat_user_1=${chat_user_1_id}&chat_user_2=${chat_user_2_id}`), {
             method: 'GET'
         });
