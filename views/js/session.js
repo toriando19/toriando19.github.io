@@ -24,7 +24,10 @@ document.querySelector('#loginForm').addEventListener('submit', async function (
             if (!response.ok) throw new Error('Failed to fetch user data from localhost');
             users = await response.json();
             console.log("Users fetched from localhost:", users); // Log users fetched from localhost
-            user = users.find(u => u.user_email === email && u.user_password === password);
+            user = users.find(u => {
+                console.log(`Comparing: ${u.user_email} with ${email} and ${u.user_password} with ${password}`); // Log comparison
+                return u.user_email === email && u.user_password === password;
+            });
         } catch (error) {
             console.error('Error fetching from localhost:', error);
             // Fallback to reading from GitHub if localhost request fails
