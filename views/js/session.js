@@ -90,7 +90,7 @@ document.querySelector('#loginForm').addEventListener('submit', async function (
             userInterests = await interestResponse.json();
         } catch (error) {
             console.error('Error fetching interests:', error);
-            const githubInterestResponse = await fetch('https://toriando19.github.io/database/json-data/userinterest.json');
+            const githubInterestResponse = await fetch('https://toriando19.github.io/database/json-data/user_interest.json');
             if (!githubInterestResponse.ok) throw new Error('Failed to fetch user interests from GitHub');
             userInterests = await githubInterestResponse.json();
         }
