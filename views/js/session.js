@@ -21,7 +21,7 @@ document.querySelector('#loginForm').addEventListener('submit', async function (
         // First try to fetch user data from the backend (localhost)
         try {
             const response = await fetch('http://localhost:3000/users');
-            if (!response.ok) throw new Error('https://toriando19.github.io/database/json-data/users.json');
+            if (!response.ok) await fetch('https://toriando19.github.io/database/json-data/users.json');
             users = await response.json();
             user = users.find(u => u.user_email === email && u.user_password === password);
         } catch (error) {
