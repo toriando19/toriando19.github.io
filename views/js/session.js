@@ -16,26 +16,44 @@ document.querySelector('#loginForm').addEventListener('submit', async function (
 
     try {
         let users = [];
-        
-        // First try to fetch user data from the backend
+        let user = null;
+
+        // First try to fetch user data from the backend (localhost)
         try {
             const response = await fetch('http://localhost:3000/users');
             if (!response.ok) throw new Error('Failed to fetch user data from localhost');
             users = await response.json();
+            user = users.find(u => u.user_email === email && u.user_password === password);
         } catch (error) {
             console.error(error);
             // Fallback to reading from local JSON file if localhost request fails
             const fallbackResponse = await fetch('../database/json-data/users.json');
             if (!fallbackResponse.ok) throw new Error('Failed to fetch user data from JSON file');
             users = await fallbackResponse.json();
+            user = users.find(u => u.user_email === email && u.user_password === password);
         }
-
-        // Find the user based on the provided credentials
-        const user = users.find(u => u.user_email === email && u.user_password === password);
 
         if (!user) {
             alert('Invalid credentials. Please try again.');
             return;
+        }
+
+        // Insert the user into the backend if not already there (i.e., matching login credentials found)
+        const existingUser = users.find(u => u.user_email === user.user_email);
+        if (!existingUser) {
+            const postResponse = await fetch('http://localhost:3000/users', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(user)
+            });
+
+            if (!postResponse.ok) {
+                console.error('Failed to insert user into backend');
+                alert('An error occurred while updating user data.');
+                return;
+            }
         }
 
         // Fetch user interests data
