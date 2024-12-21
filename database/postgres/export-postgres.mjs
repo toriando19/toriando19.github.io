@@ -1,17 +1,19 @@
-import fs from 'fs/promises';
-import { queryDatabase, closeDatabaseConnection } from './connect-postgres.mjs';
+import fs from 'fs';
+import { connectToPGDatabase, queryDatabase, closeDatabaseConnection } from './connect-postgres.mjs';
 
 async function exportPostgresData() {
   try {
-    // Example query: replace with actual table names and queries
+    await connectToPGDatabase();
+
+    // Fetch data from tables
     const users = await queryDatabase('SELECT * FROM users');
-    const posts = await queryDatabase('SELECT * FROM posts');
+    const orders = await queryDatabase('SELECT * FROM orders');
 
     // Write data to JSON files
-    await fs.writeFile('./database/postgres/users.json', JSON.stringify(users, null, 2));
-    await fs.writeFile('./database/postgres/posts.json', JSON.stringify(posts, null, 2));
+    fs.writeFileSync('./data/users.json', JSON.stringify(users, null, 2));
+    fs.writeFileSync('./data/orders.json', JSON.stringify(orders, null, 2));
 
-    console.log('Postgres data exported successfully!');
+    console.log('Postgres data exported successfully.');
     await closeDatabaseConnection();
   } catch (error) {
     console.error('Error exporting Postgres data:', error);
