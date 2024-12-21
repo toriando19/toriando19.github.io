@@ -1,0 +1,28 @@
+name: Export Database Data
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  export-data:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set Up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Export MongoDB Data
+        run: node database/mongo/export-mongo.mjs
+
+      - name: Export Postgres Data
+        run: node database/postgres/export-postgres.mjs
