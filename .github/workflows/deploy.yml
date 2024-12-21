@@ -22,6 +22,14 @@ jobs:
         run: |
           npm install # Install all dependencies from package.json
           npm install mongodb # Explicitly install mongodb in case it's not listed in package.json
+          npm install pg # Explicitly install pg for PostgreSQL connections
 
-      - name: Export DB Data
-        run: node database/export-api.mjs
+      - name: Export Data from MongoDB and PostgreSQL
+        run: node database/export-api.mjs  # Run export-api.mjs to fetch data from both databases
+
+      - name: Deploy Application (GitHub Pages or other)
+        run: |
+          # Add deployment steps here, if you're deploying to GitHub Pages or another platform
+          # Example for GitHub Pages:
+          # npm run build
+          # gh-pages -d build

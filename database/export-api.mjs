@@ -1,31 +1,37 @@
 import fs from 'fs';
-import fetch from 'node-fetch';
+import { connectToMongoDB } from './connect-mongo.mjs';
+import { connectToPGDatabase, queryDatabase, closeDatabaseConnection } from './connect-postgres.mjs';
 
-const endpoints = [
-  { url: 'http://localhost:3000/users', filename: 'users.json' },
-  { url: 'http://localhost:3000/interests', filename: 'interests.json' },
-  { url: 'http://localhost:3000/userinterest', filename: 'userinterest.json' },
-  { url: 'http://localhost:3000/chats', filename: 'chats.json' },
-  { url: 'http://localhost:3000/messages', filename: 'messages.json' },
-  { url: 'http://localhost:3000/notifications', filename: 'notifications.json' }
-];
-
-async function fetchDataAndExport() {
+async function exportData() {
   try {
-    for (const endpoint of endpoints) {
-      const response = await fetch(endpoint.url);
-      if (!response.ok) {
-        throw new Error(`Failed to fetch data from ${endpoint.url}`);
-      }
-      const data = await response.json();
-      
-      // Save data to JSON file
-      fs.writeFileSync(`./data/${endpoint.filename}`, JSON.stringify(data, null, 2));
-      console.log(`Data from ${endpoint.url} exported to ./data/${endpoint.filename}`);
-    }
+    // Fetch data from MongoDB
+    const { chatCollection, logsCollection, messagesCollection, client: mongoClient } = await connectToMongoDB();
+    const chats = await chatCollection.find().toArray();
+    const logs = await logsCollection.find().toArray();
+    const messages = await messagesCollection.find().toArray();
+
+    // Write MongoDB data to JSON files
+    fs.writeFileSync('./data/chats.json', JSON.stringify(chats, null, 2));
+    fs.writeFileSync('./data/logs.json', JSON.stringify(logs, null, 2));
+    fs.writeFileSync('./data/messages.json', JSON.stringify(messages, null, 2));
+
+    console.log('MongoDB data exported successfully.');
+    mongoClient.close();
+
+    // Fetch data from PostgreSQL
+    await connectToPGDatabase();
+    const users = await queryDatabase('SELECT * FROM users');
+    const orders = await queryDatabase('SELECT * FROM orders');
+
+    // Write PostgreSQL data to JSON files
+    fs.writeFileSync('./data/users.json', JSON.stringify(users, null, 2));
+    fs.writeFileSync('./data/orders.json', JSON.stringify(orders, null, 2));
+
+    console.log('PostgreSQL data exported successfully.');
+    await closeDatabaseConnection();
   } catch (error) {
-    console.error('Error fetching data:', error);
+    console.error('Error exporting data:', error);
   }
 }
 
-fetchDataAndExport();
+exportData();
