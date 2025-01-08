@@ -304,7 +304,7 @@ async function viewUserInfo(username, matchPercentage, matchingInterests) {
                 interestContainer.classList.add('interest-info-view');  // Adding class to the container
                 
                 // Set the icon properties
-                interestIcon.src = `/img/icons/${interest.icon}`;  // Correct local image path
+                interestIcon.src = `/views/img/icons/${interest.icon}`;  // Correct local image path
                 interestIcon.alt = interest.title; // Set the alt text for the image
                 interestIcon.classList.add('interests-info-list'); // Add class for the icon
                 
@@ -331,9 +331,9 @@ async function viewUserInfo(username, matchPercentage, matchingInterests) {
         // Clear previous content inside the userInfoSection and append the user info along with the chat button
         userInfoSection.innerHTML = `
             <div class="match-overlay-header">
-                <button id="specficMatchClose" class="match-overlay-close"> <img src="img/icons/leftarrow-black.png" alt="arrow"> </button> <!-- replace with icon-image -->
+                <button id="specficMatchClose" class="match-overlay-close"> <img src="views/img/icons/leftarrow-black.png" alt="arrow"> </button> <!-- replace with icon-image -->
                 <div class="profileContainer">
-                    <img class="profilePicture" src="img/profile.jpg" alt="logo">
+                    <img class="profilePicture" src="views/img/profile.jpg" alt="logo">
                     <h1 class="overlay-h1"> ${user.user_username} </h1>
                 </div>
             </div>

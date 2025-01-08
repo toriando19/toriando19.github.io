@@ -92,7 +92,7 @@ async function showMessageInput(chat_id, recipient_id, recipient_name) {
   // Display the input field and button
   inputDiv.innerHTML = `
     <div class="inputStyle">
-      <button id="displayIcebreaker"> <img src="img/icons/ice-blue.png" alt="ice"> </button>
+      <button id="displayIcebreaker"> <img src="views/img/icons/ice-blue.png" alt="ice"> </button>
       <input type="text" id="userMessage" placeholder="Aa" />
       <button id="submitMessage">Send</button>
     </div>
@@ -232,7 +232,7 @@ async function fetchChatDocuments() {
     });
 
     // Fetch messages to check if there are any messages in the chats
-    const messagesResponse = await fetch('http://localhost:3000/messages');
+    const messagesResponse = await fetch('https://toriando19.github.io/database/json-data/messages.json');
     if (!messagesResponse.ok) throw new Error('Failed to fetch messages');
     
     const messages = await messagesResponse.json();
@@ -252,7 +252,7 @@ async function fetchChatDocuments() {
       
           // Create an img element for the user's profile picture
           const profileImage = document.createElement('img');
-          profileImage.src = matchedUser.profile_picture || '../img/profile.jpg'; // Fallback to a default image if none provided
+          profileImage.src = matchedUser.profile_picture || '../views/img/profile.jpg'; // Fallback to a default image if none provided
           profileImage.alt = `${displayName}'s profile picture`;
           profileImage.classList.add('profile-image');
       
@@ -262,7 +262,7 @@ async function fetchChatDocuments() {
       
           // Create the main p element for displaying the user's name
           const nameDisplayer = document.createElement('p');
-          nameDisplayer.innerHTML = `${displayName} <img src="img/icons/rightarrow-black.png" alt="arrow">`;
+          nameDisplayer.innerHTML = `${displayName} <img src="views/img/icons/rightarrow-black.png" alt="arrow">`;
           nameDisplayer.classList.add('name-displayer');
           nameDisplayer.addEventListener('click', () => {
             // When a chat is clicked, fetch and display the messages for the selected chat
@@ -405,7 +405,7 @@ async function fetchAndDisplayAdminChats() {
 
         // Create an img element for the user's profile picture
         const profileImage = document.createElement('img');
-        profileImage.src = matchedUser.profile_picture || '../img/profile.jpg'; 
+        profileImage.src = matchedUser.profile_picture || '../views/img/profile.jpg'; 
         profileImage.alt = `${matchDisplayName}'s profile picture`;
         profileImage.classList.add('profile-image');
 
@@ -423,7 +423,7 @@ async function fetchAndDisplayAdminChats() {
         
         // Create a button to open the chat and display messages
         const openChatButton = document.createElement('button');
-        openChatButton.innerHTML = '<img src="img/icons/chat-black.png" alt="chat">';
+        openChatButton.innerHTML = '<img src="views/img/icons/chat-black.png" alt="chat">';
         openChatButton.classList.add('open-chat-button');
         
         // Define the icon mapping for active and inactive chats
@@ -437,9 +437,9 @@ async function fetchAndDisplayAdminChats() {
 
         // Set the correct icon based on message availability
         if (hasMessagesForChat) {
-          openChatButton.innerHTML = `<img src="img/icons/${iconMapping.active}" alt="chat active">`; // Active icon if there are messages
+          openChatButton.innerHTML = `<img src="views/img/icons/${iconMapping.active}" alt="chat active">`; // Active icon if there are messages
         } else {
-          openChatButton.innerHTML = `<img src="img/icons/${iconMapping.inactive}" alt="chat inactive">`; // Inactive icon if no messages
+          openChatButton.innerHTML = `<img src="views/img/icons/${iconMapping.inactive}" alt="chat inactive">`; // Inactive icon if no messages
         }
 
         // Event listener for when the button is clicked
@@ -449,7 +449,7 @@ async function fetchAndDisplayAdminChats() {
             fetchAndDisplayMessages(chat.id, user_id);  // Fetch messages for this chat
             
             // Set the appropriate icon when chat is opened (active)
-            openChatButton.innerHTML = `<img src="img/icons/${iconMapping.active}" alt="chat active">`;
+            openChatButton.innerHTML = `<img src="views/img/icons/${iconMapping.active}" alt="chat active">`;
 
             // Reuse existing code for hiding matchesOverlay
             const matchesOverlay = document.getElementById("matchesOverlay");
