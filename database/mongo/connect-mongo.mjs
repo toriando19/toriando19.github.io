@@ -1,28 +1,29 @@
+// Import MongoDB
 import { MongoClient } from 'mongodb';
 
-// MongoDB connection URI
-const uri = 'mongodb://localhost:27017'; // MongoDB URI for local connection
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// MongoDB Connection  ////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// Database name
-const dbName = 'bachelor'; // Database name
+const uri = 'mongodb://localhost:27017'; 
+const dbName = 'bachelor'; 
 
-// Async function to connect to MongoDB and return the database and collections
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Fetch DB and collections  //////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 export async function connectToMongoDB() {
   let client;
 
   try {
-    // Create a new MongoClient instance
     client = new MongoClient(uri);
-
-    // Connect to the MongoDB server
     await client.connect();
-
     console.log('Connected successfully to MongoDB');
 
+    
     // Get the database object
     const db = client.db(dbName);
-
-    // Get the collection objects
     const chatCollection = db.collection('chats');
     const logsCollection = db.collection('logs');
     const messagesCollection = db.collection('messages');
@@ -32,6 +33,6 @@ export async function connectToMongoDB() {
 
   } catch (error) {
     console.error('Error connecting to MongoDB', error);
-    throw error; // Rethrow the error to handle it in other modules
+    throw error;
   }
 }

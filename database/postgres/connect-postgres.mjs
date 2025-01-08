@@ -1,7 +1,11 @@
+// Import PostgreSQL
 import pkg from 'pg';
 const { Client } = pkg;
 
-// PostgreSQL connection configuration
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// PostgreSQL Connection  /////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 const postgresDB = new Client({
   user: 'postgres', 
   host: 'localhost',
@@ -10,7 +14,12 @@ const postgresDB = new Client({
   port: 5432,
 });
 
-// Function to connect to the database
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Fetch DB and Query Executer  ///////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Connect to the database
 export const connectToPGDatabase = async () => {
   try {
     await postgresDB.connect(); 
@@ -20,10 +29,10 @@ export const connectToPGDatabase = async () => {
   }
 };
 
-// Function to execute a query with parameters
+// Execute a query with parameters
 export const queryDatabase = async (query, params = []) => {
   try {
-    const result = await postgresDB.query(query, params); // Pass parameters here
+    const result = await postgresDB.query(query, params); 
     return result.rows;
   } catch (err) {
     console.error("Query execution failed:", err.stack);
@@ -31,7 +40,7 @@ export const queryDatabase = async (query, params = []) => {
   }
 };
 
-// Function to close the database connection
+// Close the database connection
 export const closeDatabaseConnection = async () => {
   try {
     await postgresDB.end(); 
