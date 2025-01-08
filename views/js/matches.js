@@ -12,9 +12,9 @@ async function displayMatchingUsers() {
     try {
         // Fetch user interests, users, and chats from the backend
         const [userInterests, users, chats] = await Promise.all([
-            fetch('http://localhost:3000/userinterest').then(res => res.json()),
-            fetch('http://localhost:3000/users').then(res => res.json()),
-            fetch('http://localhost:3000/chats').then(res => res.json())
+            fetch('http://toriando19.github.io/userinterest').then(res => res.json()),
+            fetch('http://toriando19.github.io/users').then(res => res.json()),
+            fetch('http://toriando19.github.io/chats').then(res => res.json())
         ]);
 
         const matchingUsers = {};
@@ -122,7 +122,7 @@ async function displayMatchingUsers() {
                 if (interest && !displayedIcons.has(interest.icon)) {
                     // Create the image element dynamically
                     const iconElement = document.createElement('img');
-                    iconElement.src = `/img/icons/${interest.icon.split('/').pop()}`;  // Extract filename and update path
+                    iconElement.src = `/views/img/icons/${interest.icon.split('/').pop()}`;  // Extract filename and update path
                     iconElement.alt = interest.title;  // Use title as alt text
 
                     // Append the icon to the interests list
@@ -193,7 +193,7 @@ window.onload = displayMatchingUsers;
 async function createChat(chat_user_1_id, chat_user_2_id) {
     try {
         // Send GET request to the endpoint with query parameters
-        const response = await fetch(`http://localhost:3000/new-chat?chat_user_1=${chat_user_1_id}&chat_user_2=${chat_user_2_id}`);
+        const response = await fetch(`http://toriando19.github.io/new-chat?chat_user_1=${chat_user_1_id}&chat_user_2=${chat_user_2_id}`);
 
         const result = await response.json();
         console.log('Response from createChat API:', result);
