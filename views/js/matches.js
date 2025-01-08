@@ -212,7 +212,6 @@ window.onload = displayMatchingUsers;
 
 async function createChat(chat_user_1_id, chat_user_2_id) {
     try {
-        // Fetch session data from sessionStorage
         const sessionData = JSON.parse(sessionStorage.getItem('sessionData'));
         if (!sessionData || !sessionData.user_id) {
             console.error('No session data or user ID found in sessionStorage.');
@@ -220,7 +219,7 @@ async function createChat(chat_user_1_id, chat_user_2_id) {
         }
 
         const currentUserId = sessionData.user_id;
-        const chats = sessionData.chats || []; // Get chats from sessionData, default to an empty array if none exist
+        const chats = sessionData.chats || []; // Get chats from sessionData
 
         // Check if chat already exists between the two users
         const chatExists = chats.some(chat => 
@@ -233,10 +232,10 @@ async function createChat(chat_user_1_id, chat_user_2_id) {
             return;
         }
 
-        // Create a unique chat ID
+        // Create a new unique chat ID
         const newChatId = `chat-${Date.now()}-${currentUserId < chat_user_2_id ? currentUserId : chat_user_2_id}`;
 
-        // If chat doesn't exist, create a new chat object
+        // Create a new chat object
         const newChat = {
             _id: newChatId,  // Unique identifier for the chat
             id: newChatId,   // Same ID for consistency (for frontend usage)
@@ -252,11 +251,15 @@ async function createChat(chat_user_1_id, chat_user_2_id) {
         sessionData.chats = chats;
         sessionStorage.setItem('sessionData', JSON.stringify(sessionData));
 
-        // Alert the user that the chat has been created successfully
+        // Alert user about chat creation
         alert('Chat created successfully!');
 
-        // Reload the matching users to reflect the new chat
-        displayMatchingUsers();
+        // Reload the matching users (refresh the UI)
+        try {
+            fetchChatDocuments();  // Refresh the chat UI with the new data
+        } catch (displayError) {
+            console.error('Error updating UI after creating chat:', displayError);
+        }
 
         // Hide the specific match overlay
         const matchOverlay = document.getElementById('specificMatchOverlay');
@@ -264,7 +267,7 @@ async function createChat(chat_user_1_id, chat_user_2_id) {
             matchOverlay.style.display = 'none';
         }
 
-        // Set the active menu to the frontpage
+        // Set the active menu to frontpage
         setActiveMenu("frontpageMenu");
 
     } catch (error) {
