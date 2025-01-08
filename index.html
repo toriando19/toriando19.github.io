@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="views/css/style.css">
     <title> MeDR: Sammen om det vigtige </title>
 </head>
 <body style="font-family: Open Sans;">
 
 
     <section class="desktop-error">
-        <img src="img/medr-logo.png" alt="logo">
+        <img src="views/img/medr-logo.png" alt="logo">
         <h1> Dette website er <strong> KUN </strong> tilgængeligt på smartphone </h1>
     </section>
 
@@ -21,7 +21,7 @@
     <section id="loginForm" class="login">
         
         <div class="login-container"> 
-            <img src="img/medr-logo.png" alt="logo">
+            <img src="views/img/medr-logo.png" alt="logo">
             <h1> MeDR </h1>
             <p> Sammen om det vigtige </p>
             
@@ -48,7 +48,7 @@
         
         <!-- HEADER -->
         <section class="header">
-            <img id="frontpageLogo" src="img/medr-logo.png" alt="logo">
+            <img id="frontpageLogo" src="views/img/medr-logo.png" alt="logo">
             
             <div>
                 <div class="dr-nav">
@@ -58,8 +58,8 @@
                     <a> <strong> MEDR </strong> </a>
                 </div>
                 
-                <button id="hamburgerMenu"> <img src="img/icons/burger-black.png" alt="menu"> </button>
-                <button id="chats"> <img src="img/icons/chat-black.png" alt="chats"> </button>
+                <button id="hamburgerMenu"> <img src="views/img/icons/burger-black.png" alt="menu"> </button>
+                <button id="chats"> <img src="views/img/icons/chat-black.png" alt="chats"> </button>
             </div>
 
             <!-- HAMBURGERMENU -->
@@ -90,24 +90,11 @@
         <br><br><br><br><br>
 
 
-        <!-- <div class="overlay">
-            <div class="overlay-header">
-                <button class="overlay-close"> < </button> 
-                <h1 class="overlay-h1"> Header </h1>
-            </div>
-        </div> -->
-
-
-
-
-
-
-
         <div id="profileOverlay" class="overlay">
             <section id="userProfileSection" class="user-profile">
                 <!-- PROFILE INFO -->
                 <div class="overlay-header">
-                    <button id="profileClose" class="overlay-close"> <img src="img/icons/leftarrow-white.png" alt="arrow"> </button> <!-- replace with icon-image  -->
+                    <button id="profileClose" class="overlay-close"> <img src="views/img/icons/leftarrow-white.png" alt="arrow"> </button> <!-- replace with icon-image  -->
                     <h1 class="overlay-h1"> Profil </h1>
                 </div>
                 
@@ -136,37 +123,37 @@
 
                     <form id="interestForm" class="toggleInterest">
                         <div class="toggleContainer">
-                            <img src="img/icons/movie-black.png" alt="tv">
+                            <img src="views/img/icons/movie-black.png" alt="tv">
                             <label for="checkDSB">Den Store Bagedyst</label>
                             <input id="checkDSB" type="checkbox" data-interest-id="1" />
                             <span class="toggleSwitch"></span>
                         </div>
                         <div class="toggleContainer">
-                            <img src="img/icons/movie-black.png" alt="tv">
+                            <img src="views/img/icons/movie-black.png" alt="tv">
                             <label for="checkAME">Alle Mod En </label>
                             <input id="checkAME" type="checkbox" data-interest-id="2" />
                             <span class="toggleSwitch"></span>
                         </div>
                         <div class="toggleContainer">
-                            <img src="img/icons/movie-black.png" alt="tv">
+                            <img src="views/img/icons/movie-black.png" alt="tv">
                             <label for="checkKDT">Kender Du Typen</label>
                             <input id="checkKDT" type="checkbox" data-interest-id="3" />
                             <span class="toggleSwitch"></span>
                         </div>
                         <div class="toggleContainer">
-                            <img src="img/icons/eye-black.png" alt="tv">
+                            <img src="views/img/icons/eye-black.png" alt="tv">
                             <label for="checkTVA">TVA</label>
                             <input id="checkTVA" type="checkbox" data-interest-id="4" />
                             <span class="toggleSwitch"></span>
                         </div>
                         <div class="toggleContainer">
-                            <img src="img/icons/podcast-black.png" alt="tv">
+                            <img src="views/img/icons/podcast-black.png" alt="tv">
                             <label for="checkGenstart">Genstart</label>
                             <input id="checkGenstart" type="checkbox" data-interest-id="5" />
                             <span class="toggleSwitch"></span>
                         </div>
                         <div class="toggleContainer">
-                            <img src="img/icons/podcast-black.png" alt="tv">
+                            <img src="views/img/icons/podcast-black.png" alt="tv">
                             <label for="checkSara">Sara Og Monopolet</label>
                             <input id="checkSara" type="checkbox" data-interest-id="6" />
                             <span class="toggleSwitch"></span>
@@ -182,7 +169,7 @@
 
             <div class="section-header">
                 <h1> Seneste opdateringer </h1>
-                <img src="img/icons/rightarrow-white.png" alt="arrow"> 
+                <img src="views/img/icons/rightarrow-white.png" alt="arrow"> 
             </div>
 
             <div id="logNotifications"></div>
@@ -196,7 +183,7 @@
 
             <div class="section-header">
                 <h1> Udforsk matches </h1>
-                <img src="img/icons/rightarrow-black.png" alt="arrow"> 
+                <img src="views/img/icons/rightarrow-black.png" alt="arrow"> 
             </div>
 
             <p id="exploreMatches"> </p>
@@ -226,9 +213,9 @@
             <div class="interests-overview-header">
                 <div class="section-header">
                     <h1> Dine matches er baseret på </h1>
-                    <img src="img/icons/rightarrow-black.png" alt="arrow">  
+                    <img src="views/img/icons/rightarrow-black.png" alt="arrow">  
                 </div>
-                <button id="changeInterest"> <img src="img/icons/pen-red.png" alt="arrow"> </button>
+                <button id="changeInterest"> <img src="views/img/icons/pen-red.png" alt="arrow"> </button>
             </div>
 
             <div id="matchingInterestsContainer"></div>
@@ -242,7 +229,7 @@
         <div id="chatsOverlay" class="overlay"> 
             
             <div class="overlay-header">
-                <button id="chatsClose" class="overlay-close"> <img src="img/icons/leftarrow-white.png" alt="arrow">  </button> 
+                <button id="chatsClose" class="overlay-close"> <img src="views/img/icons/leftarrow-white.png" alt="arrow">  </button> 
                 <h1 class="overlay-h1"> Mine beskeder </h1>
             </div>
             
@@ -265,7 +252,7 @@
             
             <div class="chat-overlay-header">
                 <button id="chatClose" class="chat-overlay-close"> < </button> <!-- replace with icon-image  -->
-                <img class="chatProfilePicture" src="img/profile.jpg" alt="logo">
+                <img class="chatProfilePicture" src="views/img/profile.jpg" alt="logo">
                 <div id="chatHeader" class="overlay-h1"> </div>
             </div>
             
@@ -283,7 +270,7 @@
                         <div class="icebreaker-header">
                             <button id="shuffleIcebreaker"> Shuffle </button>
                             <div class="icebreaker-title">
-                                <img src="img/icons/ice-white.png" alt="ice">
+                                <img src="views/img/icons/ice-white.png" alt="ice">
                                 <h1> MeDR Icebreaker </h1>
                             </div>
                         </div>
@@ -306,7 +293,7 @@
         <div id="matchesOverlay" class="overlay"> 
             
             <div class="overlay-header">
-                <button id="matchesClose" class="overlay-close"> <img src="img/icons/leftarrow-white.png" alt="arrow"> </button> <!-- replace with icon-image  -->
+                <button id="matchesClose" class="overlay-close"> <img src="views/img/icons/leftarrow-white.png" alt="arrow"> </button> <!-- replace with icon-image  -->
                 <h1 class="overlay-h1"> Mine chats </h1>
             </div>
             
@@ -332,12 +319,12 @@
 </body>
 
 <!-- SCRIPTS FOR THE APPLICATION -->
-    <script src="js/script.js" type="module" async></script>
-    <script src="js/session.js" type="module" async></script>
-    <script src="js/interests.js" type="module" async></script>
-    <script src="js/matches.js" type="module" async></script>
-    <script src="js/profile.js" type="module" async></script>
-    <script src="js/chats.js" type="module" async></script>
-    <script src="js/notifications.js" type="module" async></script>
+    <script src="views/js/script.js" type="module" async></script>
+    <script src="views/js/session.js" type="module" async></script>
+    <script src="views/js/interests.js" type="module" async></script>
+    <script src="views/js/matches.js" type="module" async></script>
+    <script src="views/js/profile.js" type="module" async></script>
+    <script src="views/js/chats.js" type="module" async></script>
+    <script src="views/js/notifications.js" type="module" async></script>
 
 </html>

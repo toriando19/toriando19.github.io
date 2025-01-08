@@ -11,7 +11,7 @@ import { connectToPGDatabase } from '../database/postgres/connect-postgres.mjs';
 import { connectToMongoDB } from '../database/mongo/connect-mongo.mjs';
 
 // Import the routes for the application
-import userRoutes from './index.mjs';
+import userRoutes from 'index.mjs';
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
