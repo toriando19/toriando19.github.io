@@ -254,12 +254,8 @@ async function createChat(chat_user_1_id, chat_user_2_id) {
         // Alert user about chat creation
         alert('Chat created successfully!');
 
-        // Reload the matching users (refresh the UI)
-        try {
-            fetchChatDocuments();  // Refresh the chat UI with the new data
-        } catch (displayError) {
-            console.error('Error updating UI after creating chat:', displayError);
-        }
+        // Refresh the UI (assuming fetchChatDocuments is used to display chat)
+        fetchChatDocuments();  // This will reload the chats UI
 
         // Hide the specific match overlay
         const matchOverlay = document.getElementById('specificMatchOverlay');
@@ -275,6 +271,7 @@ async function createChat(chat_user_1_id, chat_user_2_id) {
         alert('Error creating chat');
     }
 }
+
 
 
 

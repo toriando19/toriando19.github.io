@@ -198,14 +198,9 @@ async function fetchChatDocuments() {
     const user_id = sessionData.user_id;
     console.log("Fetching chats for User ID:", user_id);
 
-    // Fetch chat data
-    const chatUrl = 'https://toriando19.github.io/database/json-data/chats.json';
-    const chatResponse = await fetch(chatUrl);
-    if (!chatResponse.ok) throw new Error('Failed to fetch chats');
+    // Get chats from sessionStorage
+    const chats = sessionData.chats || [];
     
-    const chats = await parseJSON(chatResponse);
-    if (!chats) throw new Error('No chat data available');
-
     // Filter chats to show only those that involve the current user
     const filteredChats = chats.filter(chat => chat.chat_user_1 === user_id || chat.chat_user_2 === user_id);
 
@@ -215,8 +210,8 @@ async function fetchChatDocuments() {
 
     // Sort filteredChats to show the chat with the newest message first
     filteredChats.sort((a, b) => {
-      const timeA = new Date(a.last_message_time); // Assuming the chat object has a last_message_time property
-      const timeB = new Date(b.last_message_time);
+      const timeA = new Date(a.created_at); // Use created_at to sort by most recent chat creation
+      const timeB = new Date(b.created_at);
       return timeB - timeA; // Sort in descending order (newest first)
     });
 
@@ -242,6 +237,7 @@ async function fetchChatDocuments() {
         fetchAndDisplayMessages(chat.id);  // Fetch and display messages for this chat
       });
 
+      // Format the creation time
       function formatTimeAgo(createdAt) {
         const now = new Date();
         const createdAtDate = new Date(createdAt);
@@ -253,13 +249,13 @@ async function fetchChatDocuments() {
     
         // Check if the time difference is less than a minute
         if (timeDifference < 60000) {
-            return "Lige nu"; // "Just now"
+            return "Just now"; // "Just now"
         } else if (minutes < 60) {
             return `${minutes} min.`; // X minutes ago
         } else if (hours < 24) {
-            return `${hours} t. `; // X hours ago
+            return `${hours} hrs.`; // X hours ago
         } else if (days < 7) {
-            return `${days} dag(e)`; // X days ago
+            return `${days} days ago`; // X days ago
         } else {
             return createdAtDate.toLocaleDateString(); // Show exact date if more than 7 days
         }
@@ -291,6 +287,7 @@ async function fetchChatDocuments() {
     console.error(error.message);
   }
 }
+
 
 // Call to initialize chats when the page loads
 fetchChatDocuments();
