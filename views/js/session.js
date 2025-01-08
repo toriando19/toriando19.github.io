@@ -98,14 +98,14 @@ document.querySelector('#loginForm').addEventListener('submit', async function (
 });
 
 // Function to update the application UI after login
-function updateApplicationUI(user, userInterest, userChats, userMessages) {
+function updateApplicationUI(user, userInterest, userChats) {
     if (window.innerWidth <= 390) {
         document.querySelector('.application').style.display = 'block';
         document.querySelector('.login').style.display = 'none';
         document.querySelector('#welcomeUser').innerHTML = `Welcome, ${user.user_name}!`;
 
         updateUserInterests(userInterest);
-        updateUserChats(userChats, userMessages);  // Function to update chats UI with messages
+        updateUserChats(userChats);  // Function to update chats UI
     } else {
         document.querySelector('.application').style.display = 'none';
         document.querySelector('.login').style.display = 'block';
@@ -121,23 +121,17 @@ function updateUserInterests(userInterest) {
     });
 }
 
-// Function to update user chats dynamically with messages
-function updateUserChats(userChats, userMessages) {
+// Function to update user chats dynamically
+function updateUserChats(userChats) {
     const chatContainer = document.querySelector('.chat-container');
     chatContainer.innerHTML = '';  // Clear the previous chat list
     
     userChats.forEach(chat => {
-        const relatedMessages = userMessages.filter(message => message.message_chat_id === chat.chat_id);
-
         const chatElement = document.createElement('div');
         chatElement.classList.add('chat-item');
         chatElement.innerHTML = `
             <p><strong>Chat with ${chat.chat_user_1 === user.user_id ? chat.chat_user_2 : chat.chat_user_1}</strong></p>
-            <div class="messages">
-                ${relatedMessages.map(message => `
-                    <p>${message.message_sender === user.user_id ? 'You' : 'Other'}: ${message.message_text}</p>
-                `).join('')}
-            </div>
+            <p>${chat.chat_message}</p>
         `;
         chatContainer.appendChild(chatElement);
     });
@@ -157,3 +151,35 @@ document.querySelector('#logoutBtn').addEventListener('click', function () {
         document.querySelector('#password').value = '';
     }
 });
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Session Management and Mobile-Only Enforcement ////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function enforceMobileOnly() {
+    if (window.innerWidth > 390) {
+        document.querySelector('.application').style.display = 'none';
+        document.querySelector('.login').style.display = 'none';
+        document.querySelector('.desktop-error').style.display = 'block';
+    } else {
+        const sessionData = sessionStorage.getItem('sessionData');
+        if (sessionData) {
+            document.querySelector('.application').style.display = 'block';
+            document.querySelector('.login').style.display = 'none';
+            const userData = JSON.parse(sessionData);
+            document.querySelector('#welcomeUser').innerHTML = `Welcome, ${userData.user_name}!`;
+            updateUserInterests(userData.user_interest);
+            updateUserChats(userData.chats);  // Update chats from session data
+        } else {
+            document.querySelector('.application').style.display = 'none';
+            document.querySelector('.login').style.display = 'block';
+        }
+        document.querySelector('.desktop-error').style.display = 'none';
+    }
+}
+
+// On initial load
+window.addEventListener('load', enforceMobileOnly);
+
+// On window resize
+window.addEventListener('resize', enforceMobileOnly);
