@@ -54,6 +54,22 @@ document.querySelector('#loginForm').addEventListener('submit', async function (
         const chats = await chatResponse.text();
         const parsedChats = chats ? JSON.parse(chats) : [];
 
+        // Fetch message data
+        const messageUrl = 'https://toriando19.github.io/database/json-data/messages.json' || 'http://localhost:3000/messages';
+        const messageResponse = await fetch(messageUrl);
+
+        if (!messageResponse.ok) throw new Error('Failed to fetch messages');
+
+        // Check if response is not empty and parse the JSON
+        const messages = await messageResponse.text();
+        const parsedMessages = messages ? JSON.parse(messages) : [];
+
+        // Filter messages related to current user's chats
+        const userMessages = parsedMessages.filter(message => 
+            message.message_chat_id === userChats.chat_id || 
+            message.message_sender === user.user_id || 
+            message.message_receiver === user.user_id);
+
         // Filter chats where either chat_user_1 or chat_user_2 matches the logged-in user
         const userChats = parsedChats.filter(chat => chat.chat_user_1 === user.user_id || chat.chat_user_2 === user.user_id);
 
@@ -64,7 +80,8 @@ document.querySelector('#loginForm').addEventListener('submit', async function (
             user_name: user.user_name,
             user_email: user.user_email,
             user_interest: userInterest,
-            chats: userChats  // Add fetched chats to session data
+            chats: userChats, // Add fetched chats to session data
+            messages: userMessages // Add fetched messages to session data
         };
         sessionStorage.setItem('sessionData', JSON.stringify(sessionData));
 
@@ -73,23 +90,22 @@ document.querySelector('#loginForm').addEventListener('submit', async function (
         document.querySelector('#password').value = '';
 
         // Update the UI
-        updateApplicationUI(user, userInterest || [], userChats || []);
+        updateApplicationUI(user, userInterest || [], userChats || [], userMessages || []);
 
     } catch (error) {
         console.error('Error during login:', error);
-        // alert('An error occurred during login. Please try again.');
     }
 });
 
 // Function to update the application UI after login
-function updateApplicationUI(user, userInterest, userChats) {
+function updateApplicationUI(user, userInterest, userChats, userMessages) {
     if (window.innerWidth <= 390) {
         document.querySelector('.application').style.display = 'block';
         document.querySelector('.login').style.display = 'none';
         document.querySelector('#welcomeUser').innerHTML = `Welcome, ${user.user_name}!`;
 
         updateUserInterests(userInterest);
-        updateUserChats(userChats);  // Function to update chats UI
+        updateUserChats(userChats, userMessages);  // Function to update chats UI with messages
     } else {
         document.querySelector('.application').style.display = 'none';
         document.querySelector('.login').style.display = 'block';
@@ -105,17 +121,23 @@ function updateUserInterests(userInterest) {
     });
 }
 
-// Function to update user chats dynamically
-function updateUserChats(userChats) {
+// Function to update user chats dynamically with messages
+function updateUserChats(userChats, userMessages) {
     const chatContainer = document.querySelector('.chat-container');
     chatContainer.innerHTML = '';  // Clear the previous chat list
     
     userChats.forEach(chat => {
+        const relatedMessages = userMessages.filter(message => message.message_chat_id === chat.chat_id);
+
         const chatElement = document.createElement('div');
         chatElement.classList.add('chat-item');
         chatElement.innerHTML = `
             <p><strong>Chat with ${chat.chat_user_1 === user.user_id ? chat.chat_user_2 : chat.chat_user_1}</strong></p>
-            <p>${chat.chat_message}</p>
+            <div class="messages">
+                ${relatedMessages.map(message => `
+                    <p>${message.message_sender === user.user_id ? 'You' : 'Other'}: ${message.message_text}</p>
+                `).join('')}
+            </div>
         `;
         chatContainer.appendChild(chatElement);
     });
@@ -135,35 +157,3 @@ document.querySelector('#logoutBtn').addEventListener('click', function () {
         document.querySelector('#password').value = '';
     }
 });
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Session Management and Mobile-Only Enforcement ////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-function enforceMobileOnly() {
-    if (window.innerWidth > 390) {
-        document.querySelector('.application').style.display = 'none';
-        document.querySelector('.login').style.display = 'none';
-        document.querySelector('.desktop-error').style.display = 'block';
-    } else {
-        const sessionData = sessionStorage.getItem('sessionData');
-        if (sessionData) {
-            document.querySelector('.application').style.display = 'block';
-            document.querySelector('.login').style.display = 'none';
-            const userData = JSON.parse(sessionData);
-            document.querySelector('#welcomeUser').innerHTML = `Welcome, ${userData.user_name}!`;
-            updateUserInterests(userData.user_interest);
-            updateUserChats(userData.chats);  // Update chats from session data
-        } else {
-            document.querySelector('.application').style.display = 'none';
-            document.querySelector('.login').style.display = 'block';
-        }
-        document.querySelector('.desktop-error').style.display = 'none';
-    }
-}
-
-// On initial load
-window.addEventListener('load', enforceMobileOnly);
-
-// On window resize
-window.addEventListener('resize', enforceMobileOnly);
