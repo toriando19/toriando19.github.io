@@ -1,4 +1,5 @@
 // Import the connection to the Mongo database
+import fs from 'fs';
 import { connectToMongoDB } from './connect-mongo.mjs'; 
 
 
@@ -112,9 +113,56 @@ export async function createChat(chat_user_1, chat_user_2) {
     return { chatResult, logResult };
   } catch (error) {
     console.error('Error creating chat:', error);
-    throw error;  
+    
+    // Fallback: Write to JSON files in case of error
+    const newChat = {
+      id: `chat-${new Date().getTime()}-${Math.floor(Math.random() * 1000)}`,
+      chat_user_1: parseInt(chat_user_1, 10),
+      chat_user_2: parseInt(chat_user_2, 10),
+      created_at: new Date(),
+    };
+
+    const newChatNotification = {
+      id: `log-${new Date().getTime()}-${Math.floor(Math.random() * 1000)}`,
+      event_type: `Chats`,
+      user_id: newChat.chat_user_1, 
+      related_user: newChat.chat_user_2,
+      message1: "Du har startet en chat med",
+      message2: "har startet en chat med dig",
+      created_at: new Date(),
+    };
+
+    // Define file paths
+    const chatsFilePath = path.join(__dirname, '../database/json-data/chats.json');
+    const notificationsFilePath = path.join(__dirname, '../database/json-data/notifications.json');
+    
+    // Read the existing data from the files (if any)
+    let chatsData = [];
+    let notificationsData = [];
+    
+    if (fs.existsSync(chatsFilePath)) {
+      chatsData = JSON.parse(fs.readFileSync(chatsFilePath, 'utf-8'));
+    }
+
+    if (fs.existsSync(notificationsFilePath)) {
+      notificationsData = JSON.parse(fs.readFileSync(notificationsFilePath, 'utf-8'));
+    }
+    
+    // Add the new chat and notification data to the arrays
+    chatsData.push(newChat);
+    notificationsData.push(newChatNotification);
+
+    // Write the updated data back to the files
+    fs.writeFileSync(chatsFilePath, JSON.stringify(chatsData, null, 2), 'utf-8');
+    fs.writeFileSync(notificationsFilePath, JSON.stringify(notificationsData, null, 2), 'utf-8');
+
+    console.log('Data saved to local JSON files.');
+    
+    // Return the data that was written as fallback
+    return { newChat, newChatNotification };
   }
 }
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
