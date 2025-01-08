@@ -44,25 +44,36 @@ document.querySelector('#loginForm').addEventListener('submit', async function (
 
         const userInterest = parsedInterests.filter(interest => parseInt(interest.user_interest_user) === user.user_id);
 
+        // Fetch chat data
+        const chatUrl = 'https://toriando19.github.io/database/json-data/chats.json' || 'http://localhost:3000/chats';
+        const chatResponse = await fetch(chatUrl);
+
+        if (!chatResponse.ok) throw new Error('Failed to fetch chats');
+
+        // Check if response is not empty and parse the JSON
+        const chats = await chatResponse.text();
+        const parsedChats = chats ? JSON.parse(chats) : [];
+
+        // Filter chats where either chat_user_1 or chat_user_2 matches the logged-in user
+        const userChats = parsedChats.filter(chat => chat.chat_user_1 === user.user_id || chat.chat_user_2 === user.user_id);
+
         // Store session data
         const sessionData = {
             user_id: user.user_id,
             username: user.user_username,
             user_name: user.user_name,
             user_email: user.user_email,
-            user_interest: userInterest
+            user_interest: userInterest,
+            chats: userChats  // Add fetched chats to session data
         };
         sessionStorage.setItem('sessionData', JSON.stringify(sessionData));
-
-        // Fetch chats from local sessionStorage or initial data
-        const chats = await fetchChats(user.user_id);
 
         // Clear input fields
         document.querySelector('#email').value = '';
         document.querySelector('#password').value = '';
 
         // Update the UI
-        updateApplicationUI(user, userInterest || [], chats);
+        updateApplicationUI(user, userInterest || [], userChats || []);
 
     } catch (error) {
         console.error('Error during login:', error);
@@ -71,14 +82,14 @@ document.querySelector('#loginForm').addEventListener('submit', async function (
 });
 
 // Function to update the application UI after login
-function updateApplicationUI(user, userInterest, chats) {
+function updateApplicationUI(user, userInterest, userChats) {
     if (window.innerWidth <= 390) {
         document.querySelector('.application').style.display = 'block';
         document.querySelector('.login').style.display = 'none';
         document.querySelector('#welcomeUser').innerHTML = `Welcome, ${user.user_name}!`;
 
         updateUserInterests(userInterest);
-        displayChats(chats);
+        updateUserChats(userChats);  // Function to update chats UI
     } else {
         document.querySelector('.application').style.display = 'none';
         document.querySelector('.login').style.display = 'block';
@@ -94,30 +105,19 @@ function updateUserInterests(userInterest) {
     });
 }
 
-// Function to display chats
-function displayChats(chats) {
-    const chatContainer = document.getElementById('chat-container');
-    chatContainer.innerHTML = '';
-
-    chats.forEach(chat => {
-        const chatDiv = document.createElement('div');
-        chatDiv.classList.add('chat-entry');
-        
-        // Chat information (You can customize as per requirements)
-        const chatTitle = document.createElement('h4');
-        chatTitle.innerText = `Chat with ${chat.chat_user_1 === sessionData.user_id ? chat.chat_user_2 : chat.chat_user_1}`;
-        chatDiv.appendChild(chatTitle);
-
-        // Delete Button
-        const deleteBtn = document.createElement('button');
-        deleteBtn.textContent = 'Delete Chat';
-        deleteBtn.addEventListener('click', () => {
-            deleteChat(chat.id);
-            chatDiv.remove();
-        });
-        chatDiv.appendChild(deleteBtn);
-
-        chatContainer.appendChild(chatDiv);
+// Function to update user chats dynamically
+function updateUserChats(userChats) {
+    const chatContainer = document.querySelector('.chat-container');
+    chatContainer.innerHTML = '';  // Clear the previous chat list
+    
+    userChats.forEach(chat => {
+        const chatElement = document.createElement('div');
+        chatElement.classList.add('chat-item');
+        chatElement.innerHTML = `
+            <p><strong>Chat with ${chat.chat_user_1 === user.user_id ? chat.chat_user_2 : chat.chat_user_1}</strong></p>
+            <p>${chat.chat_message}</p>
+        `;
+        chatContainer.appendChild(chatElement);
     });
 }
 
@@ -137,36 +137,6 @@ document.querySelector('#logoutBtn').addEventListener('click', function () {
 });
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Fetch Chats  //////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-async function fetchChats(user_id) {
-    // Simulate fetching chats (from sessionStorage or other source)
-    const chatsJson = sessionStorage.getItem('chats') || '[]';
-    const chats = JSON.parse(chatsJson);
-
-    // Filter chats based on user ID
-    return chats.filter(chat => chat.chat_user_1 === user_id || chat.chat_user_2 === user_id);
-}
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Delete Chat  //////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-function deleteChat(chatId) {
-    // Get current chats from sessionStorage
-    const chats = JSON.parse(sessionStorage.getItem('chats') || '[]');
-    
-    // Remove the chat with the provided chatId
-    const updatedChats = chats.filter(chat => chat.id !== chatId);
-    
-    // Save the updated chats to sessionStorage
-    sessionStorage.setItem('chats', JSON.stringify(updatedChats));
-
-    console.log(`Chat with ID ${chatId} deleted successfully`);
-}
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Session Management and Mobile-Only Enforcement ////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -183,6 +153,7 @@ function enforceMobileOnly() {
             const userData = JSON.parse(sessionData);
             document.querySelector('#welcomeUser').innerHTML = `Welcome, ${userData.user_name}!`;
             updateUserInterests(userData.user_interest);
+            updateUserChats(userData.chats);  // Update chats from session data
         } else {
             document.querySelector('.application').style.display = 'none';
             document.querySelector('.login').style.display = 'block';
