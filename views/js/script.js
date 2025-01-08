@@ -28,7 +28,7 @@ document.getElementById("hamburgerMenu").addEventListener("click", function() {
     // Toggle the display of the burger menu
     if (burgerMenu.style.display === "none" || burgerMenu.style.display === "") {
         burgerMenu.style.display = "block";
-        button.innerHTML = '<img src="img/icons/x-black.png" alt="Menu">'; // Change button text to "X"
+        button.innerHTML = '<img src="views/img/icons/x-black.png" alt="Menu">'; // Change button text to "X"
     } else {
         burgerMenu.style.display = "none";
         button.innerHTML = '<img src="views/img/icons/burger-black.png" alt="Menu">'; // Change button text back to "☰"

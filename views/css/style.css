@@ -55,7 +55,7 @@
 
 .overlay-header {
     background-color: var(--colorBlue);
-    padding: 1.5rem 0rem 0.5rem 0.5rem;
+    padding: 1.5rem 0rem 0.5rem 1rem;
     display: flex;
     /* gap: 0.5rem; */
     flex-direction: row;
@@ -118,7 +118,7 @@
     background-color: var(--colorBackground);
     padding: 2rem;
     padding-top: 5rem;
-    margin-top: 8rem;
+    margin-top: 6rem;
     position: relative; /* Ensures the container is a positioning context for the logo */
     display: flex;
     justify-content: center;
