@@ -23,12 +23,6 @@ function populateUserProfile() {
     document.getElementById('userProfilePassword').textContent = userData.password;
 }
 
-// Add an onclick function to the close button to hide the profile section and overlay
-document.getElementById('profileClose').addEventListener('click', function() {
-    document.getElementById('userProfileSection').style.display = 'none';
-    document.getElementById('profileOverlay').style.display = 'none';
-});
-
 // Add an onclick function to the changeInterest button to show the profile section and overlay
 document.getElementById('changeInterest').addEventListener('click', function() {
     document.getElementById('userProfileSection').style.display = 'block';
@@ -38,3 +32,9 @@ document.getElementById('changeInterest').addEventListener('click', function() {
 
 // Call the function to populate the data
 populateUserProfile();
+
+
+
+
+
+

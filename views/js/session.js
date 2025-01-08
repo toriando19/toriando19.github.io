@@ -15,34 +15,33 @@ document.querySelector('#loginForm').addEventListener('submit', async function (
     }
 
     try {
-        // Fetch user data from the backend
-        const userUrl = 'https://toriando19.github.io/database/json-data/users.json' || 'http://localhost:3000/users';
-        const userResponse = await fetch(userUrl);
-        if (!userResponse.ok) throw new Error('Failed to fetch user data');
+        // Send login request to the new API
+        const response = await fetch('/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email, password }),
+        });
 
-        const users = await userResponse.json();
-        const user = users.find(u => u.user_email === email && u.user_password === password);
-        
-        if (!user) {
-            alert('Invalid credentials. Please try again.');
+        if (!response.ok) {
+            if (response.status === 401) {
+                alert('Invalid credentials. Please try again.');
+            } else {
+                alert('An error occurred during login. Please try again.');
+            }
             return;
         }
-        
-        // Fetch user interests data
-        const userInterestUrl = 'https://toriando19.github.io/database/json-data/userinterest.json' || 'http://localhost:3000/userinterest';
-        const interestResponse = await fetch(userInterestUrl);
-        if (!interestResponse.ok) throw new Error('Failed to fetch user interests');
 
-        const userInterests = await interestResponse.json();
-        const userInterest = userInterests.filter(interest => parseInt(interest.user_interest_user) === user.user_id);
+        const data = await response.json();
 
         // Store session data
         const sessionData = {
-            user_id: user.user_id,
-            username: user.user_username,
-            user_name: user.user_name,
-            user_email: user.user_email,
-            user_interest: userInterest
+            user_id: data.user_id,
+            username: data.username,
+            user_name: data.user_name,
+            user_email: data.user_email,
+            user_interest: data.user_interest || [],
         };
         sessionStorage.setItem('sessionData', JSON.stringify(sessionData));
 
@@ -51,11 +50,10 @@ document.querySelector('#loginForm').addEventListener('submit', async function (
         document.querySelector('#password').value = '';
 
         // Update the UI
-        updateApplicationUI(user, userInterest);
+        updateApplicationUI(data, data.user_interest || []);
 
     } catch (error) {
         console.error('Error during login:', error);
-        alert('An error occurred. Please try again.');
     }
 });
 
@@ -90,6 +88,7 @@ document.querySelector('#logoutBtn').addEventListener('click', function () {
     if (confirm('Are you sure you want to logout?')) {
         sessionStorage.removeItem('sessionData');
         document.querySelector('.application').style.display = 'none';
+        document.querySelector('.burger-menu').style.display = 'none';
         document.querySelector('.login').style.display = 'block';
         document.querySelector('#email').value = '';
         document.querySelector('#password').value = '';
