@@ -5,9 +5,9 @@ async function fetchNotifications() {
     try {
         // Fetch notifications, messages, and users
         const [notificationsResponse, messagesResponse, usersResponse] = await Promise.all([
-            fetch('http://localhost:3000/notifications'),
-            fetch('http://localhost:3000/messages'),
-            fetch('http://localhost:3000/users')
+            fetch('https://toriando19.github.io/database/json-data/notifications.json'),
+            fetch('https://toriando19.github.io/database/json-data/messages.json'),
+            fetch('https://toriando19.github.io/database/json-data/users.json')
         ]);
 
         if (!notificationsResponse.ok || !messagesResponse.ok || !usersResponse.ok) {

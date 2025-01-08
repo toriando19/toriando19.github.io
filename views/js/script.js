@@ -31,7 +31,7 @@ document.getElementById("hamburgerMenu").addEventListener("click", function() {
         button.innerHTML = '<img src="img/icons/x-black.png" alt="Menu">'; // Change button text to "X"
     } else {
         burgerMenu.style.display = "none";
-        button.innerHTML = '<img src="img/icons/burger-black.png" alt="Menu">'; // Change button text back to "☰"
+        button.innerHTML = '<img src="views/img/icons/burger-black.png" alt="Menu">'; // Change button text back to "☰"
     }
 });
 
@@ -56,7 +56,7 @@ function handleFrontPageClick() {
     burgerMenu.style.display = "none";
     chatsOverlay.style.display = "none";
     chatOverlay.style.display = "none";
-    button.innerHTML = '<img src="img/icons/burger-black.png" alt="Menu">';
+    button.innerHTML = '<img src="views/img/icons/burger-black.png" alt="Menu">';
 }
 
 
@@ -80,7 +80,7 @@ document.getElementById("profileMenu").addEventListener("click", function() {
     chatOverlay.style.display = "none";
     chatsOverlay.style.display = "none";
     burgerMenu.style.display = "none";
-    button.innerHTML = '<img src="img/icons/burger-black.png" alt="Menu">'; // Change button text back to "☰"
+    button.innerHTML = '<img src="views/img/icons/burger-black.png" alt="Menu">'; // Change button text back to "☰"
 });
 
 document.getElementById('profileClose').addEventListener('click', function() {
@@ -115,7 +115,7 @@ function handleChatsClick() {
     burgerMenu.style.display = "none"; // Hide the burger menu
     matchOverlay.style.display = "none";
     matchesOverlay.style.display = "none";
-    button.innerHTML = '<img src="img/icons/burger-black.png" alt="Menu">'; // Reset burger menu button text
+    button.innerHTML = '<img src="views/img/icons/burger-black.png" alt="Menu">'; // Reset burger menu button text
 }
 
 
@@ -145,7 +145,7 @@ document.getElementById("matchesMenu").addEventListener("click", function() {
     chatOverlay.style.display = "none";
     chatsOverlay.style.display = "none";
     burgerMenu.style.display = "none";
-    button.innerHTML = '<img src="img/icons/burger-black.png" alt="Menu">'; // Change button text back to "☰"
+    button.innerHTML = '<img src="views/img/icons/burger-black.png" alt="Menu">'; // Change button text back to "☰"
 });
 
 document.getElementById('matchesClose').addEventListener('click', function() {
