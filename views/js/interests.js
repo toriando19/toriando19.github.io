@@ -228,7 +228,7 @@ window.addEventListener('load', async function () {
 
     } catch (error) {
         console.error('Error:', error);
-        alert('An error occurred while loading the interests. Please try again.');
+        // alert('An error occurred while loading the interests. Please try again.');
     }
 });
 
