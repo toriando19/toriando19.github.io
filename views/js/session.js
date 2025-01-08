@@ -15,26 +15,6 @@ document.querySelector('#loginForm').addEventListener('submit', async function (
     }
 
     try {
-        // Send login request to the new API
-        const response = await fetch('/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ email, password }),
-        });
-
-        if (!response.ok) {
-            if (response.status === 401) {
-                alert('Invalid credentials. Please try again.');
-            } else {
-                alert('An error occurred during login. Please try again.');
-            }
-            return;
-        }
-
-        const data = await response.json();
-
         // Fetch user data from the backend
         const userUrl = 'https://toriando19.github.io/database/json-data/users.json' || 'http://localhost:3000/users';
         const userResponse = await fetch(userUrl);
@@ -56,14 +36,13 @@ document.querySelector('#loginForm').addEventListener('submit', async function (
         const userInterests = await interestResponse.json();
         const userInterest = userInterests.filter(interest => parseInt(interest.user_interest_user) === user.user_id);
 
-
         // Store session data
         const sessionData = {
-            user_id: data.user_id,
-            username: data.username,
-            user_name: data.user_name,
-            user_email: data.user_email,
-            user_interest: data.user_interest || [],
+            user_id: user.user_id,
+            username: user.user_username,
+            user_name: user.user_name,
+            user_email: user.user_email,
+            user_interest: userInterest
         };
         sessionStorage.setItem('sessionData', JSON.stringify(sessionData));
 
