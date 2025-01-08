@@ -201,7 +201,7 @@ window.addEventListener('load', async function () {
                 const iconFilename = iconMapping[category] || 'default-icon.png';  // Fallback to default if no category is found
         
                 const iconElement = document.createElement('img');
-                iconElement.src = `/img/icons/${iconFilename}`;  // Updated path for icons
+                iconElement.src = `/views/img/icons/${iconFilename}`;  // Updated path for icons
                 iconElement.alt = category;  // Use category as alt text
         
                 // Append the image and title-category container to the interest item
