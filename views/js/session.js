@@ -18,10 +18,14 @@ document.querySelector('#loginForm').addEventListener('submit', async function (
         // Fetch user data from the backend
         const userUrl = 'https://toriando19.github.io/database/json-data/users.json' || 'http://localhost:3000/users';
         const userResponse = await fetch(userUrl);
-        if (!userResponse.ok) throw new Error('Failed to fetch user data');
 
-        const users = await userResponse.json();
-        const user = users.find(u => u.user_email === email && u.user_password === password);
+        if (!userResponse.ok) throw new Error('Failed to fetch user data');
+        
+        // Check if response is not empty and parse the JSON
+        const users = await userResponse.text();
+        const parsedUsers = users ? JSON.parse(users) : [];
+
+        const user = parsedUsers.find(u => u.user_email === email && u.user_password === password);
 
         if (!user) {
             alert('Invalid credentials. Please try again.');
@@ -31,10 +35,14 @@ document.querySelector('#loginForm').addEventListener('submit', async function (
         // Fetch user interests data
         const userInterestUrl = 'https://toriando19.github.io/database/json-data/userinterest.json' || 'http://localhost:3000/userinterest';
         const interestResponse = await fetch(userInterestUrl);
-        if (!interestResponse.ok) throw new Error('Failed to fetch user interests');
 
-        const userInterests = await interestResponse.json();
-        const userInterest = userInterests.filter(interest => parseInt(interest.user_interest_user) === user.user_id);
+        if (!interestResponse.ok) throw new Error('Failed to fetch user interests');
+        
+        // Check if response is not empty and parse the JSON
+        const interests = await interestResponse.text();
+        const parsedInterests = interests ? JSON.parse(interests) : [];
+
+        const userInterest = parsedInterests.filter(interest => parseInt(interest.user_interest_user) === user.user_id);
 
         // Store session data
         const sessionData = {
@@ -51,10 +59,11 @@ document.querySelector('#loginForm').addEventListener('submit', async function (
         document.querySelector('#password').value = '';
 
         // Update the UI
-        updateApplicationUI(data, data.user_interest || []);
+        updateApplicationUI(user, userInterest || []);
 
     } catch (error) {
         console.error('Error during login:', error);
+        alert('An error occurred during login. Please try again.');
     }
 });
 
