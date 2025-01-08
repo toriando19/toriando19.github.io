@@ -203,7 +203,7 @@ async function fetchChatDocuments() {
     const chatResponse = await fetch(chatUrl);
     if (!chatResponse.ok) throw new Error('Failed to fetch chats');
     
-    const chats = await parseJSON(chatResponse);
+    const chats = await chatResponse.json(); // Use .json() instead of parseJSON
     if (!chats) throw new Error('No chat data available');
 
     // Filter chats to show only those that involve the current user
@@ -215,7 +215,7 @@ async function fetchChatDocuments() {
 
     // Sort filteredChats to show the chat with the newest message first
     filteredChats.sort((a, b) => {
-      const timeA = new Date(a.last_message_time); // Assuming the chat object has a last_message_time property
+      const timeA = new Date(a.last_message_time); // Ensure last_message_time is a valid date
       const timeB = new Date(b.last_message_time);
       return timeB - timeA; // Sort in descending order (newest first)
     });
