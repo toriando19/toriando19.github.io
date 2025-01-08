@@ -1,0 +1,208 @@
+[
+    {
+      "_id": "675ef2f93a78ff417c7b282a",
+      "id": "message-1734275833024-393",
+      "chat_id": 1,
+      "sender_id": 4,
+      "message": "This is a Test Message :)",
+      "sent_at": "2024-12-15T15:17:13.024Z",
+      "receiver_id": 6
+    },
+    {
+      "_id": "675ef3c73706dd027f2106fc",
+      "id": "message-1734276039272-962",
+      "chat_id": 1,
+      "sender_id": 6,
+      "message": "This is another test message :))",
+      "sent_at": "2024-12-15T15:20:39.272Z"
+    },
+    {
+      "_id": "677d241ceec84841a37f1615",
+      "id": "message-1736254492957-123",
+      "chat_id": "chat-1736253108327-795",
+      "sender_id": 4,
+      "recipient_id": 3,
+      "message": "Test :)",
+      "sent_at": "2025-01-06T12:54:52.957Z"
+    },
+    {
+      "_id": "677d2a87e97b6524733e313e",
+      "id": "message-1736256135524-386",
+      "chat_id": "chat-1736253133906-154",
+      "sender_id": 4,
+      "recipient_id": 8,
+      "message": "Testing another one :)",
+      "sent_at": "2025-01-06T13:22:15.524Z"
+    },
+    {
+      "_id": "677d2ab5d7804616707d9082",
+      "id": "message-1736256181383-993",
+      "chat_id": "chat-1736253133906-154",
+      "sender_id": 4,
+      "recipient_id": 8,
+      "message": "Testing again!",
+      "sent_at": "2025-01-07T13:23:01.383Z"
+    },
+    {
+      "_id": "677d2ac4d7804616707d9084",
+      "id": "message-1736256196762-239",
+      "chat_id": "chat-1736253108327-795",
+      "sender_id": 4,
+      "recipient_id": 3,
+      "message": "Omggg!!! Its working!!",
+      "sent_at": "2025-01-07T13:23:16.762Z"
+    },
+    {
+      "_id": "677d349905a81e86d8022776",
+      "id": "message-1736258713111-971",
+      "chat_id": "chat-1736253133906-154",
+      "sender_id": 4,
+      "recipient_id": 8,
+      "message": "Trying something else :)",
+      "sent_at": "2025-01-07T14:05:13.111Z"
+    },
+    {
+      "_id": "677d379e7834f10226d2ec14",
+      "id": "message-1736259486384-438",
+      "chat_id": "chat-1736253108327-795",
+      "sender_id": 4,
+      "recipient_id": 3,
+      "message": "What’s your favorite type of music?",
+      "sent_at": "2025-01-07T14:18:06.384Z"
+    },
+    {
+      "_id": "677d3db76d22986768b3a96e",
+      "id": "message-1736261047502-825",
+      "chat_id": "chat-1736253108327-795",
+      "sender_id": 3,
+      "recipient_id": 4,
+      "message": "Hello from the other side :)",
+      "sent_at": "2025-01-07T14:44:07.502Z"
+    },
+    {
+      "_id": "677d3dbf6d22986768b3a970",
+      "id": "message-1736261055114-492",
+      "chat_id": "chat-1736253108327-795",
+      "sender_id": 3,
+      "recipient_id": 4,
+      "message": "Testing something else ;)",
+      "sent_at": "2025-01-07T14:44:15.114Z"
+    },
+    {
+      "_id": "677d47c5560f9c49cbf04b54",
+      "id": "message-1736263621216-745",
+      "chat_id": "chat-1736253108327-795",
+      "sender_id": 4,
+      "recipient_id": 3,
+      "message": "Another one :)",
+      "sent_at": "2025-01-07T15:27:01.216Z"
+    },
+    {
+      "_id": "677e3d50f3d67e7154c2e93a",
+      "id": "message-1736326480405-738",
+      "chat_id": "chat-1736253108327-795",
+      "sender_id": 4,
+      "recipient_id": 3,
+      "message": "Hello again ",
+      "sent_at": "2025-01-08T08:54:40.405Z"
+    },
+    {
+      "_id": "677e41188e5349dd321717fa",
+      "id": "message-1736327448334-484",
+      "chat_id": "chat-1736265263894-291",
+      "sender_id": 4,
+      "recipient_id": 6,
+      "message": "Testing something :)",
+      "sent_at": "2025-01-08T09:10:48.334Z"
+    },
+    {
+      "_id": "677e4379c370a8ee55b50281",
+      "id": "message-1736328057049-653",
+      "chat_id": "chat-1736265263894-291",
+      "sender_id": 4,
+      "recipient_id": 6,
+      "message": "Testing something new ....",
+      "sent_at": "2025-01-08T09:20:57.049Z"
+    },
+    {
+      "_id": "677e44c779eeb5982c11be6f",
+      "id": "message-1736328391680-817",
+      "chat_id": "chat-1736263997183-328",
+      "sender_id": 4,
+      "recipient_id": 6,
+      "message": "Hello world :)",
+      "sent_at": "2025-01-08T09:26:31.680Z"
+    },
+    {
+      "_id": "677e45857fae0ff0ae0815d8",
+      "id": "message-1736328581610-412",
+      "chat_id": "chat-1736328097659-677",
+      "sender_id": 4,
+      "recipient_id": 3,
+      "message": "Hello World :)",
+      "sent_at": "2025-01-08T09:29:41.610Z"
+    },
+    {
+      "_id": "677e46087cacb0f759f91017",
+      "id": "message-1736328712625-830",
+      "chat_id": "chat-1736263997183-328",
+      "sender_id": 4,
+      "recipient_id": 6,
+      "message": "What’s your favorite holiday tradition?",
+      "sent_at": "2025-01-08T09:31:52.625Z"
+    },
+    {
+      "_id": "677e48422a78563c1a7a4b2f",
+      "id": "message-1736329282559-535",
+      "chat_id": "chat-1736253108327-795",
+      "sender_id": 3,
+      "recipient_id": 4,
+      "message": "What’s one thing on your bucket list?",
+      "sent_at": "2025-01-08T09:41:22.559Z"
+    },
+    {
+      "_id": "677e5788850a9cc65bbe50de",
+      "id": "message-1736333192327-432",
+      "chat_id": "chat-1736253108327-795",
+      "sender_id": 4,
+      "recipient_id": 3,
+      "message": "Er der en episode af en tv-serie, du altid vender tilbage til?",
+      "sent_at": "2025-01-08T10:46:32.327Z"
+    },
+    {
+      "_id": "677e5794850a9cc65bbe50e0",
+      "id": "message-1736333204437-250",
+      "chat_id": "chat-1736253108327-795",
+      "sender_id": 4,
+      "recipient_id": 3,
+      "message": "Halløjjjjj",
+      "sent_at": "2025-01-08T10:46:44.437Z"
+    },
+    {
+      "_id": "677e6d2c4e64e0bb8f009b94",
+      "id": "message-1736338732494-826",
+      "chat_id": "chat-1736253108327-795",
+      "sender_id": 4,
+      "recipient_id": 3,
+      "message": "Hey hey ",
+      "sent_at": "2025-01-08T12:18:52.494Z"
+    },
+    {
+      "_id": "677e8d17c34e60976f7ba1ab",
+      "id": "message-1736346903360-466",
+      "chat_id": "chat-1736253133906-154",
+      "sender_id": 4,
+      "recipient_id": 8,
+      "message": "Hej igen :)",
+      "sent_at": "2025-01-08T14:35:03.360Z"
+    },
+    {
+      "_id": "677e9fe0a3231a48c68079af",
+      "id": "message-1736351712669-345",
+      "chat_id": "chat-1736340129360-81",
+      "sender_id": 4,
+      "recipient_id": 7,
+      "message": "Test :)",
+      "sent_at": "2025-01-08T15:55:12.669Z"
+    }
+  ]
