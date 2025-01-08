@@ -76,6 +76,7 @@
 
 .overlay-close img {
     width: 2rem;
+    margin-left: -1rem;
 }
 
 /* /////////////////////////////////////////////////////////////////////////// */
@@ -118,7 +119,7 @@
     background-color: var(--colorBackground);
     padding: 2rem;
     padding-top: 5rem;
-    margin-top: 6rem;
+    margin-top: 4rem;
     position: relative; /* Ensures the container is a positioning context for the logo */
     display: flex;
     justify-content: center;
