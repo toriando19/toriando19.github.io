@@ -1,637 +1,715 @@
 [
-    {
-      "_id": "67628fbd4311e80e5fb73587",
-      "id": "log-1734512573526-401",
-      "event_type": "chats",
-      "user_id": "4",
-      "related_user": "7",
-      "message": "A new chat has been created between user 4 and user 7.",
-      "created_at": "2024-12-18T09:02:53.526Z"
-    },
-    {
-      "_id": "6762b4fbfec105d91560948a",
-      "id": "log-1734522107267-495",
-      "event_type": "chats",
-      "user_id": "4",
-      "related_user": "4",
-      "message": "A new chat has been created between user 4 and user 4.",
-      "created_at": "2024-12-18T11:41:47.267Z"
-    },
-    {
-      "_id": "6762bdf114134be5d4b6ab0e",
-      "id": "log-1734524401186-228",
-      "event_type": "chats",
-      "user_id": "4",
-      "related_user": "7",
-      "message": "A new chat has been created between user 4 and user 7.",
-      "created_at": "2024-12-18T12:20:01.186Z"
-    },
-    {
-      "_id": "6762be31c56078ca5501d94f",
-      "id": "log-1734524465548-127",
-      "event_type": "chats",
-      "user_id": "4",
-      "related_user": "7",
-      "message": "A new chat has been created between user 4 and user 7.",
-      "created_at": "2024-12-18T12:21:05.548Z"
-    },
-    {
-      "_id": "6762bea8b72b37d00fe8c698",
-      "id": "log-1734524584507-236",
-      "event_type": "chats",
-      "user_id": "4",
-      "related_user": "7",
-      "message": "A new chat has been created between user 4 and user 7.",
-      "created_at": "2024-12-18T12:23:04.507Z"
-    },
-    {
-      "_id": "6762c02555ceb7dd011751c4",
-      "id": "log-1734524965002-305",
-      "event_type": "chats",
-      "user_id": "4",
-      "related_user": "7",
-      "message": "har startet en chat med dig",
-      "created_at": "2024-12-18T12:29:25.002Z"
-    },
-    {
-      "_id": "6762c117d7d8367d82f447ac",
-      "id": "log-1734525207323-928",
-      "event_type": "chats",
-      "user_id": "4",
-      "related_user": "7",
-      "message": "Du har startet en chat med chat_user_2",
-      "created_at": "2024-12-18T12:33:27.323Z"
-    },
-    {
-      "_id": "6762c1707ba70db8e4a3ecc4",
-      "id": "log-1734525296782-301",
-      "event_type": "chats",
-      "user_id": "4",
-      "related_user": "7",
-      "message": "Du har startet en chat med ${chat_user_2}",
-      "created_at": "2024-12-18T12:34:56.782Z"
-    },
-    {
-      "_id": "6762c18aedbf1a3b837711b6",
-      "id": "log-1734525322251-380",
-      "event_type": "chats",
-      "user_id": "4",
-      "related_user": "7",
-      "message": "Du har startet en chat med 7",
-      "created_at": "2024-12-18T12:35:22.251Z"
-    },
-    {
-      "_id": "6762c29a6ef7f156f0883916",
-      "id": "log-1734525594031-541",
-      "event_type": "chats",
-      "user_id": "4",
-      "related_user": "7",
-      "message": "Du har startet en chat med",
-      "created_at": "2024-12-18T12:39:54.031Z"
-    },
-    {
-      "_id": "6762c4aff5f2207fbf9f9cc2",
-      "id": "log-1734526127698-26",
-      "event_type": "chats",
-      "user_id": "4",
-      "related_user": "7",
-      "message1": "Du har startet en chat med",
-      "message2": "har startet en chat med dig",
-      "created_at": "2024-12-18T12:48:47.698Z"
-    },
-    {
-      "_id": "6762c50cdae87969fd9d5362",
-      "id": "log-1734526220315-902",
-      "event_type": "chats",
-      "user_id": "4",
-      "related_user": "7",
-      "message1": "Du har startet en chat med",
-      "message2": "har startet en chat med dig",
-      "created_at": "2024-12-18T12:50:20.315Z"
-    },
-    {
-      "_id": "6762c61b37e6bd2317541802",
-      "id": "log-1734526491196-889",
-      "event_type": "chats",
-      "user_id": "7",
-      "related_user": "7",
-      "message1": "Du har startet en chat med",
-      "message2": "har startet en chat med dig",
-      "created_at": "2024-12-18T12:54:51.196Z"
-    },
-    {
-      "_id": "6762c63e37e6bd2317541804",
-      "id": "log-1734526526582-828",
-      "event_type": "chats",
-      "user_id": "4",
-      "related_user": "7",
-      "message1": "Du har startet en chat med",
-      "message2": "har startet en chat med dig",
-      "created_at": "2024-12-18T12:55:26.582Z"
-    },
-    {
-      "_id": "6767126a472124849f4da58e",
-      "id": "log-1734808170518-714",
-      "event_type": "chats",
-      "user_id": "4",
-      "related_user": "7",
-      "message1": "Du har startet en chat med",
-      "message2": "har startet en chat med dig",
-      "created_at": "2024-12-21T19:09:30.518Z"
-    },
-    {
-      "_id": "677937a9072bf14e7e4ce091",
-      "id": "log-1735997353502-128",
-      "event_type": "chats",
-      "user_id": "4",
-      "related_user": "3",
-      "message1": "Du har startet en chat med",
-      "message2": "har startet en chat med dig",
-      "created_at": "2025-01-04T13:29:13.502Z"
-    },
-    {
-      "_id": "6779394ed50c40c95fba1552",
-      "id": "log-1735997774011-913",
-      "event_type": "chats",
-      "user_id": "4",
-      "related_user": "8",
-      "message1": "Du har startet en chat med",
-      "message2": "har startet en chat med dig",
-      "created_at": "2025-01-04T13:36:14.011Z"
-    },
-    {
-      "_id": "67793957d50c40c95fba1554",
-      "id": "log-1735997783193-391",
-      "event_type": "chats",
-      "user_id": "4",
-      "related_user": "8",
-      "message1": "Du har startet en chat med",
-      "message2": "har startet en chat med dig",
-      "created_at": "2025-01-04T13:36:23.193Z"
-    },
-    {
-      "_id": "67796a19f8217cda05ab3a1f",
-      "id": "log-1736010265321-730",
-      "event_type": "message",
-      "user_id": null,
-      "related_user": null,
-      "message": "User undefined sent a message in chat undefined: \"undefined\"",
-      "created_at": "2025-01-04T17:04:25.321Z"
-    },
-    {
-      "_id": "67796a40f8217cda05ab3a21",
-      "id": "log-1736010304133-751",
-      "event_type": "message",
-      "user_id": null,
-      "related_user": null,
-      "message": "User undefined sent a message in chat undefined: \"undefined\"",
-      "created_at": "2025-01-04T17:05:04.133Z"
-    },
-    {
-      "_id": "67798396290431e5dade4c25",
-      "id": "log-1736016790286-645",
-      "event_type": "chats",
-      "user_id": "4",
-      "related_user": "8",
-      "message1": "Du har startet en chat med",
-      "message2": "har startet en chat med dig",
-      "created_at": "2025-01-04T18:53:10.286Z"
-    },
-    {
-      "_id": "67798e3c1289fe2a1285ef50",
-      "id": "log-1736019516956-635",
-      "event_type": "chats",
-      "user_id": "4",
-      "related_user": "8",
-      "message1": "Du har startet en chat med",
-      "message2": "har startet en chat med dig",
-      "created_at": "2025-01-04T19:38:36.956Z"
-    },
-    {
-      "_id": "67798e431289fe2a1285ef52",
-      "id": "log-1736019523648-340",
-      "event_type": "chats",
-      "user_id": "4",
-      "related_user": "3",
-      "message1": "Du har startet en chat med",
-      "message2": "har startet en chat med dig",
-      "created_at": "2025-01-04T19:38:43.648Z"
-    },
-    {
-      "_id": "67798e4c1289fe2a1285ef54",
-      "id": "log-1736019532357-403",
-      "event_type": "chats",
-      "user_id": "4",
-      "related_user": "6",
-      "message1": "Du har startet en chat med",
-      "message2": "har startet en chat med dig",
-      "created_at": "2025-01-04T19:38:52.357Z"
-    },
-    {
-      "_id": "67798e521289fe2a1285ef56",
-      "id": "log-1736019538777-654",
-      "event_type": "chats",
-      "user_id": "4",
-      "related_user": "7",
-      "message1": "Du har startet en chat med",
-      "message2": "har startet en chat med dig",
-      "created_at": "2025-01-04T19:38:58.777Z"
-    },
-    {
-      "_id": "677d1e3b75ed17ca3bf8a88f",
-      "id": "log-1736252987780-128",
-      "event_type": "chats",
-      "user_id": 4,
-      "related_user": 8,
-      "message1": "Du har startet en chat med",
-      "message2": "har startet en chat med dig",
-      "created_at": "2025-01-07T12:29:47.780Z"
-    },
-    {
-      "_id": "677d1e5e75ed17ca3bf8a891",
-      "id": "log-1736253022939-117",
-      "event_type": "chats",
-      "user_id": 4,
-      "related_user": 8,
-      "message1": "Du har startet en chat med",
-      "message2": "har startet en chat med dig",
-      "created_at": "2025-01-07T12:30:22.939Z"
-    },
-    {
-      "_id": "677d1e6c75ed17ca3bf8a893",
-      "id": "log-1736253036485-915",
-      "event_type": "chats",
-      "user_id": 4,
-      "related_user": 3,
-      "message1": "Du har startet en chat med",
-      "message2": "har startet en chat med dig",
-      "created_at": "2025-01-07T12:30:36.485Z"
-    },
-    {
-      "_id": "677d1eb475ed17ca3bf8a895",
-      "id": "log-1736253108336-575",
-      "event_type": "chats",
-      "user_id": 4,
-      "related_user": 3,
-      "message1": "Du har startet en chat med",
-      "message2": "har startet en chat med dig",
-      "created_at": "2025-01-07T12:31:48.336Z"
-    },
-    {
-      "_id": "677d1ecd75ed17ca3bf8a897",
-      "id": "log-1736253133911-89",
-      "event_type": "chats",
-      "user_id": 4,
-      "related_user": 8,
-      "message1": "Du har startet en chat med",
-      "message2": "har startet en chat med dig",
-      "created_at": "2025-01-07T12:32:13.911Z"
-    },
-    {
-      "_id": "677d1f3975ed17ca3bf8a899",
-      "id": "log-1736253241045-972",
-      "event_type": "message",
-      "user_id": null,
-      "related_user": null,
-      "message": "User undefined sent a message in chat undefined: \"undefined\"",
-      "created_at": "2025-01-07T12:34:01.045Z"
-    },
-    {
-      "_id": "677d20e32be59e3515c28efc",
-      "id": "log-1736253667503-967",
-      "event_type": "message",
-      "user_id": null,
-      "related_user": null,
-      "message": "User undefined sent a message in chat undefined: \"undefined\"",
-      "created_at": "2025-01-07T12:41:07.503Z"
-    },
-    {
-      "_id": "677d22f42958a66856646f7f",
-      "id": "log-1736254196342-232",
-      "event_type": "message",
-      "user_id": null,
-      "related_user": null,
-      "message": "User undefined sent a message in chat undefined: \"undefined\"",
-      "created_at": "2025-01-07T12:49:56.342Z"
-    },
-    {
-      "_id": "677d241ceec84841a37f1616",
-      "id": "log-1736254492966-695",
-      "event_type": "message",
-      "user_id": 4,
-      "related_user": "chat-1736253108327-795",
-      "message": "User 4 sent a message in chat chat-1736253108327-795: \"Test :)\"",
-      "created_at": "2025-01-07T12:54:52.966Z"
-    },
-    {
-      "_id": "677d2a87e97b6524733e313f",
-      "id": "log-1736256135538-138",
-      "event_type": "message",
-      "user_id": 4,
-      "related_user": "chat-1736253133906-154",
-      "message": "User 4 sent a message in chat chat-1736253133906-154: \"Testing another one :)\"",
-      "created_at": "2025-01-07T13:22:15.538Z"
-    },
-    {
-      "_id": "677d2ab5d7804616707d9083",
-      "id": "log-1736256181391-371",
-      "event_type": "message",
-      "user_id": 4,
-      "related_user": "chat-1736253133906-154",
-      "message": "User 4 sent a message in chat chat-1736253133906-154: \"Testing again!\"",
-      "created_at": "2025-01-07T13:23:01.391Z"
-    },
-    {
-      "_id": "677d2ac4d7804616707d9085",
-      "id": "log-1736256196765-375",
-      "event_type": "message",
-      "user_id": 4,
-      "related_user": "chat-1736253108327-795",
-      "message": "User 4 sent a message in chat chat-1736253108327-795: \"Omggg!!! Its working!!\"",
-      "created_at": "2025-01-07T13:23:16.765Z"
-    },
-    {
-      "_id": "677d349905a81e86d8022777",
-      "id": "log-1736258713121-65",
-      "event_type": "message",
-      "user_id": 4,
-      "related_user": "chat-1736253133906-154",
-      "message": "User 4 sent a message in chat chat-1736253133906-154: \"Trying something else :)\"",
-      "created_at": "2025-01-07T14:05:13.121Z"
-    },
-    {
-      "_id": "677d379e7834f10226d2ec15",
-      "id": "log-1736259486393-512",
-      "event_type": "message",
-      "user_id": 4,
-      "related_user": "chat-1736253108327-795",
-      "message": "User 4 sent a message in chat chat-1736253108327-795: \"What’s your favorite type of music?\"",
-      "created_at": "2025-01-07T14:18:06.393Z"
-    },
-    {
-      "_id": "677d3db76d22986768b3a96f",
-      "id": "log-1736261047510-634",
-      "event_type": "message",
-      "user_id": 3,
-      "related_user": "chat-1736253108327-795",
-      "message": "User 3 sent a message in chat chat-1736253108327-795: \"Hello from the other side :)\"",
-      "created_at": "2025-01-07T14:44:07.510Z"
-    },
-    {
-      "_id": "677d3dbf6d22986768b3a971",
-      "id": "log-1736261055118-293",
-      "event_type": "message",
-      "user_id": 3,
-      "related_user": "chat-1736253108327-795",
-      "message": "User 3 sent a message in chat chat-1736253108327-795: \"Testing something else ;)\"",
-      "created_at": "2025-01-07T14:44:15.118Z"
-    },
-    {
-      "_id": "677d47c5560f9c49cbf04b55",
-      "id": "log-1736263621226-461",
-      "event_type": "message",
-      "user_id": 4,
-      "related_user": "chat-1736253108327-795",
-      "message": "User 4 sent a message in chat chat-1736253108327-795: \"Another one :)\"",
-      "created_at": "2025-01-07T15:27:01.226Z"
-    },
-    {
-      "_id": "677d48f3560f9c49cbf04b57",
-      "id": "log-1736263923156-322",
-      "event_type": "chats",
-      "user_id": 4,
-      "related_user": 8,
-      "message1": "Du har startet en chat med",
-      "message2": "har startet en chat med dig",
-      "created_at": "2025-01-07T15:32:03.156Z"
-    },
-    {
-      "_id": "677d48f9560f9c49cbf04b59",
-      "id": "log-1736263929020-702",
-      "event_type": "chats",
-      "user_id": 4,
-      "related_user": 7,
-      "message1": "Du har startet en chat med",
-      "message2": "har startet en chat med dig",
-      "created_at": "2025-01-07T15:32:09.020Z"
-    },
-    {
-      "_id": "677d493d560f9c49cbf04b5b",
-      "id": "log-1736263997189-885",
-      "event_type": "chats",
-      "user_id": 4,
-      "related_user": 6,
-      "message1": "Du har startet en chat med",
-      "message2": "har startet en chat med dig",
-      "created_at": "2025-01-07T15:33:17.189Z"
-    },
-    {
-      "_id": "677d4e2fead58823c8e199c8",
-      "id": "log-1736265263903-483",
-      "event_type": "chats",
-      "user_id": 4,
-      "related_user": 6,
-      "message1": "Du har startet en chat med",
-      "message2": "har startet en chat med dig",
-      "created_at": "2025-01-07T15:54:23.903Z"
-    },
-    {
-      "_id": "677e3d50f3d67e7154c2e93b",
-      "id": "log-1736326480422-794",
-      "event_type": "message",
-      "user_id": 4,
-      "related_user": "chat-1736253108327-795",
-      "message": "User 4 sent a message in chat chat-1736253108327-795: \"Hello again \"",
-      "created_at": "2025-01-08T08:54:40.422Z"
-    },
-    {
-      "_id": "677e41188e5349dd321717fb",
-      "id": "log-1736327448373-345",
-      "event_type": "message",
-      "user_id": 4,
-      "related_user": "chat-1736265263894-291",
-      "message": "User 4 sent a message in chat chat-1736265263894-291: \"Testing something :)\"",
-      "created_at": "2025-01-08T09:10:48.374Z"
-    },
-    {
-      "_id": "677e4379c370a8ee55b50282",
-      "id": "log-1736328057056-446",
-      "event_type": "message",
-      "user_id": 4,
-      "related_user": "chat-1736265263894-291",
-      "message": "Testing something new ....",
-      "created_at": "2025-01-08T09:20:57.056Z"
-    },
-    {
-      "_id": "677e43a1c370a8ee55b50284",
-      "id": "log-1736328097666-751",
-      "event_type": "chats",
-      "user_id": 4,
-      "related_user": 3,
-      "message1": "Du har startet en chat med",
-      "message2": "har startet en chat med dig",
-      "created_at": "2025-01-08T09:21:37.666Z"
-    },
-    {
-      "_id": "677e44bd79eeb5982c11be6e",
-      "id": "log-1736328381478-873",
-      "event_type": "New chat",
-      "user_id": 4,
-      "related_user": 8,
-      "message1": "Du har startet en chat med",
-      "message2": "har startet en chat med dig",
-      "created_at": "2025-01-08T09:26:21.478Z"
-    },
-    {
-      "_id": "677e44c779eeb5982c11be70",
-      "id": "log-1736328391724-174",
-      "event_type": "New message",
-      "user_id": 4,
-      "related_user": "chat-1736263997183-328",
-      "message": "Hello world :)",
-      "created_at": "2025-01-08T09:26:31.724Z"
-    },
-    {
-      "_id": "677e45857fae0ff0ae0815d9",
-      "id": "log-1736328581617-361",
-      "event_type": "Beskeder",
-      "chat_id": "chat-1736328097659-677",
-      "user_id": 4,
-      "related_user": 3,
-      "message": "Hello World :)",
-      "created_at": "2025-01-08T09:29:41.617Z"
-    },
-    {
-      "_id": "677e46087cacb0f759f91018",
-      "id": "log-1736328712633-876",
-      "event_type": "Beskeder",
-      "user_id": 4,
-      "related_user": 6,
-      "message": "What’s your favorite holiday tradition?",
-      "created_at": "2025-01-08T09:31:52.633Z"
-    },
-    {
-      "_id": "677e48422a78563c1a7a4b30",
-      "id": "log-1736329282571-470",
-      "event_type": "Beskeder",
-      "user_id": 3,
-      "related_user": 4,
-      "message": "What’s one thing on your bucket list?",
-      "created_at": "2025-01-08T09:41:22.571Z"
-    },
-    {
-      "_id": "677e5788850a9cc65bbe50df",
-      "id": "log-1736333192334-617",
-      "event_type": "Beskeder",
-      "user_id": 4,
-      "related_user": 3,
-      "message": "Er der en episode af en tv-serie, du altid vender tilbage til?",
-      "created_at": "2025-01-08T10:46:32.334Z"
-    },
-    {
-      "_id": "677e5794850a9cc65bbe50e1",
-      "id": "log-1736333204442-708",
-      "event_type": "Beskeder",
-      "user_id": 4,
-      "related_user": 3,
-      "message": "Halløjjjjj",
-      "created_at": "2025-01-08T10:46:44.442Z"
-    },
-    {
-      "_id": "677e5c5d8420e545e39f3e36",
-      "id": "log-1736334429725-872",
-      "event_type": "Chats",
-      "user_id": 4,
-      "related_user": 4,
-      "message1": "Du har startet en chat med",
-      "message2": "har startet en chat med dig",
-      "created_at": "2025-01-08T11:07:09.725Z"
-    },
-    {
-      "_id": "677e6123e4a1a9c813e48d29",
-      "id": "log-1736335651710-788",
-      "event_type": "Chats",
-      "user_id": 4,
-      "related_user": 8,
-      "message1": "Du har startet en chat med",
-      "message2": "har startet en chat med dig",
-      "created_at": "2025-01-08T11:27:31.710Z"
-    },
-    {
-      "_id": "677e6485695872512ef18047",
-      "id": "log-1736336517050-522",
-      "event_type": "Chats",
-      "user_id": 4,
-      "related_user": 7,
-      "message1": "Du har startet en chat med",
-      "message2": "har startet en chat med dig",
-      "created_at": "2025-01-08T11:41:57.050Z"
-    },
-    {
-      "_id": "677e6d2c4e64e0bb8f009b95",
-      "id": "log-1736338732500-343",
-      "event_type": "Beskeder",
-      "user_id": 4,
-      "related_user": 3,
-      "message": "Hey hey ",
-      "created_at": "2025-01-08T12:18:52.500Z"
-    },
-    {
-      "_id": "677e6f2715b91915eddcec2e",
-      "id": "log-1736339239029-672",
-      "event_type": "Chats",
-      "user_id": 4,
-      "related_user": 10,
-      "message1": "Du har startet en chat med",
-      "message2": "har startet en chat med dig",
-      "created_at": "2025-01-08T12:27:19.029Z"
-    },
-    {
-      "_id": "677e72a15f70c2047fd1b486",
-      "id": "log-1736340129365-954",
-      "event_type": "Chats",
-      "user_id": 4,
-      "related_user": 7,
-      "message1": "Du har startet en chat med",
-      "message2": "har startet en chat med dig",
-      "created_at": "2025-01-08T12:42:09.365Z"
-    },
-    {
-      "_id": "677e8cf7c34e60976f7ba1aa",
-      "id": "log-1736346871417-596",
-      "event_type": "Chats",
-      "user_id": 4,
-      "related_user": 9,
-      "message1": "Du har startet en chat med",
-      "message2": "har startet en chat med dig",
-      "created_at": "2025-01-08T14:34:31.417Z"
-    },
-    {
-      "_id": "677e8d17c34e60976f7ba1ac",
-      "id": "log-1736346903367-94",
-      "event_type": "Beskeder",
-      "user_id": 4,
-      "related_user": 8,
-      "message": "Hej igen :)",
-      "created_at": "2025-01-08T14:35:03.367Z"
-    },
-    {
-      "_id": "677e9fd2a3231a48c68079ae",
-      "id": "log-1736351698708-115",
-      "event_type": "Chats",
-      "user_id": 4,
-      "related_user": 9,
-      "message1": "Du har startet en chat med",
-      "message2": "har startet en chat med dig",
-      "created_at": "2025-01-08T15:54:58.708Z"
-    },
-    {
-      "_id": "677e9fe0a3231a48c68079b0",
-      "id": "log-1736351712674-751",
-      "event_type": "Beskeder",
-      "user_id": 4,
-      "related_user": 7,
-      "message": "Test :)",
-      "created_at": "2025-01-08T15:55:12.674Z"
-    }
-  ]
+  {
+    "_id": "67628fbd4311e80e5fb73587",
+    "id": "log-1734512573526-401",
+    "event_type": "chats",
+    "user_id": "4",
+    "related_user": "7",
+    "message": "A new chat has been created between user 4 and user 7.",
+    "created_at": "2024-12-18T09:02:53.526Z"
+  },
+  {
+    "_id": "6762b4fbfec105d91560948a",
+    "id": "log-1734522107267-495",
+    "event_type": "chats",
+    "user_id": "4",
+    "related_user": "4",
+    "message": "A new chat has been created between user 4 and user 4.",
+    "created_at": "2024-12-18T11:41:47.267Z"
+  },
+  {
+    "_id": "6762bdf114134be5d4b6ab0e",
+    "id": "log-1734524401186-228",
+    "event_type": "chats",
+    "user_id": "4",
+    "related_user": "7",
+    "message": "A new chat has been created between user 4 and user 7.",
+    "created_at": "2024-12-18T12:20:01.186Z"
+  },
+  {
+    "_id": "6762be31c56078ca5501d94f",
+    "id": "log-1734524465548-127",
+    "event_type": "chats",
+    "user_id": "4",
+    "related_user": "7",
+    "message": "A new chat has been created between user 4 and user 7.",
+    "created_at": "2024-12-18T12:21:05.548Z"
+  },
+  {
+    "_id": "6762bea8b72b37d00fe8c698",
+    "id": "log-1734524584507-236",
+    "event_type": "chats",
+    "user_id": "4",
+    "related_user": "7",
+    "message": "A new chat has been created between user 4 and user 7.",
+    "created_at": "2024-12-18T12:23:04.507Z"
+  },
+  {
+    "_id": "6762c02555ceb7dd011751c4",
+    "id": "log-1734524965002-305",
+    "event_type": "chats",
+    "user_id": "4",
+    "related_user": "7",
+    "message": "har startet en chat med dig",
+    "created_at": "2024-12-18T12:29:25.002Z"
+  },
+  {
+    "_id": "6762c117d7d8367d82f447ac",
+    "id": "log-1734525207323-928",
+    "event_type": "chats",
+    "user_id": "4",
+    "related_user": "7",
+    "message": "Du har startet en chat med chat_user_2",
+    "created_at": "2024-12-18T12:33:27.323Z"
+  },
+  {
+    "_id": "6762c1707ba70db8e4a3ecc4",
+    "id": "log-1734525296782-301",
+    "event_type": "chats",
+    "user_id": "4",
+    "related_user": "7",
+    "message": "Du har startet en chat med ${chat_user_2}",
+    "created_at": "2024-12-18T12:34:56.782Z"
+  },
+  {
+    "_id": "6762c18aedbf1a3b837711b6",
+    "id": "log-1734525322251-380",
+    "event_type": "chats",
+    "user_id": "4",
+    "related_user": "7",
+    "message": "Du har startet en chat med 7",
+    "created_at": "2024-12-18T12:35:22.251Z"
+  },
+  {
+    "_id": "6762c29a6ef7f156f0883916",
+    "id": "log-1734525594031-541",
+    "event_type": "chats",
+    "user_id": "4",
+    "related_user": "7",
+    "message": "Du har startet en chat med",
+    "created_at": "2024-12-18T12:39:54.031Z"
+  },
+  {
+    "_id": "6762c4aff5f2207fbf9f9cc2",
+    "id": "log-1734526127698-26",
+    "event_type": "chats",
+    "user_id": "4",
+    "related_user": "7",
+    "message1": "Du har startet en chat med",
+    "message2": "har startet en chat med dig",
+    "created_at": "2024-12-18T12:48:47.698Z"
+  },
+  {
+    "_id": "6762c50cdae87969fd9d5362",
+    "id": "log-1734526220315-902",
+    "event_type": "chats",
+    "user_id": "4",
+    "related_user": "7",
+    "message1": "Du har startet en chat med",
+    "message2": "har startet en chat med dig",
+    "created_at": "2024-12-18T12:50:20.315Z"
+  },
+  {
+    "_id": "6762c61b37e6bd2317541802",
+    "id": "log-1734526491196-889",
+    "event_type": "chats",
+    "user_id": "7",
+    "related_user": "7",
+    "message1": "Du har startet en chat med",
+    "message2": "har startet en chat med dig",
+    "created_at": "2024-12-18T12:54:51.196Z"
+  },
+  {
+    "_id": "6762c63e37e6bd2317541804",
+    "id": "log-1734526526582-828",
+    "event_type": "chats",
+    "user_id": "4",
+    "related_user": "7",
+    "message1": "Du har startet en chat med",
+    "message2": "har startet en chat med dig",
+    "created_at": "2024-12-18T12:55:26.582Z"
+  },
+  {
+    "_id": "6767126a472124849f4da58e",
+    "id": "log-1734808170518-714",
+    "event_type": "chats",
+    "user_id": "4",
+    "related_user": "7",
+    "message1": "Du har startet en chat med",
+    "message2": "har startet en chat med dig",
+    "created_at": "2024-12-21T19:09:30.518Z"
+  },
+  {
+    "_id": "677937a9072bf14e7e4ce091",
+    "id": "log-1735997353502-128",
+    "event_type": "chats",
+    "user_id": "4",
+    "related_user": "3",
+    "message1": "Du har startet en chat med",
+    "message2": "har startet en chat med dig",
+    "created_at": "2025-01-04T13:29:13.502Z"
+  },
+  {
+    "_id": "6779394ed50c40c95fba1552",
+    "id": "log-1735997774011-913",
+    "event_type": "chats",
+    "user_id": "4",
+    "related_user": "8",
+    "message1": "Du har startet en chat med",
+    "message2": "har startet en chat med dig",
+    "created_at": "2025-01-04T13:36:14.011Z"
+  },
+  {
+    "_id": "67793957d50c40c95fba1554",
+    "id": "log-1735997783193-391",
+    "event_type": "chats",
+    "user_id": "4",
+    "related_user": "8",
+    "message1": "Du har startet en chat med",
+    "message2": "har startet en chat med dig",
+    "created_at": "2025-01-04T13:36:23.193Z"
+  },
+  {
+    "_id": "67796a19f8217cda05ab3a1f",
+    "id": "log-1736010265321-730",
+    "event_type": "message",
+    "user_id": null,
+    "related_user": null,
+    "message": "User undefined sent a message in chat undefined: \"undefined\"",
+    "created_at": "2025-01-04T17:04:25.321Z"
+  },
+  {
+    "_id": "67796a40f8217cda05ab3a21",
+    "id": "log-1736010304133-751",
+    "event_type": "message",
+    "user_id": null,
+    "related_user": null,
+    "message": "User undefined sent a message in chat undefined: \"undefined\"",
+    "created_at": "2025-01-04T17:05:04.133Z"
+  },
+  {
+    "_id": "67798396290431e5dade4c25",
+    "id": "log-1736016790286-645",
+    "event_type": "chats",
+    "user_id": "4",
+    "related_user": "8",
+    "message1": "Du har startet en chat med",
+    "message2": "har startet en chat med dig",
+    "created_at": "2025-01-04T18:53:10.286Z"
+  },
+  {
+    "_id": "67798e3c1289fe2a1285ef50",
+    "id": "log-1736019516956-635",
+    "event_type": "chats",
+    "user_id": "4",
+    "related_user": "8",
+    "message1": "Du har startet en chat med",
+    "message2": "har startet en chat med dig",
+    "created_at": "2025-01-04T19:38:36.956Z"
+  },
+  {
+    "_id": "67798e431289fe2a1285ef52",
+    "id": "log-1736019523648-340",
+    "event_type": "chats",
+    "user_id": "4",
+    "related_user": "3",
+    "message1": "Du har startet en chat med",
+    "message2": "har startet en chat med dig",
+    "created_at": "2025-01-04T19:38:43.648Z"
+  },
+  {
+    "_id": "67798e4c1289fe2a1285ef54",
+    "id": "log-1736019532357-403",
+    "event_type": "chats",
+    "user_id": "4",
+    "related_user": "6",
+    "message1": "Du har startet en chat med",
+    "message2": "har startet en chat med dig",
+    "created_at": "2025-01-04T19:38:52.357Z"
+  },
+  {
+    "_id": "67798e521289fe2a1285ef56",
+    "id": "log-1736019538777-654",
+    "event_type": "chats",
+    "user_id": "4",
+    "related_user": "7",
+    "message1": "Du har startet en chat med",
+    "message2": "har startet en chat med dig",
+    "created_at": "2025-01-04T19:38:58.777Z"
+  },
+  {
+    "_id": "677d1e3b75ed17ca3bf8a88f",
+    "id": "log-1736252987780-128",
+    "event_type": "chats",
+    "user_id": 4,
+    "related_user": 8,
+    "message1": "Du har startet en chat med",
+    "message2": "har startet en chat med dig",
+    "created_at": "2025-01-07T12:29:47.780Z"
+  },
+  {
+    "_id": "677d1e5e75ed17ca3bf8a891",
+    "id": "log-1736253022939-117",
+    "event_type": "chats",
+    "user_id": 4,
+    "related_user": 8,
+    "message1": "Du har startet en chat med",
+    "message2": "har startet en chat med dig",
+    "created_at": "2025-01-07T12:30:22.939Z"
+  },
+  {
+    "_id": "677d1e6c75ed17ca3bf8a893",
+    "id": "log-1736253036485-915",
+    "event_type": "chats",
+    "user_id": 4,
+    "related_user": 3,
+    "message1": "Du har startet en chat med",
+    "message2": "har startet en chat med dig",
+    "created_at": "2025-01-07T12:30:36.485Z"
+  },
+  {
+    "_id": "677d1eb475ed17ca3bf8a895",
+    "id": "log-1736253108336-575",
+    "event_type": "chats",
+    "user_id": 4,
+    "related_user": 3,
+    "message1": "Du har startet en chat med",
+    "message2": "har startet en chat med dig",
+    "created_at": "2025-01-07T12:31:48.336Z"
+  },
+  {
+    "_id": "677d1ecd75ed17ca3bf8a897",
+    "id": "log-1736253133911-89",
+    "event_type": "chats",
+    "user_id": 4,
+    "related_user": 8,
+    "message1": "Du har startet en chat med",
+    "message2": "har startet en chat med dig",
+    "created_at": "2025-01-07T12:32:13.911Z"
+  },
+  {
+    "_id": "677d1f3975ed17ca3bf8a899",
+    "id": "log-1736253241045-972",
+    "event_type": "message",
+    "user_id": null,
+    "related_user": null,
+    "message": "User undefined sent a message in chat undefined: \"undefined\"",
+    "created_at": "2025-01-07T12:34:01.045Z"
+  },
+  {
+    "_id": "677d20e32be59e3515c28efc",
+    "id": "log-1736253667503-967",
+    "event_type": "message",
+    "user_id": null,
+    "related_user": null,
+    "message": "User undefined sent a message in chat undefined: \"undefined\"",
+    "created_at": "2025-01-07T12:41:07.503Z"
+  },
+  {
+    "_id": "677d22f42958a66856646f7f",
+    "id": "log-1736254196342-232",
+    "event_type": "message",
+    "user_id": null,
+    "related_user": null,
+    "message": "User undefined sent a message in chat undefined: \"undefined\"",
+    "created_at": "2025-01-07T12:49:56.342Z"
+  },
+  {
+    "_id": "677d241ceec84841a37f1616",
+    "id": "log-1736254492966-695",
+    "event_type": "message",
+    "user_id": 4,
+    "related_user": "chat-1736253108327-795",
+    "message": "User 4 sent a message in chat chat-1736253108327-795: \"Test :)\"",
+    "created_at": "2025-01-07T12:54:52.966Z"
+  },
+  {
+    "_id": "677d2a87e97b6524733e313f",
+    "id": "log-1736256135538-138",
+    "event_type": "message",
+    "user_id": 4,
+    "related_user": "chat-1736253133906-154",
+    "message": "User 4 sent a message in chat chat-1736253133906-154: \"Testing another one :)\"",
+    "created_at": "2025-01-07T13:22:15.538Z"
+  },
+  {
+    "_id": "677d2ab5d7804616707d9083",
+    "id": "log-1736256181391-371",
+    "event_type": "message",
+    "user_id": 4,
+    "related_user": "chat-1736253133906-154",
+    "message": "User 4 sent a message in chat chat-1736253133906-154: \"Testing again!\"",
+    "created_at": "2025-01-07T13:23:01.391Z"
+  },
+  {
+    "_id": "677d2ac4d7804616707d9085",
+    "id": "log-1736256196765-375",
+    "event_type": "message",
+    "user_id": 4,
+    "related_user": "chat-1736253108327-795",
+    "message": "User 4 sent a message in chat chat-1736253108327-795: \"Omggg!!! Its working!!\"",
+    "created_at": "2025-01-07T13:23:16.765Z"
+  },
+  {
+    "_id": "677d349905a81e86d8022777",
+    "id": "log-1736258713121-65",
+    "event_type": "message",
+    "user_id": 4,
+    "related_user": "chat-1736253133906-154",
+    "message": "User 4 sent a message in chat chat-1736253133906-154: \"Trying something else :)\"",
+    "created_at": "2025-01-07T14:05:13.121Z"
+  },
+  {
+    "_id": "677d379e7834f10226d2ec15",
+    "id": "log-1736259486393-512",
+    "event_type": "message",
+    "user_id": 4,
+    "related_user": "chat-1736253108327-795",
+    "message": "User 4 sent a message in chat chat-1736253108327-795: \"What’s your favorite type of music?\"",
+    "created_at": "2025-01-07T14:18:06.393Z"
+  },
+  {
+    "_id": "677d3db76d22986768b3a96f",
+    "id": "log-1736261047510-634",
+    "event_type": "message",
+    "user_id": 3,
+    "related_user": "chat-1736253108327-795",
+    "message": "User 3 sent a message in chat chat-1736253108327-795: \"Hello from the other side :)\"",
+    "created_at": "2025-01-07T14:44:07.510Z"
+  },
+  {
+    "_id": "677d3dbf6d22986768b3a971",
+    "id": "log-1736261055118-293",
+    "event_type": "message",
+    "user_id": 3,
+    "related_user": "chat-1736253108327-795",
+    "message": "User 3 sent a message in chat chat-1736253108327-795: \"Testing something else ;)\"",
+    "created_at": "2025-01-07T14:44:15.118Z"
+  },
+  {
+    "_id": "677d47c5560f9c49cbf04b55",
+    "id": "log-1736263621226-461",
+    "event_type": "message",
+    "user_id": 4,
+    "related_user": "chat-1736253108327-795",
+    "message": "User 4 sent a message in chat chat-1736253108327-795: \"Another one :)\"",
+    "created_at": "2025-01-07T15:27:01.226Z"
+  },
+  {
+    "_id": "677d48f3560f9c49cbf04b57",
+    "id": "log-1736263923156-322",
+    "event_type": "chats",
+    "user_id": 4,
+    "related_user": 8,
+    "message1": "Du har startet en chat med",
+    "message2": "har startet en chat med dig",
+    "created_at": "2025-01-07T15:32:03.156Z"
+  },
+  {
+    "_id": "677d48f9560f9c49cbf04b59",
+    "id": "log-1736263929020-702",
+    "event_type": "chats",
+    "user_id": 4,
+    "related_user": 7,
+    "message1": "Du har startet en chat med",
+    "message2": "har startet en chat med dig",
+    "created_at": "2025-01-07T15:32:09.020Z"
+  },
+  {
+    "_id": "677d493d560f9c49cbf04b5b",
+    "id": "log-1736263997189-885",
+    "event_type": "chats",
+    "user_id": 4,
+    "related_user": 6,
+    "message1": "Du har startet en chat med",
+    "message2": "har startet en chat med dig",
+    "created_at": "2025-01-07T15:33:17.189Z"
+  },
+  {
+    "_id": "677d4e2fead58823c8e199c8",
+    "id": "log-1736265263903-483",
+    "event_type": "chats",
+    "user_id": 4,
+    "related_user": 6,
+    "message1": "Du har startet en chat med",
+    "message2": "har startet en chat med dig",
+    "created_at": "2025-01-07T15:54:23.903Z"
+  },
+  {
+    "_id": "677e3d50f3d67e7154c2e93b",
+    "id": "log-1736326480422-794",
+    "event_type": "message",
+    "user_id": 4,
+    "related_user": "chat-1736253108327-795",
+    "message": "User 4 sent a message in chat chat-1736253108327-795: \"Hello again \"",
+    "created_at": "2025-01-08T08:54:40.422Z"
+  },
+  {
+    "_id": "677e41188e5349dd321717fb",
+    "id": "log-1736327448373-345",
+    "event_type": "message",
+    "user_id": 4,
+    "related_user": "chat-1736265263894-291",
+    "message": "User 4 sent a message in chat chat-1736265263894-291: \"Testing something :)\"",
+    "created_at": "2025-01-08T09:10:48.374Z"
+  },
+  {
+    "_id": "677e4379c370a8ee55b50282",
+    "id": "log-1736328057056-446",
+    "event_type": "message",
+    "user_id": 4,
+    "related_user": "chat-1736265263894-291",
+    "message": "Testing something new ....",
+    "created_at": "2025-01-08T09:20:57.056Z"
+  },
+  {
+    "_id": "677e43a1c370a8ee55b50284",
+    "id": "log-1736328097666-751",
+    "event_type": "chats",
+    "user_id": 4,
+    "related_user": 3,
+    "message1": "Du har startet en chat med",
+    "message2": "har startet en chat med dig",
+    "created_at": "2025-01-08T09:21:37.666Z"
+  },
+  {
+    "_id": "677e44bd79eeb5982c11be6e",
+    "id": "log-1736328381478-873",
+    "event_type": "New chat",
+    "user_id": 4,
+    "related_user": 8,
+    "message1": "Du har startet en chat med",
+    "message2": "har startet en chat med dig",
+    "created_at": "2025-01-08T09:26:21.478Z"
+  },
+  {
+    "_id": "677e44c779eeb5982c11be70",
+    "id": "log-1736328391724-174",
+    "event_type": "New message",
+    "user_id": 4,
+    "related_user": "chat-1736263997183-328",
+    "message": "Hello world :)",
+    "created_at": "2025-01-08T09:26:31.724Z"
+  },
+  {
+    "_id": "677e45857fae0ff0ae0815d9",
+    "id": "log-1736328581617-361",
+    "event_type": "Beskeder",
+    "chat_id": "chat-1736328097659-677",
+    "user_id": 4,
+    "related_user": 3,
+    "message": "Hello World :)",
+    "created_at": "2025-01-08T09:29:41.617Z"
+  },
+  {
+    "_id": "677e46087cacb0f759f91018",
+    "id": "log-1736328712633-876",
+    "event_type": "Beskeder",
+    "user_id": 4,
+    "related_user": 6,
+    "message": "What’s your favorite holiday tradition?",
+    "created_at": "2025-01-08T09:31:52.633Z"
+  },
+  {
+    "_id": "677e48422a78563c1a7a4b30",
+    "id": "log-1736329282571-470",
+    "event_type": "Beskeder",
+    "user_id": 3,
+    "related_user": 4,
+    "message": "What’s one thing on your bucket list?",
+    "created_at": "2025-01-08T09:41:22.571Z"
+  },
+  {
+    "_id": "677e5788850a9cc65bbe50df",
+    "id": "log-1736333192334-617",
+    "event_type": "Beskeder",
+    "user_id": 4,
+    "related_user": 3,
+    "message": "Er der en episode af en tv-serie, du altid vender tilbage til?",
+    "created_at": "2025-01-08T10:46:32.334Z"
+  },
+  {
+    "_id": "677e5794850a9cc65bbe50e1",
+    "id": "log-1736333204442-708",
+    "event_type": "Beskeder",
+    "user_id": 4,
+    "related_user": 3,
+    "message": "Halløjjjjj",
+    "created_at": "2025-01-08T10:46:44.442Z"
+  },
+  {
+    "_id": "677e5c5d8420e545e39f3e36",
+    "id": "log-1736334429725-872",
+    "event_type": "Chats",
+    "user_id": 4,
+    "related_user": 4,
+    "message1": "Du har startet en chat med",
+    "message2": "har startet en chat med dig",
+    "created_at": "2025-01-08T11:07:09.725Z"
+  },
+  {
+    "_id": "677e6123e4a1a9c813e48d29",
+    "id": "log-1736335651710-788",
+    "event_type": "Chats",
+    "user_id": 4,
+    "related_user": 8,
+    "message1": "Du har startet en chat med",
+    "message2": "har startet en chat med dig",
+    "created_at": "2025-01-08T11:27:31.710Z"
+  },
+  {
+    "_id": "677e6485695872512ef18047",
+    "id": "log-1736336517050-522",
+    "event_type": "Chats",
+    "user_id": 4,
+    "related_user": 7,
+    "message1": "Du har startet en chat med",
+    "message2": "har startet en chat med dig",
+    "created_at": "2025-01-08T11:41:57.050Z"
+  },
+  {
+    "_id": "677e6d2c4e64e0bb8f009b95",
+    "id": "log-1736338732500-343",
+    "event_type": "Beskeder",
+    "user_id": 4,
+    "related_user": 3,
+    "message": "Hey hey ",
+    "created_at": "2025-01-08T12:18:52.500Z"
+  },
+  {
+    "_id": "677e6f2715b91915eddcec2e",
+    "id": "log-1736339239029-672",
+    "event_type": "Chats",
+    "user_id": 4,
+    "related_user": 10,
+    "message1": "Du har startet en chat med",
+    "message2": "har startet en chat med dig",
+    "created_at": "2025-01-08T12:27:19.029Z"
+  },
+  {
+    "_id": "677e72a15f70c2047fd1b486",
+    "id": "log-1736340129365-954",
+    "event_type": "Chats",
+    "user_id": 4,
+    "related_user": 7,
+    "message1": "Du har startet en chat med",
+    "message2": "har startet en chat med dig",
+    "created_at": "2025-01-08T12:42:09.365Z"
+  },
+  {
+    "_id": "677e8cf7c34e60976f7ba1aa",
+    "id": "log-1736346871417-596",
+    "event_type": "Chats",
+    "user_id": 4,
+    "related_user": 9,
+    "message1": "Du har startet en chat med",
+    "message2": "har startet en chat med dig",
+    "created_at": "2025-01-08T14:34:31.417Z"
+  },
+  {
+    "_id": "677e8d17c34e60976f7ba1ac",
+    "id": "log-1736346903367-94",
+    "event_type": "Beskeder",
+    "user_id": 4,
+    "related_user": 8,
+    "message": "Hej igen :)",
+    "created_at": "2025-01-08T14:35:03.367Z"
+  },
+  {
+    "_id": "677e9fd2a3231a48c68079ae",
+    "id": "log-1736351698708-115",
+    "event_type": "Chats",
+    "user_id": 4,
+    "related_user": 9,
+    "message1": "Du har startet en chat med",
+    "message2": "har startet en chat med dig",
+    "created_at": "2025-01-08T15:54:58.708Z"
+  },
+  {
+    "_id": "677e9fe0a3231a48c68079b0",
+    "id": "log-1736351712674-751",
+    "event_type": "Beskeder",
+    "user_id": 4,
+    "related_user": 7,
+    "message": "Test :)",
+    "created_at": "2025-01-08T15:55:12.674Z"
+  },
+  {
+    "_id": "677eedbcebefc79c0818acc8",
+    "id": "log-1736371644270-45",
+    "event_type": "Chats",
+    "user_id": 8,
+    "related_user": 18,
+    "message1": "Du har startet en chat med",
+    "message2": "har startet en chat med dig",
+    "created_at": "2025-01-08T21:27:24.270Z"
+  },
+  {
+    "_id": "677eee37ebefc79c0818acca",
+    "id": "log-1736371767563-74",
+    "event_type": "Chats",
+    "user_id": 7,
+    "related_user": 19,
+    "message1": "Du har startet en chat med",
+    "message2": "har startet en chat med dig",
+    "created_at": "2025-01-08T21:29:27.563Z"
+  },
+  {
+    "_id": "677eee44ebefc79c0818accc",
+    "id": "log-1736371780440-520",
+    "event_type": "Beskeder",
+    "user_id": 19,
+    "related_user": 7,
+    "message": "Er der en tv-serie, du har set flere gange, fordi du elsker den?",
+    "created_at": "2025-01-08T21:29:40.440Z"
+  },
+  {
+    "_id": "677eee57ebefc79c0818acce",
+    "id": "log-1736371799340-701",
+    "event_type": "Chats",
+    "user_id": 10,
+    "related_user": 19,
+    "message1": "Du har startet en chat med",
+    "message2": "har startet en chat med dig",
+    "created_at": "2025-01-08T21:29:59.340Z"
+  },
+  {
+    "_id": "677eee6cebefc79c0818acd0",
+    "id": "log-1736371820153-37",
+    "event_type": "Chats",
+    "user_id": 6,
+    "related_user": 19,
+    "message1": "Du har startet en chat med",
+    "message2": "har startet en chat med dig",
+    "created_at": "2025-01-08T21:30:20.153Z"
+  },
+  {
+    "_id": "677eee90ebefc79c0818acd2",
+    "id": "log-1736371856293-42",
+    "event_type": "Chats",
+    "user_id": 3,
+    "related_user": 19,
+    "message1": "Du har startet en chat med",
+    "message2": "har startet en chat med dig",
+    "created_at": "2025-01-08T21:30:56.293Z"
+  },
+  {
+    "_id": "677eeeb7ebefc79c0818acd4",
+    "id": "log-1736371895823-50",
+    "event_type": "Chats",
+    "user_id": 18,
+    "related_user": 19,
+    "message1": "Du har startet en chat med",
+    "message2": "har startet en chat med dig",
+    "created_at": "2025-01-08T21:31:35.823Z"
+  },
+  {
+    "_id": "677eeecaebefc79c0818acd6",
+    "id": "log-1736371914654-438",
+    "event_type": "Beskeder",
+    "user_id": 19,
+    "related_user": 18,
+    "message": "Hvilket medieindhold får dig til at reflektere mest?",
+    "created_at": "2025-01-08T21:31:54.654Z"
+  }
+]
