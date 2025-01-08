@@ -12,9 +12,9 @@ async function displayMatchingUsers() {
     try {
         // Fetch user interests, users, and chats from the backend
         const [userInterests, users, chats] = await Promise.all([
-            fetch('http://toriando19.github.io/userinterest').then(res => res.json()),
-            fetch('http://toriando19.github.io/users').then(res => res.json()),
-            fetch('http://toriando19.github.io/chats').then(res => res.json())
+            fetch('https://toriando19.github.io/userinterest').then(res => res.json()),
+            fetch('https://toriando19.github.io/users').then(res => res.json()),
+            fetch('https://toriando19.github.io/chats').then(res => res.json())
         ]);
 
         const matchingUsers = {};
