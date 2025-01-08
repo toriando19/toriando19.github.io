@@ -326,26 +326,31 @@ async function hasMessages(chat_id) {
 
 async function fetchAndDisplayAdminChats() {
   try {
-    // Retrieve session data
     const sessionData = JSON.parse(sessionStorage.getItem("sessionData"));
     if (!sessionData || !sessionData.user_id) throw new Error('User ID not found in session data');
     
     const user_id = sessionData.user_id;
     console.log("Fetching admin chats for User ID:", user_id);
 
-    // Retrieve chats from sessionStorage
-    const chats = sessionData.chats || []; // Ensure that the chats are fetched from sessionData
+    // Fetch chat data for the user from chats.json
+    const chatResponse = await fetch('https://toriando19.github.io/database/json-data/chats.json');
+    if (!chatResponse.ok) throw new Error('Failed to fetch chats');
+
+    const chats = await chatResponse.json();
     const filteredChats = chats.filter(chat => chat.chat_user_1 === user_id || chat.chat_user_2 === user_id);
 
-    // Retrieve users from sessionStorage
-    const users = sessionData.users || []; // Ensure users are available in sessionData
+    // Fetch user data from users.json
+    const userResponse = await fetch('https://toriando19.github.io/database/json-data/users.json');
+    if (!userResponse.ok) throw new Error('Failed to fetch users');
+
+    const users = await userResponse.json();
     const resultContainer = document.getElementById('adminChats');
     resultContainer.innerHTML = ''; // Clear previous results
 
     // Sort filteredChats to show the chat with the newest message first
     filteredChats.sort((a, b) => {
-      const timeA = new Date(a.created_at); // Use created_at to sort by most recent chat creation
-      const timeB = new Date(b.created_at);
+      const timeA = new Date(a.last_message_time);
+      const timeB = new Date(b.last_message_time);
       return timeB - timeA; // Sort in descending order (newest first)
     });
 
@@ -451,16 +456,14 @@ async function fetchAndDisplayAdminChats() {
   }
 }
 
-// Modify deleteChat function to remove chat from the local 'chats.json' in sessionStorage
+// Modify deleteChat function to remove chat from the local 'chats.json'
 const deleteChat = async (chatId, chats) => {
   try {
     // Remove chat from the array
     const updatedChats = chats.filter(chat => chat.id !== chatId);
 
-    // Update the sessionStorage with the updated chats
-    const sessionData = JSON.parse(sessionStorage.getItem('sessionData'));
-    sessionData.chats = updatedChats;
-    sessionStorage.setItem('sessionData', JSON.stringify(sessionData));
+    // Update the local storage or session to simulate saving the updated chats
+    sessionStorage.setItem('chats', JSON.stringify(updatedChats));
 
     console.log('Chat deleted successfully');
   } catch (error) {
@@ -470,7 +473,6 @@ const deleteChat = async (chatId, chats) => {
 
 // Call to initialize chats for the admin on page load
 fetchAndDisplayAdminChats();
-
 
 
 
