@@ -55,7 +55,7 @@
 
 .overlay-header {
     background-color: var(--colorBlue);
-    padding: 2rem 0rem 0.5rem 0.5rem;
+    padding: 1.5rem 1rem 0.5rem 0.5rem;
     display: flex;
     /* gap: 0.5rem; */
     flex-direction: row;
