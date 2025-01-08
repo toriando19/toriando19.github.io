@@ -54,12 +54,15 @@ document.querySelector('#loginForm').addEventListener('submit', async function (
         };
         sessionStorage.setItem('sessionData', JSON.stringify(sessionData));
 
+        // Fetch chats from local sessionStorage or initial data
+        const chats = await fetchChats(user.user_id);
+
         // Clear input fields
         document.querySelector('#email').value = '';
         document.querySelector('#password').value = '';
 
         // Update the UI
-        updateApplicationUI(user, userInterest || []);
+        updateApplicationUI(user, userInterest || [], chats);
 
     } catch (error) {
         console.error('Error during login:', error);
@@ -68,13 +71,14 @@ document.querySelector('#loginForm').addEventListener('submit', async function (
 });
 
 // Function to update the application UI after login
-function updateApplicationUI(user, userInterest) {
+function updateApplicationUI(user, userInterest, chats) {
     if (window.innerWidth <= 390) {
         document.querySelector('.application').style.display = 'block';
         document.querySelector('.login').style.display = 'none';
         document.querySelector('#welcomeUser').innerHTML = `Welcome, ${user.user_name}!`;
 
         updateUserInterests(userInterest);
+        displayChats(chats);
     } else {
         document.querySelector('.application').style.display = 'none';
         document.querySelector('.login').style.display = 'block';
@@ -87,6 +91,33 @@ function updateUserInterests(userInterest) {
     checkboxes.forEach(checkbox => {
         const interestId = checkbox.getAttribute('data-interest-id');
         checkbox.checked = userInterest.some(ui => ui.user_interest_interest == interestId);
+    });
+}
+
+// Function to display chats
+function displayChats(chats) {
+    const chatContainer = document.getElementById('chat-container');
+    chatContainer.innerHTML = '';
+
+    chats.forEach(chat => {
+        const chatDiv = document.createElement('div');
+        chatDiv.classList.add('chat-entry');
+        
+        // Chat information (You can customize as per requirements)
+        const chatTitle = document.createElement('h4');
+        chatTitle.innerText = `Chat with ${chat.chat_user_1 === sessionData.user_id ? chat.chat_user_2 : chat.chat_user_1}`;
+        chatDiv.appendChild(chatTitle);
+
+        // Delete Button
+        const deleteBtn = document.createElement('button');
+        deleteBtn.textContent = 'Delete Chat';
+        deleteBtn.addEventListener('click', () => {
+            deleteChat(chat.id);
+            chatDiv.remove();
+        });
+        chatDiv.appendChild(deleteBtn);
+
+        chatContainer.appendChild(chatDiv);
     });
 }
 
@@ -104,6 +135,36 @@ document.querySelector('#logoutBtn').addEventListener('click', function () {
         document.querySelector('#password').value = '';
     }
 });
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Fetch Chats  //////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+async function fetchChats(user_id) {
+    // Simulate fetching chats (from sessionStorage or other source)
+    const chatsJson = sessionStorage.getItem('chats') || '[]';
+    const chats = JSON.parse(chatsJson);
+
+    // Filter chats based on user ID
+    return chats.filter(chat => chat.chat_user_1 === user_id || chat.chat_user_2 === user_id);
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Delete Chat  //////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function deleteChat(chatId) {
+    // Get current chats from sessionStorage
+    const chats = JSON.parse(sessionStorage.getItem('chats') || '[]');
+    
+    // Remove the chat with the provided chatId
+    const updatedChats = chats.filter(chat => chat.id !== chatId);
+    
+    // Save the updated chats to sessionStorage
+    sessionStorage.setItem('chats', JSON.stringify(updatedChats));
+
+    console.log(`Chat with ID ${chatId} deleted successfully`);
+}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Session Management and Mobile-Only Enforcement ////////////////////////////////////////////////////////////////
