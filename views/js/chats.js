@@ -183,12 +183,6 @@ async function sendMessageToAPI(chat_id, sender_id, recipient_id, message) {
   }
 }
 
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// --- ///////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
 // Utility function to safely parse JSON responses
 async function parseJSON(response) {
   const text = await response.text();
@@ -197,6 +191,7 @@ async function parseJSON(response) {
 
 async function fetchChatDocuments() {
   try {
+    // Assuming user_id is still stored in sessionStorage
     const sessionData = JSON.parse(sessionStorage.getItem("sessionData"));
     if (!sessionData || !sessionData.user_id) throw new Error('User ID not found in session data');
     
@@ -204,23 +199,17 @@ async function fetchChatDocuments() {
     console.log("Fetching chats for User ID:", user_id);
 
     // Fetch chat data
-    const chatUrl = 'https://toriando19.github.io/database/json-data/chats.json' || 'http://localhost:3000/chats';
+    const chatUrl = 'https://toriando19.github.io/database/json-data/chats.json';
     const chatResponse = await fetch(chatUrl);
     if (!chatResponse.ok) throw new Error('Failed to fetch chats');
     
     const chats = await parseJSON(chatResponse);
     if (!chats) throw new Error('No chat data available');
 
+    // Filter chats to show only those that involve the current user
     const filteredChats = chats.filter(chat => chat.chat_user_1 === user_id || chat.chat_user_2 === user_id);
 
-    // Fetch user data
-    const userUrl = 'https://toriando19.github.io/database/json-data/users.json' || 'http://localhost:3000/users';
-    const userResponse = await fetch(userUrl);
-    if (!userResponse.ok) throw new Error('Failed to fetch users');
-
-    const users = await parseJSON(userResponse);
-    if (!users) throw new Error('No user data available');
-
+    // Display the chats
     const resultContainer = document.getElementById('chat-result');
     resultContainer.innerHTML = ''; // Clear previous results
 
@@ -231,96 +220,71 @@ async function fetchChatDocuments() {
       return timeB - timeA; // Sort in descending order (newest first)
     });
 
-    // Fetch messages to check if there are any messages in the chats
-    const messagesResponse = await fetch('https://toriando19.github.io/database/json-data/messages.json');
-    if (!messagesResponse.ok) throw new Error('Failed to fetch messages');
-    
-    const messages = await messagesResponse.json();
-    
-    // Display the chats and their associated users, but only if they have messages
+    // Display the chats
     filteredChats.forEach(chat => {
-      // Check if there are any messages for this chat
-      const chatMessages = messages.filter(message => message.chat_id === chat.id);
-      if (chatMessages.length > 0) {
-        const matchedUser = users.find(user => user.user_id === (chat.chat_user_1 === user_id ? chat.chat_user_2 : chat.chat_user_1));
-        if (matchedUser) {
-          const displayName = matchedUser.user_nickname || matchedUser.user_username;
+      const displayName = (chat.chat_user_1 === user_id) ? chat.chat_user_2_name : chat.chat_user_1_name;
 
-          // Create a container div for the chat entry
-          const chatContainer = document.createElement('div');
-          chatContainer.classList.add('chat-entry');
-      
-          // Create an img element for the user's profile picture
-          const profileImage = document.createElement('img');
-          profileImage.src = matchedUser.profile_picture || '../views/img/profile.jpg'; // Fallback to a default image if none provided
-          profileImage.alt = `${displayName}'s profile picture`;
-          profileImage.classList.add('profile-image');
-      
-          // Create a div to group text elements (name and last message)
-          const textBlock = document.createElement('div');
-          textBlock.classList.add('text-block');
-      
-          // Create the main p element for displaying the user's name
-          const nameDisplayer = document.createElement('p');
-          nameDisplayer.innerHTML = `${displayName} <img src="views/img/icons/rightarrow-black.png" alt="arrow">`;
-          nameDisplayer.classList.add('name-displayer');
-          nameDisplayer.addEventListener('click', () => {
-            // When a chat is clicked, fetch and display the messages for the selected chat
-            showMessageInput(chat.id, matchedUser.user_id, displayName);
-            fetchAndDisplayMessages(chat.id);  // Fetch and display messages for this chat
-          });
+      // Create a container div for the chat entry
+      const chatContainer = document.createElement('div');
+      chatContainer.classList.add('chat-entry');
 
+      // Create a div to group text elements (name and last message)
+      const textBlock = document.createElement('div');
+      textBlock.classList.add('text-block');
 
-      
-          function formatTimeAgo(createdAt) {
-            const now = new Date();
-            const createdAtDate = new Date(createdAt);
-            const timeDifference = now - createdAtDate; // Difference in milliseconds
-        
-            const minutes = Math.floor(timeDifference / 60000);
-            const hours = Math.floor(timeDifference / 3600000);
-            const days = Math.floor(timeDifference / 86400000);
-        
-            // Check if the time difference is less than a minute
-            if (timeDifference < 60000) {
-                return "Lige nu"; // "Just now"
-            } else if (minutes < 60) {
-                return `${minutes} min.`; // X minutes ago
-            } else if (hours < 24) {
-                return `${hours} t. `; // X hours ago
-            } else if (days < 7) {
-                return `${days} dag(e)`; // X days ago
-            } else {
-                return createdAtDate.toLocaleDateString(); // Show exact date if more than 7 days
-            }
-        }
-        
-        // Create the element for additional info
-        const additionalInfo = document.createElement('p');
-        
-        // Get the latest message and its timestamp
-        const latestMessage = chatMessages.length > 0 ? chatMessages[chatMessages.length - 1].message : 'No messages yet';
-        const lastMessageTime = chatMessages.length > 0 ? formatTimeAgo(chatMessages[chatMessages.length - 1].sent_at) : 'No time available';
-        
-        // Update the additional info to show the latest message and the formatted time
-        additionalInfo.textContent = `${latestMessage} · ${lastMessageTime}`;
-        additionalInfo.classList.add('message-preview');
-        
+      // Create the main p element for displaying the user's name
+      const nameDisplayer = document.createElement('p');
+      nameDisplayer.innerHTML = `${displayName} <img src="views/img/icons/rightarrow-black.png" alt="arrow">`;
+      nameDisplayer.classList.add('name-displayer');
+      nameDisplayer.addEventListener('click', () => {
+        // When a chat is clicked, fetch and display the messages for the selected chat
+        showMessageInput(chat.id, (chat.chat_user_1 === user_id ? chat.chat_user_2 : chat.chat_user_1), displayName);
+        fetchAndDisplayMessages(chat.id);  // Fetch and display messages for this chat
+      });
 
-
-      
-          // Append name and message preview to the text block
-          textBlock.appendChild(nameDisplayer);
-          textBlock.appendChild(additionalInfo);
-      
-          // Append the image and text block to the chat container
-          chatContainer.appendChild(profileImage);
-          chatContainer.appendChild(textBlock);
-      
-          // Append the chat container to the result container
-          resultContainer.appendChild(chatContainer);
+      function formatTimeAgo(createdAt) {
+        const now = new Date();
+        const createdAtDate = new Date(createdAt);
+        const timeDifference = now - createdAtDate; // Difference in milliseconds
+    
+        const minutes = Math.floor(timeDifference / 60000);
+        const hours = Math.floor(timeDifference / 3600000);
+        const days = Math.floor(timeDifference / 86400000);
+    
+        // Check if the time difference is less than a minute
+        if (timeDifference < 60000) {
+            return "Lige nu"; // "Just now"
+        } else if (minutes < 60) {
+            return `${minutes} min.`; // X minutes ago
+        } else if (hours < 24) {
+            return `${hours} t. `; // X hours ago
+        } else if (days < 7) {
+            return `${days} dag(e)`; // X days ago
+        } else {
+            return createdAtDate.toLocaleDateString(); // Show exact date if more than 7 days
         }
       }
+
+      // Create the element for additional info
+      const additionalInfo = document.createElement('p');
+      
+      // Get the latest message and its timestamp
+      const latestMessage = chat.last_message || 'No messages yet';
+      const lastMessageTime = chat.last_message_time ? formatTimeAgo(chat.last_message_time) : 'No time available';
+      
+      // Update the additional info to show the latest message and the formatted time
+      additionalInfo.textContent = `${latestMessage} · ${lastMessageTime}`;
+      additionalInfo.classList.add('message-preview');
+
+      // Append name and message preview to the text block
+      textBlock.appendChild(nameDisplayer);
+      textBlock.appendChild(additionalInfo);
+
+      // Append the text block to the chat container
+      chatContainer.appendChild(textBlock);
+
+      // Append the chat container to the result container
+      resultContainer.appendChild(chatContainer);
     });
 
   } catch (error) {
@@ -328,9 +292,9 @@ async function fetchChatDocuments() {
   }
 }
 
-
 // Call to initialize chats when the page loads
 fetchChatDocuments();
+
 
 
 // Add an onclick function to the close button to hide the profile section and overlay
@@ -371,24 +335,19 @@ async function fetchAndDisplayAdminChats() {
     const user_id = sessionData.user_id;
     console.log("Fetching admin chats for User ID:", user_id);
 
-    // Fetch chat data for the user
+    // Fetch chat data for the user from chats.json
     const chatResponse = await fetch('https://toriando19.github.io/database/json-data/chats.json');
     if (!chatResponse.ok) throw new Error('Failed to fetch chats');
 
     const chats = await chatResponse.json();
     const filteredChats = chats.filter(chat => chat.chat_user_1 === user_id || chat.chat_user_2 === user_id);
 
-    // Fetch user data
-    const userResponse = await fetch('https://toriando19.github.io/database/json-data/users.json');
-    if (!userResponse.ok) throw new Error('Failed to fetch users');
-
-    const users = await userResponse.json();
     const resultContainer = document.getElementById('adminChats');
     resultContainer.innerHTML = ''; // Clear previous results
 
     // Sort filteredChats to show the chat with the newest message first
     filteredChats.sort((a, b) => {
-      const timeA = new Date(a.last_message_time); 
+      const timeA = new Date(a.last_message_time);
       const timeB = new Date(b.last_message_time);
       return timeB - timeA; // Sort in descending order (newest first)
     });
@@ -405,7 +364,7 @@ async function fetchAndDisplayAdminChats() {
 
         // Create an img element for the user's profile picture
         const profileImage = document.createElement('img');
-        profileImage.src = matchedUser.profile_picture || '../views/img/profile.jpg'; 
+        profileImage.src = matchedUser.profile_picture || '../views/img/profile.jpg';
         profileImage.alt = `${matchDisplayName}'s profile picture`;
         profileImage.classList.add('profile-image');
 
@@ -471,7 +430,7 @@ async function fetchAndDisplayAdminChats() {
         deleteButton.addEventListener('click', async () => {
             const confirmation = confirm(`Slet chat med ${matchedUser.user_username}`);
             if (confirmation) {
-                await deleteChat(chat.id);
+                await deleteChat(chat.id, filteredChats);
                 matchContainer.remove();  // Remove the chat from the UI after deletion
             }
         });
@@ -495,27 +454,24 @@ async function fetchAndDisplayAdminChats() {
   }
 }
 
-
-const deleteChat = async (chatId) => {
+// Modify deleteChat function to remove chat from the local 'chats.json'
+const deleteChat = async (chatId, chats) => {
   try {
-    const response = await fetch(`http://localhost:3000/delete-chat/${chatId}`, {
-      method: 'DELETE',
-    });
+    // Remove chat from the array
+    const updatedChats = chats.filter(chat => chat.id !== chatId);
 
-    if (!response.ok) {
-      throw new Error('Failed to delete chat');
-    }
+    // Update the local storage or session to simulate saving the updated chats
+    sessionStorage.setItem('chats', JSON.stringify(updatedChats));
 
-    const result = await response.json();
-    console.log(result);  // You can log or handle the result here
+    console.log('Chat deleted successfully');
   } catch (error) {
     console.error('Error deleting chat:', error);
   }
 };
 
-
 // Call to initialize chats for the admin on page load
 fetchAndDisplayAdminChats();
+
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
