@@ -189,6 +189,12 @@ async function sendMessageToAPI(chat_id, sender_id, recipient_id, message) {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+// Utility function to safely parse JSON responses
+async function parseJSON(response) {
+  const text = await response.text();
+  return text ? JSON.parse(text) : null;
+}
+
 async function fetchChatDocuments() {
   try {
     const sessionData = JSON.parse(sessionStorage.getItem("sessionData"));
@@ -197,12 +203,14 @@ async function fetchChatDocuments() {
     const user_id = sessionData.user_id;
     console.log("Fetching chats for User ID:", user_id);
 
-    // Fetch chat data for the user
+    // Fetch chat data
     const chatUrl = 'https://toriando19.github.io/database/json-data/chats.json' || 'http://localhost:3000/chats';
     const chatResponse = await fetch(chatUrl);
     if (!chatResponse.ok) throw new Error('Failed to fetch chats');
+    
+    const chats = await parseJSON(chatResponse);
+    if (!chats) throw new Error('No chat data available');
 
-    const chats = await chatResponse.json();
     const filteredChats = chats.filter(chat => chat.chat_user_1 === user_id || chat.chat_user_2 === user_id);
 
     // Fetch user data
@@ -210,7 +218,9 @@ async function fetchChatDocuments() {
     const userResponse = await fetch(userUrl);
     if (!userResponse.ok) throw new Error('Failed to fetch users');
 
-    const users = await userResponse.json();
+    const users = await parseJSON(userResponse);
+    if (!users) throw new Error('No user data available');
+
     const resultContainer = document.getElementById('chat-result');
     resultContainer.innerHTML = ''; // Clear previous results
 

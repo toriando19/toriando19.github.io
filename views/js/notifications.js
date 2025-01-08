@@ -1,4 +1,5 @@
 // Fetch sessionData from sessionStorage
+// Fetch sessionData from sessionStorage
 const sessionData = JSON.parse(sessionStorage.getItem("sessionData"));
 
 async function fetchNotifications() {
@@ -14,11 +15,14 @@ async function fetchNotifications() {
             throw new Error(`HTTP error! Status: ${notificationsResponse.status}, ${messagesResponse.status}, or ${usersResponse.status}`);
         }
 
-        const [notificationsData, messagesData, usersData] = await Promise.all([
-            notificationsResponse.json(),
-            messagesResponse.json(),
-            usersResponse.json()
-        ]);
+        // Safely parse JSON responses
+        const notificationsData = await safeJsonParse(notificationsResponse);
+        const messagesData = await safeJsonParse(messagesResponse);
+        const usersData = await safeJsonParse(usersResponse);
+
+        if (!notificationsData || !messagesData || !usersData) {
+            throw new Error('One or more JSON responses could not be parsed.');
+        }
 
         // Create a user mapping (user_id -> nickname or username)
         const userMap = {};
@@ -120,8 +124,16 @@ async function fetchNotifications() {
     }
 }
 
-
-
+// Safe JSON parsing function
+async function safeJsonParse(response) {
+    try {
+        const text = await response.text();
+        return text ? JSON.parse(text) : null;
+    } catch (error) {
+        console.error('JSON parsing error:', error);
+        return null;
+    }
+}
 
 
 // Function to format time ago

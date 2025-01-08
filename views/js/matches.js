@@ -11,11 +11,33 @@ async function displayMatchingUsers() {
 
     try {
         // Fetch user interests, users, and chats from the backend
+        async function fetchJson(url) {
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    console.error(`Failed to fetch ${url}: ${response.status} ${response.statusText}`);
+                    return null;
+                }
+                const text = await response.text();
+                return text ? JSON.parse(text) : null;
+            } catch (error) {
+                console.error(`Error parsing JSON from ${url}:`, error);
+                return null;
+            }
+        }
+        
         const [userInterests, users, chats] = await Promise.all([
-            fetch('https://toriando19.github.io/database/json-data/userinterest.json').then(res => res.json()),
-            fetch('https://toriando19.github.io/database/json-data/users.json').then(res => res.json()),
-            fetch('https://toriando19.github.io/database/json-data/chats.json').then(res => res.json())
+            fetchJson('https://toriando19.github.io/database/json-data/userinterest.json'),
+            fetchJson('https://toriando19.github.io/database/json-data/users.json'),
+            fetchJson('https://toriando19.github.io/database/json-data/chats.json')
         ]);
+        
+        if (!userInterests || !users || !chats) {
+            console.error('Failed to fetch one or more required data files.');
+            alert('Could not load data. Please try again later.');
+            return;
+        }
+        
 
         const matchingUsers = {};
 
