@@ -18,26 +18,25 @@ async function displayMatchingUsers() {
                     console.error(`Failed to fetch ${url}: ${response.status} ${response.statusText}`);
                     return null;
                 }
-                const text = await response.text();
-                return text ? JSON.parse(text) : null;
+                const data = await response.json();
+                return data; // Return JSON directly
             } catch (error) {
                 console.error(`Error parsing JSON from ${url}:`, error);
                 return null;
             }
         }
-        
+
         const [userInterests, users, chats] = await Promise.all([
             fetchJson('https://toriando19.github.io/database/json-data/userinterest.json'),
             fetchJson('https://toriando19.github.io/database/json-data/users.json'),
             fetchJson('https://toriando19.github.io/database/json-data/chats.json')
         ]);
-        
+
         if (!userInterests || !users || !chats) {
             console.error('Failed to fetch one or more required data files.');
             alert('Could not load data. Please try again later.');
             return;
         }
-        
 
         const matchingUsers = {};
 
@@ -157,8 +156,6 @@ async function displayMatchingUsers() {
 
             matchContainer.appendChild(interestsList);
 
-
-
             const viewButton = document.createElement('button');
             viewButton.classList.add('match-view');
             viewButton.textContent = 'Se match';
@@ -188,6 +185,7 @@ async function displayMatchingUsers() {
         alert('An error occurred while fetching matching users.');
     }
 }
+
 
 
 
