@@ -212,58 +212,68 @@ window.onload = displayMatchingUsers;
 
 async function createChat(chat_user_1_id, chat_user_2_id) {
     try {
-        // Send GET request to the endpoint with query parameters
-        const response = await fetch(`https://toriando19.github.io/database/mongo/api-mongo.mjs/new-chat?chat_user_1=${chat_user_1_id}&chat_user_2=${chat_user_2_id}`);
-
-        const result = await response.json();
-        console.log('Response from createChat API:', result);
-
-        // Check if chat already exists
-        if (result.message === 'Chat already exists') {
-            alert('Chat already exists with this user!');
-        } else if (response.ok) {
-            // If chat creation is successful
-            alert('Chat created successfully!');
-
-            // Fetch the current chats from chats.json
-            const chats = await fetchJson('https://toriando19.github.io/database/json-data/chats.json');
-            if (!chats) {
-                console.error('Failed to fetch chats data');
-                return;
-            }
-
-            // Add the new chat to the chats list
-            const newChat = {
-                chat_user_1: chat_user_1_id,
-                chat_user_2: chat_user_2_id,
-                chat_timestamp: new Date().toISOString()
-            };
-
-            chats.push(newChat); // Add the new chat to the array
-
-            // Update the chats.json by sending a POST request or similar (depending on your server setup)
-            await updateChatsJson(chats);
-
-            // Reload the content by calling displayMatchingUsers
-            displayMatchingUsers();
-
-            // Hide the specific match overlay
-            const matchOverlay = document.getElementById('specificMatchOverlay');
-            if (matchOverlay) {
-                matchOverlay.style.display = 'none';
-            }
-
-            // Set the active menu to the frontpage
-            setActiveMenu("frontpageMenu");
-        } else {
-            // Handle any other errors
-            alert(`Error creating chat: ${result.message || 'Unknown error'}`);
+        // Fetch session data from sessionStorage
+        const sessionData = JSON.parse(sessionStorage.getItem('sessionData'));
+        if (!sessionData || !sessionData.user_id) {
+            console.error('No session data or user ID found in sessionStorage.');
+            return;
         }
+
+        const currentUserId = sessionData.user_id;
+        const chats = sessionData.chats || []; // Get chats from sessionData, default to an empty array if none exist
+
+        // Check if chat already exists between the two users
+        const chatExists = chats.some(chat => 
+            (chat.chat_user_1 === currentUserId && chat.chat_user_2 === chat_user_2_id) || 
+            (chat.chat_user_1 === chat_user_2_id && chat.chat_user_2 === currentUserId)
+        );
+
+        if (chatExists) {
+            alert('Chat already exists with this user!');
+            return;
+        }
+
+        // Create a unique chat ID
+        const newChatId = `chat-${Date.now()}-${currentUserId < chat_user_2_id ? currentUserId : chat_user_2_id}`;
+
+        // If chat doesn't exist, create a new chat object
+        const newChat = {
+            _id: newChatId,  // Unique identifier for the chat
+            id: newChatId,   // Same ID for consistency (for frontend usage)
+            chat_user_1: currentUserId,
+            chat_user_2: chat_user_2_id,
+            created_at: new Date().toISOString()
+        };
+
+        // Add the new chat to the chats array
+        chats.push(newChat);
+
+        // Update session data with the new chat
+        sessionData.chats = chats;
+        sessionStorage.setItem('sessionData', JSON.stringify(sessionData));
+
+        // Alert the user that the chat has been created successfully
+        alert('Chat created successfully!');
+
+        // Reload the matching users to reflect the new chat
+        displayMatchingUsers();
+
+        // Hide the specific match overlay
+        const matchOverlay = document.getElementById('specificMatchOverlay');
+        if (matchOverlay) {
+            matchOverlay.style.display = 'none';
+        }
+
+        // Set the active menu to the frontpage
+        setActiveMenu("frontpageMenu");
+
     } catch (error) {
         console.error('Error creating chat:', error);
         alert('Error creating chat');
     }
 }
+
+
 
 // Function to update the chats.json (example using PUT or POST request)
 async function updateChatsJson(updatedChats) {
