@@ -227,6 +227,25 @@ async function createChat(chat_user_1_id, chat_user_2_id) {
             // If chat creation is successful
             alert('Chat created successfully!');
 
+            // Fetch the current chats from chats.json
+            const chats = await fetchJson('https://toriando19.github.io/database/json-data/chats.json');
+            if (!chats) {
+                console.error('Failed to fetch chats data');
+                return;
+            }
+
+            // Add the new chat to the chats list
+            const newChat = {
+                chat_user_1: chat_user_1_id,
+                chat_user_2: chat_user_2_id,
+                chat_timestamp: new Date().toISOString()
+            };
+
+            chats.push(newChat); // Add the new chat to the array
+
+            // Update the chats.json by sending a POST request or similar (depending on your server setup)
+            await updateChatsJson(chats);
+
             // Reload the content by calling displayMatchingUsers
             displayMatchingUsers();
 
@@ -247,6 +266,45 @@ async function createChat(chat_user_1_id, chat_user_2_id) {
         alert('Error creating chat');
     }
 }
+
+// Function to update the chats.json (example using PUT or POST request)
+async function updateChatsJson(updatedChats) {
+    try {
+        // Assuming your server has an endpoint to accept the new data (using PUT or POST)
+        const response = await fetch('https://toriando19.github.io/database/json-data/chats.json', {
+            method: 'PUT', // or 'POST' depending on your API design
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(updatedChats)
+        });
+
+        if (!response.ok) {
+            console.error('Failed to update chats.json:', response.statusText);
+            alert('Failed to update chats. Please try again later.');
+        }
+    } catch (error) {
+        console.error('Error updating chats.json:', error);
+        alert('Error updating chats.');
+    }
+}
+
+// Helper function to fetch JSON data from a URL (reusable)
+async function fetchJson(url) {
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            console.error(`Failed to fetch ${url}: ${response.status} ${response.statusText}`);
+            return null;
+        }
+        const text = await response.text();
+        return text ? JSON.parse(text) : null;
+    } catch (error) {
+        console.error(`Error parsing JSON from ${url}:`, error);
+        return null;
+    }
+}
+
 
 
 
