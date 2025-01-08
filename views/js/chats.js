@@ -342,6 +342,11 @@ async function fetchAndDisplayAdminChats() {
     const chats = await chatResponse.json();
     const filteredChats = chats.filter(chat => chat.chat_user_1 === user_id || chat.chat_user_2 === user_id);
 
+    // Fetch user data from users.json
+    const userResponse = await fetch('https://toriando19.github.io/database/json-data/users.json');
+    if (!userResponse.ok) throw new Error('Failed to fetch users');
+
+    const users = await userResponse.json();
     const resultContainer = document.getElementById('adminChats');
     resultContainer.innerHTML = ''; // Clear previous results
 
@@ -471,6 +476,7 @@ const deleteChat = async (chatId, chats) => {
 
 // Call to initialize chats for the admin on page load
 fetchAndDisplayAdminChats();
+
 
 
 
