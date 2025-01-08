@@ -1,7 +1,8 @@
 window.addEventListener('load', async function () {
     try {
         // Fetch the available interests from the server
-        const interestResponse = await fetch('http://localhost:3000/interests');
+        const interestUrl = 'https://toriando19.github.io/database/json-data/interests.json' || 'http://localhost:3000/interests';
+        const interestResponse = await fetch(interestUrl);
         if (!interestResponse.ok) {
             throw new Error('Failed to fetch interests');
         }
@@ -132,7 +133,7 @@ window.addEventListener('load', async function () {
 
         // Function to add user interest by making a request
         async function addUserInterest(userId, interestId) {
-            const response = await fetch(`http://localhost:3000/add-userinterest?user_interest_user=${userId}&user_interest_interest=${interestId}`, {
+            const response = await fetch(`${interestUrl}?user_interest_user=${userId}&user_interest_interest=${interestId}`, {
                 method: 'GET'
             });
             if (!response.ok) {
@@ -142,7 +143,7 @@ window.addEventListener('load', async function () {
 
         // Function to remove user interest by making a request
         async function removeUserInterest(userId, interestId) {
-            const response = await fetch(`http://localhost:3000/remove-userinterest?user_interest_user=${userId}&user_interest_interest=${interestId}`, {
+            const response = await fetch(`${interestUrl}?user_interest_user=${userId}&user_interest_interest=${interestId}`, {
                 method: 'GET'
             });
             if (!response.ok) {

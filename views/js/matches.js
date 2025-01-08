@@ -242,7 +242,8 @@ async function viewUserInfo(username, matchPercentage, matchingInterests) {
 
         const currentUserId = sessionData.user_id;
 
-        const usersResponse = await fetch('http://localhost:3000/users');
+        const userUrl = 'https://toriando19.github.io/database/json-data/users.json' || 'http://localhost:3000/users';
+        const usersResponse = await fetch(userUrl);
         const users = await usersResponse.json();
 
         const user = users.find(user => user.user_username === username);
@@ -254,7 +255,8 @@ async function viewUserInfo(username, matchPercentage, matchingInterests) {
 
         const userId = user.user_id;
 
-        const userInterestResponse = await fetch('http://localhost:3000/userinterest');
+        const userInterestUrl = 'https://toriando19.github.io/database/json-data/userinterest.json' || 'http://localhost:3000/userinterest';
+        const userInterestResponse = await fetch(userInterestUrl);
         const userInterests = await userInterestResponse.json();
 
         // Mapping of interestId to icon and title

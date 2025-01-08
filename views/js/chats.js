@@ -5,7 +5,8 @@
 async function fetchAndDisplayMessages(chat_id, user_id) {
   try {
     // Fetch all messages for the chat_id from the /messages endpoint
-    const messagesResponse = await fetch('http://localhost:3000/messages');
+    const messageUrl = 'https://toriando19.github.io/database/json-data/messages.json' || 'http://localhost:3000/messages';
+    const messagesResponse = await fetch(messageUrl);
     if (!messagesResponse.ok) throw new Error('Failed to fetch messages');
 
     const messages = await messagesResponse.json();
@@ -197,14 +198,16 @@ async function fetchChatDocuments() {
     console.log("Fetching chats for User ID:", user_id);
 
     // Fetch chat data for the user
-    const chatResponse = await fetch('http://localhost:3000/chats');
+    const chatUrl = 'https://toriando19.github.io/database/json-data/chats.json' || 'http://localhost:3000/chats';
+    const chatResponse = await fetch(chatUrl);
     if (!chatResponse.ok) throw new Error('Failed to fetch chats');
 
     const chats = await chatResponse.json();
     const filteredChats = chats.filter(chat => chat.chat_user_1 === user_id || chat.chat_user_2 === user_id);
 
     // Fetch user data
-    const userResponse = await fetch('http://localhost:3000/users');
+    const userUrl = 'https://toriando19.github.io/database/json-data/users.json' || 'http://localhost:3000/users';
+    const userResponse = await fetch(userUrl);
     if (!userResponse.ok) throw new Error('Failed to fetch users');
 
     const users = await userResponse.json();
