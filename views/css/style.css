@@ -314,8 +314,15 @@
 /* /////////////////////////////////////////////////////////////////////////// */
 /* USER PROFILE */
 
+/* /////////////////////////////////////////////////////////////////////////// */
+/* USER PROFILE */
+
 #profileOverlay {
     display: none;
+    position: relative;  /* Remove 'fixed' to make it scrollable */
+    max-height: 80vh;    /* Adjust based on your desired maximum height */
+    overflow-y: auto;    /* Enable vertical scrolling */
+    padding: 1rem;       /* Optional: add padding if you need space around the content */
 }
 
 #profileOverlay h1 {
@@ -344,6 +351,7 @@
     margin-left: 2rem;
     color: var(--colorDarkText);
 }
+
 
 /* /////////////////////////////////////////////////////////////////////////// */
 /* MY INTERESTS & TOGGLE */
