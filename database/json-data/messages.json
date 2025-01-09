@@ -222,5 +222,41 @@
     "recipient_id": 18,
     "message": "Hvilket medieindhold får dig til at reflektere mest?",
     "sent_at": "2025-01-08T21:31:54.649Z"
+  },
+  {
+    "_id": "677fba6af989c9ccf040d0b3",
+    "id": "message-1736424042591-401",
+    "chat_id": "chat-1736253133906-154",
+    "sender_id": 4,
+    "recipient_id": 8,
+    "message": "Halløj",
+    "sent_at": "2025-01-09T12:00:42.592Z"
+  },
+  {
+    "_id": "677fc9ce62e57704cdb9413a",
+    "id": "message-1736427982772-720",
+    "chat_id": "chat-1736371895821-393",
+    "sender_id": 18,
+    "recipient_id": 19,
+    "message": "Er der en tv-serie, du har været helt opslugt af for nylig?",
+    "sent_at": "2025-01-09T13:06:22.772Z"
+  },
+  {
+    "_id": "677fc9d462e57704cdb9413c",
+    "id": "message-1736427988672-315",
+    "chat_id": "chat-1736371895821-393",
+    "sender_id": 18,
+    "recipient_id": 19,
+    "message": "Hvilket program har du lært mest af?",
+    "sent_at": "2025-01-09T13:06:28.672Z"
+  },
+  {
+    "_id": "677fcac462e57704cdb94144",
+    "id": "message-1736428228194-616",
+    "chat_id": "chat-1736428000516-246",
+    "sender_id": 18,
+    "recipient_id": 10,
+    "message": "Hvad er din go-to aktivitet, når du har fri?",
+    "sent_at": "2025-01-09T13:10:28.194Z"
   }
 ]
