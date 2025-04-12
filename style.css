@@ -75,6 +75,10 @@ body {
     display: none;
 }
 
+.mobile-info-box {
+    display: none;
+}
+
 .welcome {
     position: relative;
     width: 100%;
