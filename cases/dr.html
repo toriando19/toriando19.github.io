@@ -56,9 +56,12 @@
 
 
         <div class="case-tags">
-            <p> #Hashtag </p>
-            <p> #Hashtag </p>
-            <p> #Hashtag </p>
+            <p> #Internship </p>
+            <p> #ExamProjects </p>
+            <p> #NodeJS </p>
+            <p> #Database </p>
+            <p> #API </p>
+            <p> #Scrumban </p>
         </div>
 
         <div class="case-header-txt">
@@ -74,11 +77,11 @@
         <div class="case-info">
             <div class="case-info-left">
                 <!-- <h1> Company</h1> -->
-                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ut ultricies diam. 
-                    Cras iaculis leo sit amet consectetur laoreet. Vivamus vitae tristique mauris. 
-                    Fusce pulvinar erat sit amet porta tincidunt. Integer eu sollicitudin felis. 
-                    Mauris et fringilla nisl, a aliquet leo. Sed faucibus nisl in nibh semper tempus. 
-                    Proin ac posuere tortor. Cras quis orci volutpat, egestas sapien et, condimentum sapien. Morbi semper arcu eu auctor faucibus.
+                <p> 
+                    DR (Danmarks Radio) is Denmark’s national public service broadcaster and one of the country’s most influential and respected media institutions. 
+                    Founded in 1925, DR has played a vital role in shaping the Danish media landscape for nearly a century, delivering high-quality journalism, entertainment, culture, and educational content to audiences across the country.
+                    <br> As a publicly funded organization, DR operates under a mandate to serve the public interest by providing accessible, independent, and diverse programming. 
+                    Its funding primarily comes through taxation, ensuring editorial independence and freedom from commercial influence.
                 </p>
             </div>
 
@@ -131,6 +134,10 @@
                 <h2> famous people were met </h2>
             </div>
 
+            <div class="case-fact"> </div>
+
+            <div class="case-fact"> </div>
+<!-- 
             <div class="case-fact">
                 <img src="/img/v-logo.svg" alt="-">
                 <h1> 0 </h1>
@@ -141,7 +148,7 @@
                 <img src="/img/v-logo.svg" alt="-">
                 <h1> 0 </h1>
                 <h2> amount of xxx </h2>
-            </div>
+            </div> -->
 
         </div>
 
@@ -149,21 +156,19 @@
 
         <div class="case-task-left">
 
-            <img src="/img/test2.png" alt="-">
+            <img src="/img/portfolio/admininterface.png" alt="-">
 
             <div>
-                <h1> Hello World </h1>
-                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ut ultricies diam. 
-                    Cras iaculis leo sit amet consectetur laoreet. Vivamus vitae tristique mauris. 
-                    Fusce pulvinar erat sit amet porta tincidunt. Integer eu sollicitudin felis. 
-                    Mauris et fringilla nisl, a aliquet leo. Sed faucibus nisl in nibh semper tempus. 
-                    Proin ac posuere tortor. Cras quis orci volutpat, egestas sapien et, condimentum sapien. Morbi semper arcu eu auctor faucibus.
+                <h1> Admin URL Interfaces </h1>
+                <p> 
+                    One of my first projects during the internship was developing an internal admin interface for managing URLs on dr.dk. 
+                    As part of Team DR.DK – responsible for the structure and workflow of the main website – I built a tool that allowed users to add, view, and soft-delete page entries through a clean interface. 
+                    The system included search and filtering options, along with metadata like status codes, dates, categories, and titles. 
+                    Its main purpose was to help clean up the database by identifying and removing unused pages with a 400 status.
                 </p>
-                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ut ultricies diam. 
-                    Cras iaculis leo sit amet consectetur laoreet. Vivamus vitae tristique mauris. 
-                    Fusce pulvinar erat sit amet porta tincidunt. Integer eu sollicitudin felis. 
-                    Mauris et fringilla nisl, a aliquet leo. Sed faucibus nisl in nibh semper tempus. 
-                    Proin ac posuere tortor. Cras quis orci volutpat, egestas sapien et, condimentum sapien. Morbi semper arcu eu auctor faucibus.
+                <p> 
+                    Alongside this, I developed a smaller, terminal-based version for external use. 
+                    This version exposed only the core API endpoints – add, read, and delete – intended for DR employees who preferred interacting via command line. 
                 </p>
             </div>
 
@@ -174,22 +179,59 @@
         <div class="case-task-right">
 
             <div>
-                <h1> Hello World </h1>
-                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ut ultricies diam. 
-                    Cras iaculis leo sit amet consectetur laoreet. Vivamus vitae tristique mauris. 
-                    Fusce pulvinar erat sit amet porta tincidunt. Integer eu sollicitudin felis. 
-                    Mauris et fringilla nisl, a aliquet leo. Sed faucibus nisl in nibh semper tempus. 
-                    Proin ac posuere tortor. Cras quis orci volutpat, egestas sapien et, condimentum sapien. Morbi semper arcu eu auctor faucibus.
+                <h1> DRDK Index – Dashboard </h1>
+                <p> 
+                    My last and final project during the internship was the development of the DRDK Index Dashboard – a centralized overview that brought together all the smaller projects I had worked on into one united interface. 
+                    The dashboard served as a helpful control panel for the “dr.dk URL backend-universe”, offering both technical insights and strategic value. 
                 </p>
-                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ut ultricies diam. 
-                    Cras iaculis leo sit amet consectetur laoreet. Vivamus vitae tristique mauris. 
-                    Fusce pulvinar erat sit amet porta tincidunt. Integer eu sollicitudin felis. 
-                    Mauris et fringilla nisl, a aliquet leo. Sed faucibus nisl in nibh semper tempus. 
-                    Proin ac posuere tortor. Cras quis orci volutpat, egestas sapien et, condimentum sapien. Morbi semper arcu eu auctor faucibus.
+                <p> 
+                    It included a status overview of connections to the database, the internal URL interface, and the automated robots.txt maintenance system. 
+                    I added a more detailed section for robots.txt data, including a graph of recent updates, counts of updates in the last 24 hours, URLs flagged for immediate updates, and deleted entries. 
+                    A “Force Maintenance" button was also implemented to manually trigger the robots maintenance loop, which I had previously automated to run hourly. 
+                    Additionally, I visualized search engine usage with daily graphs and created a tracker for the most searched keywords from the past 7 days – potentially useful for SEO strategy or content planning.
                 </p>
             </div>
 
-            <img src="/img/test1.jpg" alt="-">
+            <img src="/img/portfolio/dashboard.png" alt="-">
+
+        </div>
+
+        <br><br>
+
+        <div class="case-task-left">
+
+            <img src="/img/portfolio/medr.png" alt="-">
+
+            <div>
+                <h1> Bachelor-exam Project: MeDR </h1>
+                <p> 
+                    MeDR is a digital product solution developed with the aim of combating loneliness and strengthening community among young people in Denmark – in line with DR’s vision of fostering social unity. 
+                    The solution functions as an integrated social media platform on dr.dk, where users are connected based on their interests and behavior across DR’s content. 
+                    By drawing on DR’s rich media universe – including podcasts, TV series, and articles – MeDR creates a new way for people to meet and share experiences. 
+                    Through content-based matching and social features, users are encouraged to discover communities, engage in conversations, and form new relationships based on personal preferences.
+                </p>
+                <p> 
+                    The prototype of this project was coded with a customized MEPN-stack: MongoDB, Express, PostgreSQL and NodeJS.
+                </p>
+            </div>
+
+        </div>
+
+        <br><br>
+
+        <div class="case-task-right">
+
+            <div>
+                <h1> Scrumban </h1>
+                <p> 
+                    Besides the backend work, the internship also gave me valuable insight into project planning and team collaboration in a large organization like DR. 
+                    We used a Scrumban approach, where meetings played a central role in aligning efforts – both across departments and within our own team, Team Platform/Enabler. 
+                    Every step of the process had to be documented in the system to ensure transparency and consistency. 
+                    We held regular meetings such as retrospectives, refinements, sprint planning, and daily stand-ups, all contributing to a clear, structured and efficient workflow.
+                </p>
+            </div>
+
+            <img src="/img/portfolio/jira.png" alt="-">
 
         </div>
 
@@ -202,9 +244,12 @@
                 <h1> Tools </h1>
 
                 <div class="case-keywords">
-                    <p> – </p>
-                    <p> – </p>
-                    <p> – </p>
+                    <p> Visual Studio Code </p>
+                    <p> MongoDB Compass </p>
+                    <p> GitHub </p>
+                    <p> SonarCloud </p>
+                    <p> Jira </p>
+                    <p> Slack </p>
                 </div>
 
             </div>
@@ -215,9 +260,9 @@
                 <div class="case-achivements">
                     <div class="case-achievement">
 
-                        <p> – </p>
+                        <p> NodeJS </p>
                         <div class="case-progress-bar">
-                            <div class="case-progress-before-indicator" style="height: 10px; width: 10%;"></div>
+                            <div class="case-progress-before-indicator" style="height: 10px; width: 0%;"></div>
                         </div>
                         <div class="case-progress-bar">
                             <div class="case-progress-indicator" style="height: 10px; width: 20%;"></div>
@@ -225,14 +270,23 @@
 
                         <br>
 
-                        <p> – </p>
+                        <p> MongoDB </p>
                         <div class="case-progress-bar">
-                            <div class="case-progress-before-indicator" style="height: 10px; width: 10%;"></div>
+                            <div class="case-progress-before-indicator" style="height: 10px; width: 2%;"></div>
                         </div>
                         <div class="case-progress-bar">
-                            <div class="case-progress-indicator" style="height: 10px; width: 20%;"></div>
+                            <div class="case-progress-indicator" style="height: 10px; width: 40%;"></div>
                         </div>
 
+                        <br>
+
+                        <p> Scrumban </p>
+                        <div class="case-progress-bar">
+                            <div class="case-progress-before-indicator" style="height: 10px; width: 1%;"></div>
+                        </div>
+                        <div class="case-progress-bar">
+                            <div class="case-progress-indicator" style="height: 10px; width: 60%;"></div>
+                        </div>
 
                     </div>
                     
@@ -244,9 +298,11 @@
                 <h1> Skills </h1>
 
                 <div class="case-keywords">
-                    <p> – </p>
-                    <p> – </p>
-                    <p> – </p>
+                    <p> Code-test </p>
+                    <p> Scrum-team </p>
+                    <p> Multitasking </p>
+                    <p> Brainstorming </p>
+                    <p> Code-assistence </p>
                 </div>
 
             </div>
@@ -257,14 +313,30 @@
         <br><br>
 
         <div class="collage-grid">
-            <img src="/img/drme.jpg" alt="-">
-            <img src="/img/background.png" alt="-">
-            <img src="/img/coffeen1.jpg" alt="-">
-            <img src="/img/mellow.png" alt="-">
-            <img src="/img/gallery.JPG" alt="-">
-            <img src="/img/sr.jpg" alt="-">
-            <img src="/img/test1.jpg" alt="-">
-            <img src="/img/test2.png" alt="-">
+            <img src="/img/portfolio/dr-1.png" alt="-">
+            <img src="/img/portfolio/dr-2.png" alt="-">
+            <img src="/img/portfolio/dr-3.png" alt="-">
+            <img src="/img/portfolio/dr-4.png" alt="-">
+            <img src="/img/portfolio/dr-5.JPG" alt="-">
+            <img src="/img/portfolio/dr-6.JPG" alt="-">
+            <img src="/img/portfolio/dr-7.jpg" alt="-">
+            <img src="/img/portfolio/dr-8.JPG" alt="-">
+            <img src="/img/portfolio/dr-9.JPG" alt="-">
+            <img src="/img/portfolio/dr-10.JPG" alt="-">
+            <img src="/img/portfolio/dr-11.JPG" alt="-">
+            <img src="/img/portfolio/dr-12.jpg" alt="-">
+            <img src="/img/portfolio/dr-13.jpg" alt="-">
+            <img src="/img/portfolio/dr-14.JPG" alt="-">
+            <img src="/img/portfolio/dr-15.JPG" alt="-">
+            <img src="/img/portfolio/dr-16.JPG" alt="-">
+            <img src="/img/portfolio/dr-17.JPG" alt="-">
+            <img src="/img/portfolio/dr-18.JPG" alt="-">
+            <img src="/img/portfolio/dr-19.JPG" alt="-">
+            <img src="/img/portfolio/dr-20.JPG" alt="-">
+            <img src="/img/portfolio/dr-21.JPG" alt="-">
+            <img src="/img/portfolio/dr-22.JPG" alt="-">
+            <img src="/img/portfolio/dr-23.JPG" alt="-">
+            <img src="/img/portfolio/dr-24.png" alt="-">
         </div>
           
         <br><br>
