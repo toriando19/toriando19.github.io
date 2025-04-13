@@ -8,6 +8,7 @@
     --colorPage:            rgb(255, 255, 255);
     --colorLightGrey:       rgb(215, 215, 215);
     --colorGrey:            rgb(107, 107, 107);
+    --colorDarkGrey:        rgb(34, 34, 34);
     --colorGreen:           rgb(95, 212, 120);
     --colorDarkGreen:       rgb(52, 112, 65);
 }
@@ -135,13 +136,14 @@ body {
 .about-left {
     padding-top: 4rem;
     padding-left: 7rem;
+    padding-right: 3rem;
 }
 
 .about-header p {
     color: var(--colorWhite);
     padding-bottom: 10px;
     border-bottom: 3px solid var(--colorGreen);
-    width: 60%;
+    width: 70%;
     font-size: 40px;
     font-weight: 900;
 }
@@ -154,7 +156,7 @@ body {
 }
 
 .about-contact {
-    margin-top: 5rem;
+    margin-top: 3rem;
     display: flex;
     gap: 1rem;
 }
@@ -185,7 +187,7 @@ body {
 .resume {
     display: grid;
     grid-template-columns: 1.2fr 1.2fr 1fr;
-    gap: 5rem;
+    gap: 3rem;
     padding-top: 1rem;
     padding-left: 2rem;
     padding-right: 2rem;
@@ -250,11 +252,40 @@ body {
     row-gap: 1rem;
 }
 
+.resume-skills-skill {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+}
+
+.resume-skills-skill p {
+    background-color: var(--colorDarkGrey);
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--colorWhite);
+    line-height: 1.5;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
 .progress-bar {
     height: 10px;
     /* border: 2px solid var(--colorGrey); */
     background-color: rgba(95, 212, 120, 0.1);
     border-radius: 20px;
+}
+
+
+/* MAYBE ??? */
+.progress-bar p {
+    font-size: 11px;
+    font-style: bold;
+    font-weight: 500;
+    text-align: left;
+    margin-top: -0.75rem;
+    padding-left: 10px;
+    color: var(--colorBackground);
 }
 
 .progress-indicator {
@@ -266,7 +297,7 @@ body {
     display: grid;
     grid-template-columns: 1fr 10fr;
     gap: 1rem;
-    row-gap: 1.5rem;
+    row-gap: 1rem;
 }
 
 
