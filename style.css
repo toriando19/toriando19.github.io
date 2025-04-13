@@ -800,6 +800,60 @@ body {
     margin-bottom: 1rem;
     break-inside: avoid; 
 }
+
+
+/* //////////////////////////////////////////////////////////////////////////////////////////// */
+/* 404 – error case */
+
+.error-case {
+    margin-top: 3rem;
+    text-align: center;
+    position: relative;
+    z-index: 1000;
+}
+
+.error-case h1 {
+    margin: 0;
+    font-size: 50pt;
+}
+
+.error-case p {
+    font-size: 14pt;
+}
+
+.error-case a {
+    margin: 0;
+    color: var(--colorSecBackground);
+    cursor: pointer;
+    text-decoration: none;
+    padding: 10px;
+    text-transform: uppercase;
+    text-align: center;
+    border: 1px solid var(--colorBackground);
+}
+
+.error-case a:hover {
+    background-color: var(--colorGreen);
+    border: 1px solid var(--colorGreen);
+}
+
+.error-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 0.1; 
+    pointer-events: none; 
+}
+
+.error-background img {
+    margin: 0;
+    width: 100%;
+    object-fit: cover; /* or 'contain' depending on your layout */
+}
+
   
   
 
@@ -1239,6 +1293,19 @@ body {
         display: block;
         margin-bottom: 1rem;
         break-inside: avoid; 
+    }
+
+    .error-background {
+        display: none;
+    }
+
+    .error-case h1 {
+        font-size: 30pt;
+    }
+
+    .error-case a {
+        background-color: var(--colorGreen);
+        border: 1px solid var(--colorGreen);
     }
     
 
