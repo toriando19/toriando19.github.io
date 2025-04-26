@@ -1,0 +1,24 @@
+body {
+    background-color: #111827;
+    color: #E5E7EB;
+    /* #9CA3AF ––– Grey */
+    /* #8B5CF6 ––– Purple */
+}
+
+.gift {
+    background-color: #1F2937;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    border-radius: 20px;
+}
+
+.gift img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px 0px 0px 20px; /* optional if you want rounded corners */
+}
+
+.gift-right {
+    padding: 1rem;
+}
