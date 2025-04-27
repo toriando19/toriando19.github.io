@@ -9,12 +9,14 @@ body {
 
 .header {
     padding: 1rem;
-    line-height: 0.5;
+    /* line-height: 0.5; */
     text-align: center;
 }
 
 .header p {
-    color: #9CA3AF;
+    margin-top: -20px;
+    color: #E5E7EB;
+    background-color: #8B5CF6;
 }
 
 .gift {
@@ -30,7 +32,7 @@ body {
     align-content: center;
     font-size: 12px;
     background-color: #273140;
-    margin-bottom: 1rem;
+    margin-bottom: 0.2rem;
     padding: 10px;
 }
 
@@ -56,10 +58,14 @@ body {
 }
 
 .gift-right h2 {
-    color: #8B5CF6;
+    color: #ffffff;
     font-size: 12px;
-    font-weight: 100;
+    font-weight: 900;
     margin-bottom: -10px;
+    background-color: #8B5CF6;
+    border-radius: 5px 0px 0px 5px;
+    padding-left: 10px;
+    width: 103%;
 }
 
 .gift-right h3 {
