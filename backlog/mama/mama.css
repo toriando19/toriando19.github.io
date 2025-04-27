@@ -38,7 +38,7 @@ body {
     align-content: center;
     font-size: 10px;
     background-color: #273140;
-    margin-bottom: 0.2rem;
+    margin-bottom: 1rem;
     padding: 10px;
 }
 
@@ -111,13 +111,38 @@ body {
     font-style: italic;
 }
 
+
+.barcode {
+    position: relative; /* This makes it "float" inside the parent */
+    bottom: 0;
+    width: 102%;
+    margin: 0; /* Remove the negative margin */
+    background-color: #ffffff;
+    z-index: 1000;
+    padding: 0.3rem;
+    margin: -7px;
+    border-radius: 0px 0px 20px 20px;
+}
+
+.barcode img {
+    object-fit: cover;
+    border-radius: 0;
+    height: 15pt;
+    /* width: 100%;  */
+}
+
+
+
+
+
+/* 
 .barcode {
     position: fixed;
     bottom: 0;
     left: 0;
-    width: 100%; /* optional, makes it stretch across */
+    width: 100%; 
     background-color: #ffffff;
-    z-index: 1000; /* optional, keeps it on top of other elements */
+    z-index: 1000; 
     padding: 0.3rem;
 }
 
@@ -125,7 +150,7 @@ body {
     width: 97vw;
     height: 40px;
     object-fit: cover;
-}
+} */
 
 
 
