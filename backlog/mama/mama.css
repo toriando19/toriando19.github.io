@@ -1,6 +1,7 @@
 body {
     background-color: #111827;
     color: #E5E7EB;
+    position: fixed;
     /* #9CA3AF ––– Grey */
     /* #8B5CF6 ––– Purple */
 }
@@ -22,3 +23,24 @@ body {
 .gift-right {
     padding: 1rem;
 }
+
+.barcode {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%; /* optional, makes it stretch across */
+    background-color: #ffffff;
+    z-index: 1000; /* optional, keeps it on top of other elements */
+    padding: 0.3rem;
+}
+
+.barcode img {
+    width: 97vw;
+    height: 50px;
+    object-fit: cover;
+}
+
+
+
+
+
