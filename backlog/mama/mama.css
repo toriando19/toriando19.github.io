@@ -1,4 +1,5 @@
 body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #111827;
     color: #E5E7EB;
     position: fixed;
@@ -6,11 +7,37 @@ body {
     /* #8B5CF6 ––– Purple */
 }
 
+.header {
+    padding: 1rem;
+    line-height: 0.5;
+    text-align: center;
+}
+
+.header p {
+    color: #9CA3AF;
+}
+
 .gift {
     background-color: #1F2937;
     display: grid;
     grid-template-columns: 1fr 2fr;
     border-radius: 20px;
+}
+
+.gift-info {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-content: center;
+    font-size: 12px;
+    background-color: #273140;
+    margin-bottom: 1rem;
+    padding: 10px;
+}
+
+.gift-info p {
+    margin: 0;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .gift img {
@@ -22,6 +49,37 @@ body {
 
 .gift-right {
     padding: 1rem;
+}
+
+.gift-right h1 {
+    font-size: 20px;
+}
+
+.gift-right h2 {
+    color: #8B5CF6;
+    font-size: 12px;
+    font-weight: 100;
+    margin-bottom: -10px;
+}
+
+.gift-right h3 {
+    color: #9CA3AF;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: 100;
+    margin-top: -10px;
+}
+
+.gift-right button {
+    /* border: 2px solid #8B5CF6; */
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 900;
+    color: #ffffff;
+    background-color: #8B5CF6;
+    padding: 10px 1rem 10px 1rem;
+    width: 100%;
 }
 
 .barcode {
