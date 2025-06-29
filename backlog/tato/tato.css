@@ -34,8 +34,14 @@ h1 {
     font-size: 16pt !important;
     color: #6682ff;
     margin-top: 2rem !important;
+    text-align: center;
+}
+
+h2 {
     margin-bottom: 10px;
     text-align: center;
+    font-size: 12pt;
+    margin-bottom: 10px;
 }
 
 /* Song quote styling */
@@ -59,6 +65,7 @@ audio {
     border: 2px solid #6682ff;  /* Pink border around the audio player */
     border-radius: 8px;
     padding: 1rem;
+    height: 5rem;
 }
 
 /* Make sure audio controls are touch-friendly */
