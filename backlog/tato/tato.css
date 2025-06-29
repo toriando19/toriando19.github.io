@@ -1,0 +1,97 @@
+/* General resets */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Body styling - Dark theme */
+body {
+    font-family: 'Courier New', Courier, monospace;
+    color: #e0e0e0; 
+    padding: 30px !important;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: auto;
+}
+
+.header {
+    background-color: #6682ff;
+    margin: -30px;
+    margin-bottom: 3rem !important;
+    padding: 1rem;
+    padding-top: 2rem;
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-transform: uppercase;
+    font-size: 25pt;
+    font-weight: 900;
+    color: #ffffff;
+}
+
+/* Headers */
+h1 {
+    font-size: 16pt !important;
+    color: #6682ff;
+    margin-top: 2rem !important;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* Song quote styling */
+.song-quote {
+    background-color: #f4f4f4; 
+    border-left: 5px solid #6682ff;  
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    text-align: center;
+    color: #000000;  
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);  
+}
+
+/* Audio player styling */
+audio {
+    width: 100%;
+    margin: 10px 0 30px;
+    outline: none;
+    border: 2px solid #6682ff;  /* Pink border around the audio player */
+    border-radius: 8px;
+    /* background-color: #444;   */
+    padding: 10px;
+}
+
+/* Make sure audio controls are touch-friendly */
+audio::-webkit-media-controls {
+    background-color: transparent;  /* Transparent control panels */
+    border-radius: 8px;
+}
+
+/* Target WebKit-specific audio control panels */
+audio::-webkit-media-controls {
+    background-color: transparent;
+}
+
+audio::-webkit-media-controls-enclosure {
+    background-color: transparent;
+}
+
+audio::-webkit-media-controls-panel {
+    background-color: transparent;
+}
+
+/* Make the page responsive for smaller screens */
+@media (max-width: 500px) {
+    body {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 1.6rem;
+    }
+
+    .song-quote {
+        font-size: 1rem;
+    }
+}
