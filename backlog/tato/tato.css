@@ -38,9 +38,9 @@ h1 {
 }
 
 h2 {
-    margin-bottom: 10px;
     text-align: center;
     font-size: 12pt;
+    margin-top: -0.4rem;
     margin-bottom: 10px;
 }
 
@@ -64,8 +64,8 @@ audio {
     outline: none;
     border: 2px solid #6682ff;  /* Pink border around the audio player */
     border-radius: 8px;
-    padding: 1rem;
-    height: 5rem;
+    padding: 0.5rem;
+    height: 3rem;
 }
 
 /* Make sure audio controls are touch-friendly */
